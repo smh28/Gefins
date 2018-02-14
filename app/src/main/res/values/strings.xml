@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Gefins</string>
+    <string name="skr_inn">Skráðu þig nú!</string>
+    <string name="notandanafn">Notandanafn:</string>
+    <string name="lykilord">Lykilorð:</string>
+    <string name="skra">Skrá inn</string>
+    <string name="nyr_notandi">Nýr notandi</string>
+    <string name="nyskraning">Skráðu þig sem nýjan notanda!</string>
+    <string name="innskraning">Þú ert skráður inn</string>
+    <string name="innskr_villa">Ekki tókst að skrá þig inn</string>
+</resources>
