@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 import is.hi.teymi9.gefins.model.User;
@@ -19,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mLogin;
     private EditText mUserName;
     private EditText mPsw;
-    private List<User> userList;
-    private UserService userService;
+    private UserService userService= new UserService();
     private String iName;
     private String iPassword;
 
@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         mLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
                 iName = mUserName.getText().toString();
                 iPassword = mPsw.getText().toString();
                 if(userService.isUser(iName, iPassword)){
@@ -50,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,
                             R.string.innskr_villa,
                             Toast.LENGTH_SHORT).show();
-
                 }
-
             }
         });
     }

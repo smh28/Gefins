@@ -2,6 +2,7 @@ package is.hi.teymi9.gefins.repository;
 
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import is.hi.teymi9.gefins.model.User;
@@ -13,7 +14,7 @@ import is.hi.teymi9.gefins.model.User;
 
 public class UserRepository extends User {
 
-    private List<User> userList;
+    private ArrayList<User> userList = new ArrayList<User>();
 
 
     public List<User> getAll(){
@@ -25,7 +26,7 @@ public class UserRepository extends User {
 
         userList.add(user);
         userList.add(user2);
-
+        System.out.println("getAll() aðferð í UserRepository: " + userList);
         return userList;
     }
 }

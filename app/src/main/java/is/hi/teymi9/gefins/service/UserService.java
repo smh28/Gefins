@@ -12,16 +12,14 @@ import is.hi.teymi9.gefins.repository.UserRepository;
 
 public class UserService {
 
-    UserRepository allUsers;
+    UserRepository allUsers = new UserRepository();
 
     private List<User> userList;
 
     public List<User> getAllUsers(){
-
         userList = allUsers.getAll();
         System.out.println("getAllUsers userList: " + userList);
         return userList;
-
     }
 
 
@@ -33,9 +31,7 @@ public class UserService {
                 System.out.println("UserService gefur skilaboðin true, þ.e. finnur user-inn í userList");
                 return true;
             }
-
         }
-
         System.out.println("UserService gefur skilaboðin false, þ.e. finnur ekki user-inn í userList");
         return false;
     }

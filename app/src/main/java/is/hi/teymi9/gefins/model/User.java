@@ -16,6 +16,7 @@ public class User {
     private String address;
     private boolean hasadminauthority;
 
+
     public User(String username, String fullName, String email, String phonenr, String password, int zip, String address, boolean hasadminauthority) {
         this.username = username;
         this.fullName = fullName;
