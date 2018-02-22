@@ -1,5 +1,6 @@
 package is.hi.teymi9.gefins;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -41,9 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 iName = mUserName.getText().toString();
                 iPassword = mPsw.getText().toString();
                 if(userService.isUser(iName, iPassword)){
-                    Toast.makeText(MainActivity.this,
-                            R.string.innskraning,
-                            Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, UsersiteActivity.class);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(MainActivity.this,

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/texti1"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:padding="34dp"
+        android:text="@string/user_site"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="30sp"
+        android:textAlignment="center"  />
+
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="24dp"
+        android:text="@string/search_button" />
+
+
+    <TextView
+        android:id="@+id/question_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:padding="14dp"
+        android:text="@string/usersite_text1"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+
+    <Button
+        android:id="@+id/give_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="24dp"
+        android:text="@string/give_button" />
+
+
+    <Button
+        android:id="@+id/receive_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="24dp"
+        android:text="@string/receive_button" />
+
+
+</LinearLayout>
