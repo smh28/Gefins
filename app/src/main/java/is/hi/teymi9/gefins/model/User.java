@@ -1,11 +1,13 @@
 package is.hi.teymi9.gefins.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Sandra on 14.2.2018.
  */
 
 
-public class User {
+public class User implements Serializable {
     private String username;
     private String fullName;
 
@@ -96,7 +98,12 @@ public class User {
         this.hasadminauthority = hasadminauthority;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
 

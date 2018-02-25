@@ -1,7 +1,11 @@
 package is.hi.teymi9.gefins.service;
 
+import android.content.res.Resources;
+
+import java.io.Serializable;
 import java.util.List;
 
+import is.hi.teymi9.gefins.R;
 import is.hi.teymi9.gefins.model.User;
 import is.hi.teymi9.gefins.repository.UserRepository;
 
@@ -10,15 +14,15 @@ import is.hi.teymi9.gefins.repository.UserRepository;
  */
 
 
-public class UserService {
+public class UserService implements Serializable {
 
-    UserRepository allUsers = new UserRepository();
+    UserRepository userRepository = new UserRepository();
 
     private List<User> userList;
 
     public List<User> getAllUsers(){
-        userList = allUsers.getAll();
-        System.out.println("getAllUsers userList: " + userList);
+        userList = userRepository.getAll();
+        System.out.println("getAllUsers userList: " + userList.toString());
         return userList;
     }
 
@@ -36,5 +40,12 @@ public class UserService {
         return false;
     }
 
+    public String addUser(User u, boolean validate) {
+        if(validate) {
+            // ganga úr skugga um að user info sé valid og user sé ekki þegar til
+        }
+        userRepository.addUser(u);
+        return "Nýskráning tókst!"; // eitthvað vesen að nálgast strings.xml héðan...
+    }
 
 }
