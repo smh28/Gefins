@@ -33,4 +33,9 @@ public class UserRepository extends User implements Serializable {
         userList.add(u);
         System.out.println("Notanda bætt við repository:" + u);
     }
+
+    public void updateUser(User u) {
+        // save updated user to DB
+    }
+
 }

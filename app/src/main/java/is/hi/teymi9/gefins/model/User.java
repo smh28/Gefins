@@ -1,6 +1,7 @@
 package is.hi.teymi9.gefins.model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Created by Sandra on 14.2.2018.
@@ -8,6 +9,9 @@ import java.io.Serializable;
 
 
 public class User implements Serializable {
+
+    private UUID token = UUID.randomUUID();
+
     private String username;
     private String fullName;
 
@@ -96,6 +100,10 @@ public class User implements Serializable {
 
     public void setHasadminauthority(boolean hasadminauthority) {
         this.hasadminauthority = hasadminauthority;
+    }
+
+    public UUID getToken() {
+        return token;
     }
 
     @Override

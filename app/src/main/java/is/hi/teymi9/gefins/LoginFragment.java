@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import is.hi.teymi9.gefins.model.User;
 
 
 /**
@@ -45,7 +46,8 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                 iName = mUserName.getText().toString();
                 iPassword = mPsw.getText().toString();
-                if(LoginActivity.getUserService().isUser(iName, iPassword)){
+                User u = LoginActivity.getUserService().login(iName, iPassword);
+                if(u != null){
                     Intent intent = new Intent(getActivity(), UsersiteActivity.class);
                     startActivity(intent);
                 }
@@ -60,10 +62,7 @@ public class LoginFragment extends Fragment {
         mNewUser.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = RegisterActivity.newIntent(getActivity(), LoginActivity.getUserService());
-                // Serialization ku vera mjög hægvirkt á Android
-                // Betra að nota Parcelable, en það er flóknara (?) að útfæra það
-
+                Intent intent = RegisterActivity.newIntent(getActivity());
                 startActivity(intent);
             }
         });
