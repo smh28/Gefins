@@ -12,15 +12,9 @@ import is.hi.teymi9.gefins.service.UserService;
 
 public class RegisterActivity extends SingleFragmentActivity {
 
-    public UserService userService;
-
     @Override
     protected Fragment createFragment() {
         return new RegisterFragment();
-    }
-
-    public UserService getUserService() {
-        return userService;
     }
 
     public static Intent newIntent(Context packageContext, UserService userService) {

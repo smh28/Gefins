@@ -3,7 +3,6 @@ package is.hi.teymi9.gefins;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.Serializable;
 
-import is.hi.teymi9.gefins.LoginActivity;
 
 /**
  * Created by Einar on 24.2.2018.
@@ -27,8 +24,6 @@ public class LoginFragment extends Fragment {
     private EditText mPsw;
     private String iName;
     private String iPassword;
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
