@@ -45,7 +45,7 @@ public class UsersiteActivity extends AppCompatActivity {
         mLogout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UsersiteActivity.this, MainActivity.class);
+                Intent intent = new Intent(UsersiteActivity.this, LoginActivity.class);
                 startActivity(intent);
 
             }

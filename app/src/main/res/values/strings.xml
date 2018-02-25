@@ -17,6 +17,13 @@
     <string name="clickSearch">Skoðaðu allar auglýsingar</string>
     <string name="usersite_text1">Skráðu nýja auglýsingu:</string>
     <string name="logout_button">Útskrá</string>
+    <string name="tolvupostur">Tölvupóstur</string>
+    <string name="lykilord_aftur">Endurtakið lykilorð:</string>
+    <string name="fullt_nafn">Fullt nafn:</string>
+    <string name="simanumer">Símanúmer:</string>
+    <string name="postnumer">Póstnúmer:</string>
+    <string name="heimilisfang">Heimilisfang:</string>
+    <string name="nyskra">Nýskrá:</string>
 
 
 </resources>
