@@ -16,6 +16,7 @@
     <string name="receive_button">Þiggja hlut</string>
     <string name="clickSearch">Skoðaðu allar auglýsingar</string>
     <string name="usersite_text1">Skráðu nýja auglýsingu:</string>
+    <string name="logout_button">Útskrá</string>
 
 
 </resources>
