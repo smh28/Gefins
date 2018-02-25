@@ -24,6 +24,8 @@
     <string name="postnumer">Póstnúmer:</string>
     <string name="heimilisfang">Heimilisfang:</string>
     <string name="nyskra">Nýskrá:</string>
+    <string name="edit_user_button">Breyta notandaupplýsingum</string>
+    <string name="uppfaera">Uppfæra</string>
 
 
 </resources>

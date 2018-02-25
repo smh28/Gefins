@@ -18,6 +18,8 @@ public class UserService implements Serializable {
 
     UserRepository userRepository = new UserRepository();
 
+    User currentUser = null;
+
     private List<User> userList;
 
     public List<User> getAllUsers(){
@@ -26,12 +28,27 @@ public class UserService implements Serializable {
         return userList;
     }
 
+    public User login(String username, String password) {
+        userList = getAllUsers();
+        for(User u: userList){
+            if (username.equals(u.getUsername()) && password.equals(u.getPassword())) {
+                currentUser = u;
+                return u;
+            }
+        }
+        return null;
+    }
 
-    public Boolean isUser(String userName, String passw){
+    public void logout() {
+        currentUser = null;
+    }
+
+
+    public Boolean isUser(String username, String password){
         userList = getAllUsers();
 
         for(User u: userList){
-            if (userName.equals(u.getUsername()) && passw.equals(u.getPassword())) {
+            if (username.equals(u.getUsername()) && password.equals(u.getPassword())) {
                 System.out.println("UserService gefur skilaboðin true, þ.e. finnur user-inn í userList");
                 return true;
             }
@@ -48,4 +65,15 @@ public class UserService implements Serializable {
         return "Nýskráning tókst!"; // eitthvað vesen að nálgast strings.xml héðan...
     }
 
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public void updateUser(User u) {
+        userRepository.updateUser(u);
+    }
 }
