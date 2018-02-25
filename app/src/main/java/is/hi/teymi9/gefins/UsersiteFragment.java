@@ -17,8 +17,7 @@ public class UsersiteFragment extends Fragment {
 
     private Button mLogout;
     private Button mSearch;
-    private Button mGive;
-    private Button mReceive;
+    private Button mNewAd;
     private Button mEditUser;
 
     @Override
@@ -33,8 +32,7 @@ public class UsersiteFragment extends Fragment {
 
         mLogout = (Button) v.findViewById(R.id.logout_button);
         mSearch = (Button) v.findViewById(R.id.search_button);
-        mGive = (Button) v.findViewById(R.id.give_button);
-        mReceive = (Button) v.findViewById(R.id.receive_button);
+        mNewAd = (Button) v.findViewById(R.id.newAd_button);
         mEditUser = (Button) v.findViewById(R.id.edit_user_button);
 
 

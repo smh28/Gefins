@@ -12,8 +12,7 @@
     <!--user site-->
     <string name="user_site">Síðan þín</string>
     <string name="search_button">Leita að hlut</string>
-    <string name="give_button">Gefa hlut</string>
-    <string name="receive_button">Þiggja hlut</string>
+    <string name="newAd_button">Gefa eða óska eftir hlut</string>
     <string name="clickSearch">Skoðaðu allar auglýsingar</string>
     <string name="usersite_text1">Skráðu nýja auglýsingu:</string>
     <string name="logout_button">Útskrá</string>
