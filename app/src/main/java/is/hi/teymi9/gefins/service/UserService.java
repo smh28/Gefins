@@ -23,6 +23,11 @@ public class UserService {
     }
 
 
+    public void addUser(String userName, String fullName, String password,
+                        String phone, int zip, String email){
+        allUsers.addUser(userName,fullName,email,phone,password,zip,"address");
+    }
+
     public Boolean isUser(String userName, String passw){
         userList = getAllUsers();
 
@@ -34,6 +39,18 @@ public class UserService {
         }
         System.out.println("UserService gefur skilaboðin false, þ.e. finnur ekki user-inn í userList");
         return false;
+    }
+
+    private String validation;
+
+    public String validateUser(String userName, String fullName, String psw, int zip, String phone) {
+        // Athuga hvort notendanafn sé nú þegar til
+        // Athuga hvort lykilorðið sé nógu gott
+        // Athuga hvort póstfang sé rétt
+        // Athuga hvort símanúmer sé gilt
+        // Athuga hvort fullt nafn sé rétt út fyllt
+
+        return validation;
     }
 
 

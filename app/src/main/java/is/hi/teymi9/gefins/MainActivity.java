@@ -37,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
         mUserName = (EditText) findViewById(R.id.user);
         mPsw = (EditText) findViewById(R.id.psw);
 
+        mNewUser.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, NewUserActivity.class);
+                    startActivity(intent);
+            }
+        });
+
         mLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
