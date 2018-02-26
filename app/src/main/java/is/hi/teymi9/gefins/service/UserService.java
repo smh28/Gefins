@@ -67,6 +67,9 @@ public class UserService implements Serializable {
     }
 
     public String validateRegister(String username, String email, String password, String fullName, String phone){
+        // núllstilla isOk
+        isOk = null;
+
         // athuga hvort notendanafnið sé löglegt
         if(username.isEmpty() | username.length() < 4) {
             isOk = "Notendanafn þarf að vera fleiri en 3 stafir";
