@@ -30,6 +30,7 @@ public class RegisterFragment extends Fragment {
     private EditText mZipcode;
     private EditText mAddress;
     private Button mRegisterButton;
+    private String validate;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,24 +58,35 @@ public class RegisterFragment extends Fragment {
         mRegisterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                mNewUser = new User(
-                        mUsername.getText().toString(),
-                        mFullName.getText().toString(),
-                        mEmail.getText().toString(),
-                        mPhoneNumber.getText().toString(),
-                        mPassword.getText().toString(),
-                        Integer.parseInt(mZipcode.getText().toString()),
-                        mAddress.getText().toString(),
-                        false);
+                validate = LoginActivity.getUserService().validateRegister(mUsername.getText().toString(),
+                        mEmail.getText().toString(),mPassword.getText().toString(),mFullName.getText().toString(),
+                        mPhoneNumber.getText().toString());
+                if(validate == null){
+                    mNewUser = new User(
+                            mUsername.getText().toString(),
+                            mFullName.getText().toString(),
+                            mEmail.getText().toString(),
+                            mPhoneNumber.getText().toString(),
+                            mPassword.getText().toString(),
+                            Integer.parseInt(mZipcode.getText().toString()),
+                            mAddress.getText().toString(),
+                            false);
 
-                String message = LoginActivity.getUserService().addUser(mNewUser, false);
+                    String message = LoginActivity.getUserService().addUser(mNewUser, false);
 
-                Toast.makeText(getActivity(),
-                        message,
-                        Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),
+                            message,
+                            Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(getActivity(),
+                            validate,
+                            Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
