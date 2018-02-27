@@ -1,18 +1,31 @@
 package is.hi.teymi9.gefins.model;
 
 /**
- * Created by oloff 27.02.2018
+ * Módel klasi fyrir athugasemdir (Comment)
+ *
+ * @author Ólöf
+ * @version 1.0
  */
 
 
 public class Comment {
 
+    // unique auðkenni fyrir comment
     private int commentId;
+    // höfundur, þ.e. sá sem skrifaði commentið
     private String username;
+    // commentið sjálft
     private String comment;
+    // auðkenni fyrir auglýsinguna sem commentið tilheyrir
     private int adId;
 
-
+    /**
+     * Smiður með viðföndum
+     * @param commentId auðkenni comments
+     * @param username notendanafn höfundar
+     * @param comment commentið sjálft
+     * @param adId auðkenni auglýsingar sem comment tilheyrir
+     */
     public Comment(int commentId, String username, String comment, int adId) {
         this.commentId = commentId;
         this.username = username;
@@ -20,6 +33,9 @@ public class Comment {
         this.adId = adId;
     }
 
+    /**
+     * Tómur smiður
+     */
     public Comment() {
     }
 
