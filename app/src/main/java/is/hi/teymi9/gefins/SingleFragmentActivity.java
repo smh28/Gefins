@@ -6,11 +6,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Created by Einar on 25.2.2018.
+ * Yfirklasi fyrir activities til þess að endurnýta kóða sem þarf til þess að búa til nýtt Fragment
+ *
+ * @author Einar
+ * @version 1.0
  */
 
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
+    /**
+     * Skilar réttur Fragmenti sem búa skal til
+     * @return Fragmentið sem búa skal til
+     */
     protected abstract Fragment createFragment();
 
     @Override

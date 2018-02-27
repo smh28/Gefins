@@ -15,21 +15,35 @@ import android.widget.Toast;
 import is.hi.teymi9.gefins.model.User;
 
 /**
- * Created by Einar on 24.2.2018.
+ * Fragment fyrir viðmótið í RegisterActivity og virknina þar.
+ *
+ * @author Einar
+ * @version 1.0
  */
 
 public class RegisterFragment extends Fragment {
-    private User mNewUser;
 
+    // Nýr notandi sem búa skal til
+    private User mNewUser;
+    // Textasvið fyrir notandanafn
     private EditText mUsername;
+    // Textasvið fyrir lykilorð
     private EditText mPassword;
+    // Textasvið fyrir endurtekið lykilorð
     private EditText mPasswordRepeat;
+    // Textasvið fyrir tölvupóstfang
     private EditText mEmail;
+    // Textasvið fyrir fullt nafn
     private EditText mFullName;
+    // Textasvið fyrir símanúmer
     private EditText mPhoneNumber;
+    // Textasvið fyrir póstnúmer
     private EditText mZipcode;
+    // Textasvið fyrir heimilisfang
     private EditText mAddress;
+    // Takki til að nýskrá notanda
     private Button mRegisterButton;
+    // Segir til um hvort notandaupplýsingar séu gildar eður ei
     private String validate;
 
     @Override

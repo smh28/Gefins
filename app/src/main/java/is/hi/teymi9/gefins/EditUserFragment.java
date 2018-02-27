@@ -13,19 +13,31 @@ import android.widget.Toast;
 import is.hi.teymi9.gefins.model.User;
 
 /**
- * Created by Einar on 25.2.2018.
+ * Fragment fyrir viðmótið í EditUserActivity og virknina þar.
+ *
+ * @author Einar
+ * @version 1.0
  */
 
 public class EditUserFragment extends Fragment {
 
+    // Textasvið fyrir notandanafn
     private EditText mUsername;
+    // Textasvið fyrir lykilorð
     private EditText mPassword;
+    // Textasvið fyrir endurtekið lykilorð
     private EditText mPasswordRepeat;
+    // Textasvið fyrir tölvupóstfang
     private EditText mEmail;
+    // Textasvið fyrir fullt nafn
     private EditText mFullName;
+    // Textasvið fyrir símanúmber
     private EditText mPhoneNumber;
+    // Textasvið fyrir póstnúmer
     private EditText mZipcode;
+    // Textasvið fyrir heimilisfang
     private EditText mAddress;
+    // Takki fyrir staðfestingu á breyttum upplýsingum
     private Button mRegisterButton;
 
     @Override

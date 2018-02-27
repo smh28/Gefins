@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import is.hi.teymi9.gefins.service.UserService;
 
 /**
- * Created by Einar on 25.2.2018.
+ * Activity í Gefins til þess búa til nýjan notanda með því að slá inn upplýsingar
+ *
+ * @author Einar
+ * @version 1.0
  */
 
 public class RegisterActivity extends SingleFragmentActivity {
@@ -17,6 +20,13 @@ public class RegisterActivity extends SingleFragmentActivity {
         return new RegisterFragment();
     }
 
+    /**
+     * "Custom" fall til að búa til nýtt Intent sem tekur við "Extras" ef einhver eru
+     * og bætir þeim við
+     *
+     * @param packageContext Context þess activity sem ræsir RegisterActivity
+     * @return Nýtt intent fyrir RegisterActivity
+     */
     public static Intent newIntent(Context packageContext) {
         Intent intent = new Intent(packageContext, RegisterActivity.class);
         return intent;
