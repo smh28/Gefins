@@ -7,11 +7,15 @@ import is.hi.teymi9.gefins.model.Comment;
 
 
 /**
- * Created by oloff on 27.2.2018.
+ * Geymsla fyrir athugasemdir (Comment)
+ *
+ * @author Ólöf
+ * @version 1.0
  */
 
 public class CommentRepository {
 
+    // Listi af athugasemdum
     private ArrayList<Comment> comments = new ArrayList<>();
 
     /**
@@ -22,6 +26,10 @@ public class CommentRepository {
         return comments;
     }
 
+    /**
+     * Bætir commenti í repository
+     * @param c Comment sem bæta skal við
+     */
     public void addComment(Comment c ){
         comments.add(c);
     }

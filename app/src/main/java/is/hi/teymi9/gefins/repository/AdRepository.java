@@ -6,12 +6,17 @@ import is.hi.teymi9.gefins.model.GiveAd;
 import is.hi.teymi9.gefins.model.ReceiveAd;
 
 /**
- * Created by Einar on 25.2.2018.
+ * Geymsla fyrir auglýsingar (Ad)
+ *
+ * @author Einar
+ * @version 1.0
  */
 
 public class AdRepository {
 
+    // Listi af 'gefa' auglýsingum
     private ArrayList<GiveAd> giveAdList = new ArrayList<>();
+    // Listi af 'þiggja' auglýsingum
     private ArrayList<ReceiveAd> receiveAdList = new ArrayList<>();
 
     public ArrayList<GiveAd> getGiveAdList() {

@@ -7,15 +7,21 @@ import java.util.List;
 import is.hi.teymi9.gefins.model.User;
 
 /**
- * Created by Sandra on 14.2.2018.
+ * Geymsla fyrir notendur (User)
+ *
+ * @author Sandra
+ * @version 1.0
  */
-
 
 public class UserRepository extends User implements Serializable {
 
+    // Listi sem geymir alla notendur í kerfinu
     private ArrayList<User> userList = new ArrayList<User>();
 
-
+    /**
+     * Skilar öllum notendum í kerfinu
+     * @return Listi af öllum notendum
+     */
     public List<User> getAll(){
 
         if(userList.isEmpty()) {
@@ -29,11 +35,19 @@ public class UserRepository extends User implements Serializable {
         return userList;
     }
 
+    /**
+     * Bætir notanda við kerfið
+     * @param u Notandi sem bæta skal við
+     */
     public void addUser(User u) {
         userList.add(u);
         System.out.println("Notanda bætt við repository:" + u);
     }
 
+    /**
+     * Uppfærir notanda
+     * @param u Notandi sem uppfæra skal
+     */
     public void updateUser(User u) {
         // save updated user to DB
     }
