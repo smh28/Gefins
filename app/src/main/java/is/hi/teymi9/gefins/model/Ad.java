@@ -1,5 +1,9 @@
 package is.hi.teymi9.gefins.model;
 
+
+import java.util.ArrayList;
+import is.hi.teymi9.gefins.model.Comment;
+
 /**
  * Created by Kristín on 25.2.2018.
  */
@@ -15,8 +19,10 @@ public class Ad {
     private String adColor;
     private String adDescription;
     private String adUsername;
+    private ArrayList<Comment> adComments;
 
-    public Ad(int adID, String giveOrTake, String adName, String adType, String adTypeOfType, String adColor, String adDescription, String adUsername) {
+    public Ad(int adID, String giveOrTake, String adName, String adType, String adTypeOfType,
+              String adColor, String adDescription, String adUsername, ArrayList<Comment> adComments) {
         this.adID = adID;
         this.giveOrTake = giveOrTake;
         this.adName = adName;
@@ -25,6 +31,7 @@ public class Ad {
         this.adColor = adColor;
         this.adDescription = adDescription;
         this.adUsername = adUsername;
+        this.adComments = adComments;
     }
 
     public Ad() {
@@ -61,4 +68,12 @@ public class Ad {
     public String getAdUsername() { return adUsername; }
 
     public void setAdUsername(String adUsername) { this.adUsername = adUsername; }
+
+    public ArrayList<Comment> getAdComments() {
+        return adComments;
+    }
+
+    public void setAdComments(ArrayList<Comment> adComments) {
+        this.adComments = adComments;
+    }
 }
