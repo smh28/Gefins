@@ -80,6 +80,8 @@
         <item>Annað</item>
     </string-array>
     <string-array name="litir_array">
+        <item>Á ekki við</item>
+        <item>Mér er sama</item>
         <item>Gulur</item>
         <item>Rauður</item>
         <item>Grænn</item>
@@ -97,6 +99,10 @@
         <item>Brons</item>
         <item>Marglitaður</item>
         <item>Annað</item>
-        <item>Mér er sama</item>
     </string-array>
+    <!--add type-->
+    <string name="tilbaka">Tilbaka</string>
+    <string name="addtype">Staðfesta</string>
+    <string name="hvaderthetta">Hvað er þetta?</string>
+    <string name="texti2">Hvað</string>
 </resources>
