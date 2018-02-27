@@ -10,14 +10,21 @@ import android.widget.Button;
 import android.widget.Toast;
 
 /**
- * Created by Einar on 25.2.2018.
+ * Fragment fyrir viðmótið í UsersiteActivity og virknina þar.
+ *
+ * @author Einar
+ * @version 1.0
  */
 
 public class UsersiteFragment extends Fragment {
 
+    // Takki fyrir útskráningu
     private Button mLogout;
+    // Takki fyrir leit
     private Button mSearch;
+    // Takki fyrir nýja auglýsingu
     private Button mNewAd;
+    // Takki fyrir breytingar á notendaupplýsingum
     private Button mEditUser;
 
     @Override
