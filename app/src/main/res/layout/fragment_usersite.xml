@@ -56,19 +56,11 @@
 
 
     <Button
-        android:id="@+id/give_button"
+        android:id="@+id/add_ad_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawablePadding="24dp"
-        android:text="@string/give_button" />
-
-
-    <Button
-        android:id="@+id/receive_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="24dp"
-        android:text="@string/receive_button" />
+        android:text="@string/skraauglysingu" />
 
 
 </LinearLayout>

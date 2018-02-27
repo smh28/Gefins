@@ -26,6 +26,77 @@
     <string name="nyskra">Nýskrá:</string>
     <string name="edit_user_button">Breyta notandaupplýsingum</string>
     <string name="uppfaera">Uppfæra</string>
-
-
+    <string name="skraauglysingu">Skrá nýja auglýsingu</string>
+    <!--add ad-->
+    <string name="nafnaaugl">Nafn á auglýsingu:</string>
+    <string name="nafnaauglysingu">Nafn á auglýsingu</string>
+    <string name="lysing">Lýsing:</string>
+    <string name="lysing2">Lýsing</string>
+    <string name="gefins">Gefins</string>
+    <string name="oskaeftir">Óska eftir</string>
+    <string name="skraauglys">Skrá auglýsingu</string>
+    <string name="tegund">Tegund:</string>
+    <string name="tegundaftegund">Tegund af tegund:</string>
+    <string name="litur">Litur:</string>
+    <string-array name="hlutir_array">
+        <item>Húsgögn</item>
+        <item>Fatnaður</item>
+        <item>Matur</item>
+        <item>Annað</item>
+    </string-array>
+    <string-array name="husgogn_array">
+        <item>Borð</item>
+        <item>Stóll</item>
+        <item>Sófi</item>
+        <item>Hirsla</item>
+        <item>Raftæki</item>
+        <item>Hreinlætistæki</item>
+        <item>Spegill</item>
+        <item>Ljós</item>
+        <item>Annað</item>
+    </string-array>
+    <string-array name="matur_array">
+        <item>Ávöxtur</item>
+        <item>Grænmeti</item>
+        <item>Þurrmatur</item>
+        <item>Kjöt</item>
+        <item>Niðursuðuvara</item>
+        <item>Drykkjarvara</item>
+        <item>Annað</item>
+    </string-array>
+    <string-array name="fatnadur_array">
+        <item>Buxur</item>
+        <item>Bolur</item>
+        <item>Skyrta</item>
+        <item>Pils</item>
+        <item>Blússa</item>
+        <item>Höfuðfat</item>
+        <item>Skór</item>
+        <item>Yfirhöfn</item>
+        <item>Aukahlutir</item>
+        <item>Annað</item>
+    </string-array>
+    <string-array name="annad_array">
+        <item>Annað</item>
+    </string-array>
+    <string-array name="litir_array">
+        <item>Gulur</item>
+        <item>Rauður</item>
+        <item>Grænn</item>
+        <item>Blár</item>
+        <item>Bleikur</item>
+        <item>Fjólublár</item>
+        <item>Appelsínugulur</item>
+        <item>Drappaður</item>
+        <item>Brúnn</item>
+        <item>Hvítur</item>
+        <item>Svartur</item>
+        <item>Grár</item>
+        <item>Gylltur</item>
+        <item>Silfur</item>
+        <item>Brons</item>
+        <item>Marglitaður</item>
+        <item>Annað</item>
+        <item>Mér er sama</item>
+    </string-array>
 </resources>

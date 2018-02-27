@@ -17,8 +17,7 @@ public class UsersiteFragment extends Fragment {
 
     private Button mLogout;
     private Button mSearch;
-    private Button mGive;
-    private Button mReceive;
+    private Button mAddAd;
     private Button mEditUser;
 
     @Override
@@ -33,8 +32,7 @@ public class UsersiteFragment extends Fragment {
 
         mLogout = (Button) v.findViewById(R.id.logout_button);
         mSearch = (Button) v.findViewById(R.id.search_button);
-        mGive = (Button) v.findViewById(R.id.give_button);
-        mReceive = (Button) v.findViewById(R.id.receive_button);
+        mAddAd = (Button) v.findViewById(R.id.add_ad_button);
         mEditUser = (Button) v.findViewById(R.id.edit_user_button);
 
 
@@ -55,7 +53,6 @@ public class UsersiteFragment extends Fragment {
                 LoginActivity.getUserService().logout();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
-
             }
         });
 
@@ -63,6 +60,14 @@ public class UsersiteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = EditUserActivity.newIntent(getActivity());
+                startActivity(intent);
+            }
+        });
+
+        mAddAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = AddAdActivity.newIntent(getActivity());
                 startActivity(intent);
             }
         });
