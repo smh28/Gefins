@@ -15,21 +15,36 @@ import android.widget.Toast;
 import is.hi.teymi9.gefins.model.User;
 
 /**
- * Created by Einar on 24.2.2018.
+ * Fragment fyrir viðmótið í RegisterActivity og virknina þar.
+ *
+ * @author Einar
+ * @version 1.0
  */
 
 public class RegisterFragment extends Fragment {
-    private User mNewUser;
 
+    // Nýr notandi sem búa skal til
+    private User mNewUser;
+    // Textasvið fyrir notandanafn
     private EditText mUsername;
+    // Textasvið fyrir lykilorð
     private EditText mPassword;
+    // Textasvið fyrir endurtekið lykilorð
     private EditText mPasswordRepeat;
+    // Textasvið fyrir tölvupóstfang
     private EditText mEmail;
+    // Textasvið fyrir fullt nafn
     private EditText mFullName;
+    // Textasvið fyrir símanúmer
     private EditText mPhoneNumber;
+    // Textasvið fyrir póstnúmer
     private EditText mZipcode;
+    // Textasvið fyrir heimilisfang
     private EditText mAddress;
+    // Takki til að nýskrá notanda
     private Button mRegisterButton;
+    // Segir til um hvort notandaupplýsingar séu gildar eður ei
+    private String validate;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,24 +72,35 @@ public class RegisterFragment extends Fragment {
         mRegisterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                mNewUser = new User(
-                        mUsername.getText().toString(),
-                        mFullName.getText().toString(),
-                        mEmail.getText().toString(),
-                        mPhoneNumber.getText().toString(),
-                        mPassword.getText().toString(),
-                        Integer.parseInt(mZipcode.getText().toString()),
-                        mAddress.getText().toString(),
-                        false);
+                validate = LoginActivity.getUserService().validateRegister(mUsername.getText().toString(),
+                        mEmail.getText().toString(),mPassword.getText().toString(),mFullName.getText().toString(),
+                        mPhoneNumber.getText().toString());
+                if(validate == null){
+                    mNewUser = new User(
+                            mUsername.getText().toString(),
+                            mFullName.getText().toString(),
+                            mEmail.getText().toString(),
+                            mPhoneNumber.getText().toString(),
+                            mPassword.getText().toString(),
+                            Integer.parseInt(mZipcode.getText().toString()),
+                            mAddress.getText().toString(),
+                            false);
 
-                String message = LoginActivity.getUserService().addUser(mNewUser, false);
+                    String message = LoginActivity.getUserService().addUser(mNewUser, false);
 
-                Toast.makeText(getActivity(),
-                        message,
-                        Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),
+                            message,
+                            Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(getActivity(),
+                            validate,
+                            Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

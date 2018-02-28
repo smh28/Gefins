@@ -1,22 +1,52 @@
 package is.hi.teymi9.gefins.model;
 
+
+import java.util.ArrayList;
+import is.hi.teymi9.gefins.model.Comment;
+
 /**
- * Created by Kristín on 25.2.2018.
+ * Módel klasi fyrir auglýsingu (Ad)
+ *
+ * @author Kristín
+ * @version 1.0
  */
 
 
 public class Ad {
 
+    // unique auðkenni fyrir ad
     private int adID;
+    // er auglýsingin að gefa eða þiggja?
     private String giveOrTake;
+    // heiti
     private String adName;
+    // tegund
     private String adType;
+    // undirtegund
     private String adTypeOfType;
+    // litur
     private String adColor;
+    // lýsing
     private String adDescription;
+    // höfundur auglýsingar
     private String adUsername;
+    // athugasemdir sem gerðar hafa verið við auglýsinguna
+    private ArrayList<Comment> adComments;
 
-    public Ad(int adID, String giveOrTake, String adName, String adType, String adTypeOfType, String adColor, String adDescription, String adUsername) {
+    /**
+     * Smiður með viðföngum
+     * @param adID auðkenni
+     * @param giveOrTake gefa eða þiggja?
+     * @param adName heiti
+     * @param adType tegund
+     * @param adTypeOfType undirtegund
+     * @param adColor litur
+     * @param adDescription lýsing
+     * @param adUsername höfundur
+     * @param adComments athugasemdir
+     */
+    public Ad(int adID, String giveOrTake, String adName, String adType, String adTypeOfType,
+              String adColor, String adDescription, String adUsername, ArrayList<Comment> adComments) {
         this.adID = adID;
         this.giveOrTake = giveOrTake;
         this.adName = adName;
@@ -25,8 +55,12 @@ public class Ad {
         this.adColor = adColor;
         this.adDescription = adDescription;
         this.adUsername = adUsername;
+        this.adComments = adComments;
     }
 
+    /**
+     * Tómur smiður
+     */
     public Ad() {
     }
 
@@ -61,4 +95,12 @@ public class Ad {
     public String getAdUsername() { return adUsername; }
 
     public void setAdUsername(String adUsername) { this.adUsername = adUsername; }
+
+    public ArrayList<Comment> getAdComments() {
+        return adComments;
+    }
+
+    public void setAdComments(ArrayList<Comment> adComments) {
+        this.adComments = adComments;
+    }
 }

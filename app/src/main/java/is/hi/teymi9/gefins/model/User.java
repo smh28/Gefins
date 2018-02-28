@@ -4,25 +4,44 @@ import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * Created by Sandra on 14.2.2018.
+ * Módel klasi fyrir notanda (User)
+ *
+ * @author Sandra
+ * @version 1.0
  */
-
 
 public class User implements Serializable {
 
+    // unique auðkenni fyrir user
     private UUID token = UUID.randomUUID();
-
+    // notendanafn
     private String username;
+    // fullt nafn
     private String fullName;
-
+    // tölvuóstfang
     private String email;
+    // símanúmer
     private String phonenr;
+    // lykilorð
     private String password;
+    // póstnúmer
     private int zip;
+    // heimilisfang
     private String address;
+    // segir til um hvort notandi er stjórnandi (admin) eða ekki
     private boolean hasadminauthority;
 
-
+    /**
+     * Smiður með viðföngum
+     * @param username notendanafn
+     * @param fullName fullt nafn
+     * @param email tölvupóstfang
+     * @param phonenr símanúmer
+     * @param password lykilorð
+     * @param zip póstnúmer
+     * @param address heimilisfang
+     * @param hasadminauthority er notandi admin?
+     */
     public User(String username, String fullName, String email, String phonenr, String password, int zip, String address, boolean hasadminauthority) {
         this.username = username;
         this.fullName = fullName;
@@ -34,6 +53,9 @@ public class User implements Serializable {
         this.hasadminauthority = hasadminauthority;
     }
 
+    /**
+     * Tómur smiður
+     */
     public User() {
     }
 
@@ -44,7 +66,6 @@ public class User implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
-
 
     public String getFullName() {
         return fullName;

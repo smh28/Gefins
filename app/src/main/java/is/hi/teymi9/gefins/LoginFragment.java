@@ -14,16 +14,25 @@ import is.hi.teymi9.gefins.model.User;
 
 
 /**
- * Created by Einar on 24.2.2018.
+ * Fragment fyrir viðmótið í LoginActivity og virknina þar.
+ *
+ * @author Einar
+ * @version 1.0
  */
 
 public class LoginFragment extends Fragment {
 
+    // Takki fyrir nýskráningu
     private Button mNewUser;
+    // Takki fyrir innskráningu
     private Button mLogin;
+    // Textasvið fyrir notendanafn
     private EditText mUserName;
+    // Textasvið fyrir lykilorð
     private EditText mPsw;
+    // Geymir notendanafn þess sem skrá skal inn
     private String iName;
+    // Geymir lykilorð þess sem srká skal inn
     private String iPassword;
 
     @Override

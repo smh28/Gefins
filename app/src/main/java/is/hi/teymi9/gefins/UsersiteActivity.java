@@ -12,7 +12,10 @@ import android.widget.Toast;
 import is.hi.teymi9.gefins.service.UserService;
 
 /**
- * Created by Sandra on 21.2.2018.
+ * Activity í Gefins sem sýnir upphafssíðu notanda
+ *
+ * @author Sanda
+ * @version 1.0
  */
 
 public class UsersiteActivity extends SingleFragmentActivity {
@@ -22,6 +25,13 @@ public class UsersiteActivity extends SingleFragmentActivity {
         return new UsersiteFragment();
     }
 
+    /**
+     * "Custom" fall til að búa til nýtt Intent sem tekur við "Extras" ef einhver eru
+     * og bætir þeim við
+     *
+     * @param packageContext Context þess activity sem ræsir UsersiteActivity
+     * @return Nýtt intent fyrir UsersiteActivity
+     */
     public static Intent newIntent(Context packageContext) {
         Intent intent = new Intent(packageContext, UsersiteActivity.class);
         return intent;

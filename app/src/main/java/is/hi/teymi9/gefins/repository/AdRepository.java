@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import is.hi.teymi9.gefins.model.Ad;
 
 /**
- * Created by Einar on 25.2.2018.
+ * Geymsla fyrir auglýsingar (Ad)
+ *
+ * @author Einar
+ * @version 1.0
  */
 
 public class AdRepository {
