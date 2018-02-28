@@ -14,6 +14,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import is.hi.teymi9.gefins.model.Ad;
 
 /**
@@ -128,7 +130,7 @@ public class AddAdFragment extends Fragment {
                         mSpinner.getSelectedItem().toString(),
                         mSpinner2.getSelectedItem().toString(),
                         mSpinner3.getSelectedItem().toString(),
-                        mDescription.getText().toString(), mUsername);
+                        mDescription.getText().toString(), mUsername, new ArrayList<>());
 
                 String message = AddAdActivity.getAdService().addAd(mNewAd, false);
 
