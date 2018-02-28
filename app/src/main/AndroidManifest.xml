@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".EditUserActivity">
         </activity>
+        <activity android:name=".AddAdActivity">
+        </activity>
 
     </application>
 

@@ -1,0 +1,119 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/nafnid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nafnaaugl" />
+
+    <EditText
+        android:id="@+id/nafn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/nafnaauglysingu" />
+
+    <TextView
+        android:id="@+id/textinn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tegund"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="42dp" />
+
+    <TextView
+        android:id="@+id/texti2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tegundaftegund" />
+
+    <Spinner
+        android:id="@+id/spinner5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/litur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/litur" />
+
+    <Spinner
+        android:id="@+id/spinner6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkedButton="@+id/radio_give"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="390dp">
+
+        <RadioButton
+            android:id="@+id/radio_give"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:duplicateParentState="false"
+            android:text="@string/gefins"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="384dp" />
+        />
+
+        <RadioButton
+            android:id="@+id/radio_take"
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+            android:text="@string/oskaeftir"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="388dp" />/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/lysing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lysing" />
+
+    <EditText
+        android:id="@+id/skrifalysingu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="@string/lysing2" />
+
+    <Button
+        android:id="@+id/tilbaka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tilbaka"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="84dp" />
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addtype"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="147dp" />
+
+</LinearLayout>

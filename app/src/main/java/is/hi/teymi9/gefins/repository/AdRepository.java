@@ -2,8 +2,7 @@ package is.hi.teymi9.gefins.repository;
 
 import java.util.ArrayList;
 
-import is.hi.teymi9.gefins.model.GiveAd;
-import is.hi.teymi9.gefins.model.ReceiveAd;
+import is.hi.teymi9.gefins.model.Ad;
 
 /**
  * Geymsla fyrir auglýsingar (Ad)
@@ -14,24 +13,14 @@ import is.hi.teymi9.gefins.model.ReceiveAd;
 
 public class AdRepository {
 
-    // Listi af 'gefa' auglýsingum
-    private ArrayList<GiveAd> giveAdList = new ArrayList<>();
-    // Listi af 'þiggja' auglýsingum
-    private ArrayList<ReceiveAd> receiveAdList = new ArrayList<>();
+    private ArrayList<Ad> AdList = new ArrayList<>();
 
-    public ArrayList<GiveAd> getGiveAdList() {
-        return giveAdList;
+    public ArrayList<Ad> getAdList() {
+        return AdList;
     }
 
-    public ArrayList<ReceiveAd> getReceiveAdList() {
-        return receiveAdList;
+    public void addAd(Ad ad) {
+        AdList.add(ad);
     }
 
-    public void addGiveAd(GiveAd ad) {
-        giveAdList.add(ad);
-    }
-
-    public void addReceiveAd(ReceiveAd ad) {
-        receiveAdList.add(ad);
-    }
 }

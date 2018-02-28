@@ -22,9 +22,7 @@ public class UsersiteFragment extends Fragment {
     private Button mLogout;
     // Takki fyrir leit
     private Button mSearch;
-    // Takki fyrir nýja auglýsingu
-    private Button mNewAd;
-    // Takki fyrir breytingar á notendaupplýsingum
+    private Button mAddAd;
     private Button mEditUser;
 
     @Override
@@ -39,7 +37,7 @@ public class UsersiteFragment extends Fragment {
 
         mLogout = (Button) v.findViewById(R.id.logout_button);
         mSearch = (Button) v.findViewById(R.id.search_button);
-        mNewAd = (Button) v.findViewById(R.id.newAd_button);
+        mAddAd = (Button) v.findViewById(R.id.add_ad_button);
         mEditUser = (Button) v.findViewById(R.id.edit_user_button);
 
 
@@ -60,7 +58,6 @@ public class UsersiteFragment extends Fragment {
                 LoginActivity.getUserService().logout();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
-
             }
         });
 
@@ -68,6 +65,14 @@ public class UsersiteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = EditUserActivity.newIntent(getActivity());
+                startActivity(intent);
+            }
+        });
+
+        mAddAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = AddAdActivity.newIntent(getActivity());
                 startActivity(intent);
             }
         });
