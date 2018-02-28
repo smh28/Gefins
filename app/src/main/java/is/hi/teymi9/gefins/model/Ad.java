@@ -7,7 +7,7 @@ import is.hi.teymi9.gefins.model.Comment;
 /**
  * Módel klasi fyrir auglýsingu (Ad)
  *
- * @author Kristín
+ * @author Kristín María
  * @version 1.0
  */
 

@@ -5,8 +5,12 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import is.hi.teymi9.gefins.service.AdService;
 
+
 /**
- * Created by Kristín María on 25.2.2018.
+ * Activity í Gefins til þess að bæta við nýrri auglýsingu
+ *
+ * @author Kristín María
+ * @version 1.0
  */
 
 public class AddAdActivity extends SingleFragmentActivity {

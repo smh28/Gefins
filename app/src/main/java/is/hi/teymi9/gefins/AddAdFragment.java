@@ -19,20 +19,33 @@ import java.util.ArrayList;
 import is.hi.teymi9.gefins.model.Ad;
 
 /**
- * Created by Kristín María on 25.2.2018.
+ * Fragment fyrir viðmótið í AddAdActivity og virknina þar.
+ *
+ * @author Kristín María
+ * @version 1.0
  */
 
 public class AddAdFragment extends Fragment {
 
+    //Spinner þar sem að valið er hvernig tengund hluturinn sem verið er að gefa/óska eftir er
     private Spinner mSpinner;
+    //Spinner þar sem að valið er hvernig tengund af tegund hluturinn sem verið er að gefa/óska eftir er
     private Spinner mSpinner2;
+    //Spinner þar sem að valið er hvernig litur er á þeim hlut sem verið er að gefa/óska eftir
     private Spinner mSpinner3;
+    //Takki fyrir staðfestingu á nýrri auglýsingu
     private Button mConfirm;
+    //Takki þar sem farið er tilbaka á notendasíðu
     private Button mBack;
+    //RadioGroup sem heldur utan um takkana Gefins og Óska eftir
     private RadioGroup mGiveorTake;
+    //Stengur sem segir til um hvort hlutur sé gefins eða óskað er eftir
     private String mGiveOrTake;
+    //Textasvið fyrir nafn á auglýsingu
     private EditText mNameOfAd;
+    //Textasvið fyrir lýsingu á auglýsingu
     private EditText mDescription;
+    //Strengur sem inniheldur notendanafn
     private String mUsername;
 
     @Override
@@ -100,6 +113,11 @@ public class AddAdFragment extends Fragment {
         // Apply the adapter to the spinner
         mSpinner3.setAdapter(adapter3);
 
+
+        /**
+         * Listener sem breytir strengnum mGiveOrTake í "Gefins" eða "Óska eftir" eftir því í hvorn
+         * RadioButton er hakað við í RadioGroup
+         */
         mGiveorTake.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
            @Override
            public void onCheckedChanged(RadioGroup group, int checkedId) {
