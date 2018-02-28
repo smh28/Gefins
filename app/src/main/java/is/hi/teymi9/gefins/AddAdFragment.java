@@ -66,7 +66,7 @@ public class AddAdFragment extends Fragment {
         mGiveorTake = (RadioGroup) v.findViewById(R.id.radiogroup);
         mNameOfAd = (EditText) v.findViewById(R.id.nafn2);
         mDescription = (EditText) v.findViewById(R.id.skrifalysingu);
-        mUsername = "user";
+        mUsername = LoginActivity.getUserService().getCurrentUser().getUsername();
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.hlutir_array, android.R.layout.simple_spinner_item);
@@ -142,6 +142,7 @@ public class AddAdFragment extends Fragment {
                 System.out.println(mGiveOrTake);
                 System.out.println(mNameOfAd.getText().toString());
                 System.out.println(mDescription.getText().toString());
+                System.out.println(mUsername);
 
                 Ad mNewAd = new Ad(1, mGiveOrTake,
                         mNameOfAd.getText().toString(),
