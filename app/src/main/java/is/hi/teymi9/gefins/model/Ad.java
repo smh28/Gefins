@@ -103,4 +103,8 @@ public class Ad {
     public void setAdComments(ArrayList<Comment> adComments) {
         this.adComments = adComments;
     }
+
+
+
+
 }
