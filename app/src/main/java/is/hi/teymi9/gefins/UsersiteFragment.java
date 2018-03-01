@@ -44,10 +44,8 @@ public class UsersiteFragment extends Fragment {
         mSearch.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),
-                        R.string.clickSearch,
-                        Toast.LENGTH_SHORT).show();
-
+            Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
+            startActivity(intent);
             }
         });
 

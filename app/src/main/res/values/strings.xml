@@ -104,4 +104,8 @@
     <string name="addtype">Staðfesta</string>
     <string name="hvaderthetta">Hvað er þetta?</string>
     <string name="texti2">Hvað</string>
+    <!--display ads-->
+    <string name="display_site">Listi yfir auglýsingar</string>
+
+
 </resources>
