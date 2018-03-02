@@ -16,7 +16,9 @@ import com.google.gson.Gson;
 
 import org.json.JSONException;
 
+import is.hi.teymi9.gefins.LoginActivity;
 import is.hi.teymi9.gefins.RegisterActivity;
+import is.hi.teymi9.gefins.model.Credentials;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -66,6 +68,12 @@ public class UserService implements Serializable {
     private Activity registerActivity = null;
     // Gson hlutur fyrir JSON vinnslu
     Gson gson = new Gson();
+    // okhttp3 client fyrir samskipti við bakenda
+    OkHttpClient client;
+
+    public UserService() {
+         client = new OkHttpClient();
+    }
 
     /**
      * Nær í alla users frá Repository og skilar þeim
@@ -83,7 +91,81 @@ public class UserService implements Serializable {
      * @param password Lykilorð
      * @return User-inn sem skráður var inn
      */
-    public User login(String username, String password) {
+    public void login(String username, String password) {
+        Credentials loginCredentials = new Credentials(username, password);
+        String method = "/login";
+        if(isNetworkAvailable(getLoginActivity())) {
+            RequestBody body = RequestBody.create(MediaType.parse(
+                    "application/json; charset=utf-8"),
+                    gson.toJson(loginCredentials));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(loginCredentials));
+            System.out.println("Login uplýsingar sendur á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    loginActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    loginActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            loginActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    User u = gson.fromJson(jsonData, User.class);
+                                    if (u.getUsername() == null) {
+                                        Toast.makeText(loginActivity, R.string.login_failed, Toast.LENGTH_LONG).show();
+                                    }
+                                    else {
+                                        setCurrentUser(u);
+                                        ((LoginActivity) loginActivity).loginWasSucessful();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(loginActivity, R.string.login_failed, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(registerActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+    // Gamla login fallið
+    /*public User login(String username, String password) {
         userList = getAllUsers();
         for(User u: userList){
             if (username.equals(u.getUsername()) && password.equals(u.getPassword())) {
@@ -92,7 +174,7 @@ public class UserService implements Serializable {
             }
         }
         return null;
-    }
+    }*/
 
     /**
      * Skráir út notanda
@@ -127,12 +209,8 @@ public class UserService implements Serializable {
      */
     public String addUser(User u) {
         String method = "/createUser";
-        if(isNetworkAvailable()) {
-            OkHttpClient client = new OkHttpClient();
+        if(isNetworkAvailable(getRegisterActivity())) {
             RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(u));
-            RequestBody formBody = new FormBody.Builder()
-                    .add("user", gson.toJson(u))
-                    .build();
             Request request = new Request.Builder()
                     .url(serverUrl + method)
                     .post(body)
@@ -265,8 +343,8 @@ public class UserService implements Serializable {
      * Tekið úr Stormy eftir Sigurð Gauta
      * @return true ef nettenging er til staðar, annars false
      */
-    private boolean isNetworkAvailable() {
-        ConnectivityManager manager = (ConnectivityManager) registerActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+    private boolean isNetworkAvailable(Activity a) {
+        ConnectivityManager manager = (ConnectivityManager) a.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = manager.getActiveNetworkInfo();
         boolean isAvailable = false;
         if(networkInfo!= null && networkInfo.isConnected()) isAvailable = true;
