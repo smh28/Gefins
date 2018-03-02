@@ -28,6 +28,7 @@ public class UsersiteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LoginActivity.getUserService().setUsersiteActivity(getActivity());
     }
 
     @Override

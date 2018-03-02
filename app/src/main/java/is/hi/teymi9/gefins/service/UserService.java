@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 
 import org.json.JSONException;
 
+import is.hi.teymi9.gefins.EditUserActivity;
 import is.hi.teymi9.gefins.LoginActivity;
 import is.hi.teymi9.gefins.RegisterActivity;
 import is.hi.teymi9.gefins.model.Credentials;
@@ -66,6 +67,8 @@ public class UserService implements Serializable {
     private Activity usersiteActivity = null;
     // RegisterActivity sem UserService hefur samskipti við
     private Activity registerActivity = null;
+    // EditUserActivity sem UserService hefur samskipti við
+    private Activity editUserActivity = null;
     // Gson hlutur fyrir JSON vinnslu
     Gson gson = new Gson();
     // okhttp3 client fyrir samskipti við bakenda
@@ -334,9 +337,83 @@ public class UserService implements Serializable {
      * Uppfærir notanda þegar upplýsingum um hann hefur verið breytt
      * @param u Notandinn sem uppfæra skal
      */
-    public void updateUser(User u) {
-        userRepository.updateUser(u);
+    /**
+     * Sendir notanda sem búa skal til á bakenda þar sem honum er bætt við ef hann er í lagi
+     * @param u Notandi sem bæta skal við
+     * @return Skilaboð þess efnis hvort að tókst að bæta notanda við
+     */
+    public String updateUser(User u) {
+        String method = "/updateUser";
+        if(isNetworkAvailable(getEditUserActivity())) {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(u));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(u));
+            System.out.println("Uppfærður user sendur á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    editUserActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    editUserActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            editUserActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (jsonData.toString().compareTo("Update user failed") == 0) {
+                                        Toast.makeText(editUserActivity, R.string.update_user_failed, Toast.LENGTH_LONG).show();
+                                    }
+                                    else {
+                                        ((EditUserActivity) editUserActivity).updateUserWasSuccessful();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(editUserActivity, R.string.create_user_failed, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(editUserActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+        return "";
     }
+
+    // gamla updateUser fallið
+    /*public void updateUser(User u) {
+        userRepository.updateUser(u);
+    }*/
 
     /**
      * Skilar upplýsingum um hvort nettenging sé til staðar.
@@ -374,5 +451,13 @@ public class UserService implements Serializable {
 
     public void setRegisterActivity(Activity registerActivity) {
         this.registerActivity = registerActivity;
+    }
+
+    public Activity getEditUserActivity() {
+        return editUserActivity;
+    }
+
+    public void setEditUserActivity(Activity editUserActivity) {
+        this.editUserActivity = editUserActivity;
     }
 }
