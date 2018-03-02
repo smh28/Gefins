@@ -164,18 +164,25 @@ public class UserService implements Serializable {
                         String jsonData = response.body().string();
                         Log.v(TAG, jsonData);
                         if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
                             //We are not on main thread
                             //Need to call this method and pass a new Runnable thread
                             //to be able to update the view.
                             registerActivity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    setCurrentUser(u);
-                                    ((RegisterActivity)registerActivity).createUserWasSucessful();
+                                    if (jsonData.toString().compareTo("Create user failed. Please try again.") == 0) {
+                                        Toast.makeText(registerActivity, R.string.create_user_failed, Toast.LENGTH_LONG).show();
+                                    }
+                                    else {
+                                        setCurrentUser(u);
+                                        ((RegisterActivity) registerActivity).createUserWasSucessful();
+                                    }
                                 }
                             });
-                        } else {
-                            //alertUserAboutError();
+                        }
+                        else {
+                            Toast.makeText(registerActivity, R.string.create_user_failed, Toast.LENGTH_LONG).show();
                         }
                     } catch (IOException e) {
                         Log.e(TAG, "Exception caught: ", e);
@@ -186,7 +193,7 @@ public class UserService implements Serializable {
             });
         }
         else {
-            Toast.makeText(loginActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+            Toast.makeText(registerActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
         }
         return "";
     }
