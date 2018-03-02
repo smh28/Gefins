@@ -17,7 +17,8 @@ import is.hi.teymi9.gefins.service.UserService;
 public class LoginActivity extends SingleFragmentActivity {
 
     // Static UserService sem er sameiginlegt fyrir allt forritið
-    public static UserService userService = new UserService();
+    private static UserService userService = new UserService();
+
 
     @Override
     protected Fragment createFragment() {
@@ -27,6 +28,5 @@ public class LoginActivity extends SingleFragmentActivity {
     public static UserService getUserService() {
         return userService;
     }
-
 }
 
