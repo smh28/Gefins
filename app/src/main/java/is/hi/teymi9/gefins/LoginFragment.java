@@ -38,6 +38,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LoginActivity.getUserService().setLoginActivity(getActivity());
     }
 
     @Override

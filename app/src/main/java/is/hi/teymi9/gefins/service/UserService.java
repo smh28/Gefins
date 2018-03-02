@@ -1,7 +1,32 @@
 package is.hi.teymi9.gefins.service;
 
+import android.app.Activity;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+
+import is.hi.teymi9.gefins.RegisterActivity;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,6 +44,8 @@ import is.hi.teymi9.gefins.repository.UserRepository;
 
 public class UserService implements Serializable {
 
+    // tag til að auðkenna skilaboð í logger
+    public static final String TAG = UserService.class.getSimpleName();
     // Geymla fyrir alla user-a
     UserRepository userRepository = new UserRepository();
     // Núverandi innskráður notandi
@@ -27,6 +54,18 @@ public class UserService implements Serializable {
     String isOk;
     // Listi af notendum
     private List<User> userList;
+    // Addressan á servernum sem tala skal við. Haft localhost á þróunarskeiði en
+    // verður síðar meir skipt út fyrir Heroku þjóninn
+    //private String serverUrl = "http://192.168.1.8:8080";
+    private String serverUrl = "https://gefins.herokuapp.com";
+    // LoginActivity sem UserService hefur samskipti við
+    private Activity loginActivity = null;
+    // UsersiteActivity sem UserService hefur samskipti við
+    private Activity usersiteActivity = null;
+    // RegisterActivity sem UserService hefur samskipti við
+    private Activity registerActivity = null;
+    // Gson hlutur fyrir JSON vinnslu
+    Gson gson = new Gson();
 
     /**
      * Nær í alla users frá Repository og skilar þeim
@@ -82,18 +121,90 @@ public class UserService implements Serializable {
     }
 
     /**
-     * Bætir notanda við repository
+     * Sendir notanda sem búa skal til á bakenda þar sem honum er bætt við ef hann er í lagi
      * @param u Notandi sem bæta skal við
-     * @param validate Á að staðfesta notanda fyrst eða ekki
-     * @return Skilaboð þess efnis hvort að vistun tókst eða ekki
+     * @return Skilaboð þess efnis hvort að tókst að bæta notanda við
      */
-    public String addUser(User u, boolean validate) {
+    public String addUser(User u) {
+        String method = "/createUser";
+        if(isNetworkAvailable()) {
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(u));
+            RequestBody formBody = new FormBody.Builder()
+                    .add("user", gson.toJson(u))
+                    .build();
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(u));
+            System.out.println("Nýr user sendur á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    registerActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    registerActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            registerActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (jsonData.toString().compareTo("Create user failed. Please try again.") == 0) {
+                                        Toast.makeText(registerActivity, R.string.create_user_failed, Toast.LENGTH_LONG).show();
+                                    }
+                                    else {
+                                        setCurrentUser(u);
+                                        ((RegisterActivity) registerActivity).createUserWasSucessful();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(registerActivity, R.string.create_user_failed, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(registerActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+        return "";
+    }
+    // gamla local fallið
+    /*public String addUser(User u, boolean validate) {
         if(validate) {
             // ganga úr skugga um að user info sé valid og user sé ekki þegar til
         }
         userRepository.addUser(u);
         return "Nýskráning tókst!"; // eitthvað vesen að nálgast strings.xml héðan...
-    }
+    }*/
 
     /**
      * Staðfestir upplýsingar fyrir notanda, þ.e. segir til um hvort að gildin séu gild
@@ -147,5 +258,43 @@ public class UserService implements Serializable {
      */
     public void updateUser(User u) {
         userRepository.updateUser(u);
+    }
+
+    /**
+     * Skilar upplýsingum um hvort nettenging sé til staðar.
+     * Tekið úr Stormy eftir Sigurð Gauta
+     * @return true ef nettenging er til staðar, annars false
+     */
+    private boolean isNetworkAvailable() {
+        ConnectivityManager manager = (ConnectivityManager) registerActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean isAvailable = false;
+        if(networkInfo!= null && networkInfo.isConnected()) isAvailable = true;
+        System.out.println("Network is available: " + isAvailable);
+        return isAvailable;
+    }
+
+    public Activity getLoginActivity() {
+        return loginActivity;
+    }
+
+    public void setLoginActivity(Activity loginActivity) {
+        this.loginActivity = loginActivity;
+    }
+
+    public Activity getUsersiteActivity() {
+        return usersiteActivity;
+    }
+
+    public void setUsersiteActivity(Activity usersiteActivity) {
+        this.usersiteActivity = usersiteActivity;
+    }
+
+    public Activity getRegisterActivity() {
+        return registerActivity;
+    }
+
+    public void setRegisterActivity(Activity registerActivity) {
+        this.registerActivity = registerActivity;
     }
 }

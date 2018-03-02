@@ -49,6 +49,7 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LoginActivity.getUserService().setRegisterActivity(getActivity());
     }
 
     @Override
@@ -86,14 +87,13 @@ public class RegisterFragment extends Fragment {
                             mAddress.getText().toString(),
                             false);
 
-                    String message = LoginActivity.getUserService().addUser(mNewUser, false);
+                    String message = LoginActivity.getUserService().addUser(mNewUser);
 
                     Toast.makeText(getActivity(),
                             message,
                             Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                    startActivity(intent);
+
                 }
                 else {
                     Toast.makeText(getActivity(),
@@ -106,4 +106,7 @@ public class RegisterFragment extends Fragment {
 
         return v;
     }
+
+
+
 }
