@@ -31,4 +31,9 @@ public class EditUserActivity extends SingleFragmentActivity {
         return intent;
     }
 
+    public void updateUserWasSuccessful(){
+        Intent intent = new Intent(this, UsersiteActivity.class);
+        startActivity(intent);
+    }
+
 }

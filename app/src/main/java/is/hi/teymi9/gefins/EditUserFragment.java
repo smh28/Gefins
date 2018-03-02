@@ -43,6 +43,7 @@ public class EditUserFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LoginActivity.getUserService().setEditUserActivity(getActivity());
     }
 
     @Override
@@ -60,8 +61,8 @@ public class EditUserFragment extends Fragment {
         mAddress = (EditText) v.findViewById(R.id.address);
 
         mUsername.setText(LoginActivity.getUserService().getCurrentUser().getUsername());
-        mPassword.setText(LoginActivity.getUserService().getCurrentUser().getPassword());
-        mPasswordRepeat.setText(LoginActivity.getUserService().getCurrentUser().getPassword());
+        //mPassword.setText(LoginActivity.getUserService().getCurrentUser().getPassword());
+        //mPasswordRepeat.setText(LoginActivity.getUserService().getCurrentUser().getPassword());
         mEmail.setText(LoginActivity.getUserService().getCurrentUser().getEmail());
         mFullName.setText(LoginActivity.getUserService().getCurrentUser().getFullName());
         mPhoneNumber.setText(LoginActivity.getUserService().getCurrentUser().getPhonenr());
@@ -76,18 +77,22 @@ public class EditUserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 LoginActivity.getUserService().getCurrentUser().setUsername( mUsername.getText().toString());
-                LoginActivity.getUserService().getCurrentUser().setPassword( mPassword.getText().toString());
+                // Það er best að hafa breytingar á lykilorði í sér ferli því það þarf að vita hvort að verið
+                // sé að vinna með plain text password eða hash-ið
+                //LoginActivity.getUserService().getCurrentUser().setPassword( mPassword.getText().toString());
                 LoginActivity.getUserService().getCurrentUser().setEmail( mEmail.getText().toString());
                 LoginActivity.getUserService().getCurrentUser().setFullName( mFullName.getText().toString());
                 LoginActivity.getUserService().getCurrentUser().setPhonenr( mPhoneNumber.getText().toString());
                 LoginActivity.getUserService().getCurrentUser().setZip( Integer.parseInt(mZipcode.getText().toString()));
                 LoginActivity.getUserService().getCurrentUser().setAddress( mAddress.getText().toString());
                 LoginActivity.getUserService().updateUser(LoginActivity.getUserService().getCurrentUser());
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                //startActivity(intent);
+                LoginActivity.getUserService().updateUser(LoginActivity.getUserService().getCurrentUser());
             }
         });
 
         return v;
     }
+
 }

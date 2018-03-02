@@ -13,7 +13,7 @@ import java.util.UUID;
 public class User implements Serializable {
 
     // unique auðkenni fyrir user
-    private UUID token = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
     // notendanafn
     private String username;
     // fullt nafn
@@ -123,8 +123,8 @@ public class User implements Serializable {
         this.hasadminauthority = hasadminauthority;
     }
 
-    public UUID getToken() {
-        return token;
+    public UUID getId() {
+        return id;
     }
 
     @Override
@@ -133,6 +133,11 @@ public class User implements Serializable {
                 "fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public static String toJson(User u) {
+
+        return "";
     }
 }
 

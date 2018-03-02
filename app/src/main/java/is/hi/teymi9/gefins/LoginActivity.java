@@ -1,5 +1,6 @@
 package is.hi.teymi9.gefins;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import is.hi.teymi9.gefins.service.UserService;
 
@@ -17,7 +18,8 @@ import is.hi.teymi9.gefins.service.UserService;
 public class LoginActivity extends SingleFragmentActivity {
 
     // Static UserService sem er sameiginlegt fyrir allt forritið
-    public static UserService userService = new UserService();
+    private static UserService userService = new UserService();
+
 
     @Override
     protected Fragment createFragment() {
@@ -28,5 +30,9 @@ public class LoginActivity extends SingleFragmentActivity {
         return userService;
     }
 
+    public void loginWasSucessful() {
+        Intent intent = new Intent(this, UsersiteActivity.class);
+        startActivity(intent);
+    }
 }
 
