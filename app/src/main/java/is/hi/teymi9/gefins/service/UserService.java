@@ -56,8 +56,8 @@ public class UserService implements Serializable {
     private List<User> userList;
     // Addressan á servernum sem tala skal við. Haft localhost á þróunarskeiði en
     // verður síðar meir skipt út fyrir Heroku þjóninn
-    private String serverUrl = "http://192.168.1.8:8080";
-    //private String serverUrl = "https//gefins.herokuapp.com";
+    //private String serverUrl = "http://192.168.1.8:8080";
+    private String serverUrl = "https://gefins.herokuapp.com";
     // LoginActivity sem UserService hefur samskipti við
     private Activity loginActivity = null;
     // UsersiteActivity sem UserService hefur samskipti við
@@ -216,7 +216,7 @@ public class UserService implements Serializable {
      * @return null ef allt var í lagi, annars strengur með skilaboðum um vandamál
      */
     public String validateRegister(String username, String email, String password, String fullName, String phone){
-        /*// núllstilla isOk
+        // núllstilla isOk
         isOk = null;
 
         // athuga hvort notendanafnið sé löglegt
@@ -241,8 +241,7 @@ public class UserService implements Serializable {
             return isOk;
         }
 
-        return isOk;*/
-        return null; // tek þessi tékk út í bili svo ég þurfi ekki alltaf að uppfylla þessari kröfur...
+        return isOk;
     }
 
     public User getCurrentUser() {
