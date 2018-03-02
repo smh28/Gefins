@@ -106,6 +106,9 @@
     <string name="texti2">Hvað</string>
     <!--display ads-->
     <string name="display_site">Listi yfir auglýsingar</string>
+    <string name="network_unavailable_message">Nettenging ekki til staðar</string>
+    <string name="create_user_failed">Ekki tókst að búa til nýjan notanda. Vinsamlegast reynið aftur.</string>
+    <string name="login_failed">Ekki tókst að skrá inn. Vinsamlegast reynið aftur.</string>
 
 
 </resources>

@@ -38,6 +38,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LoginActivity.getUserService().setLoginActivity(getActivity());
     }
 
     @Override
@@ -55,7 +56,8 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                 iName = mUserName.getText().toString();
                 iPassword = mPsw.getText().toString();
-                User u = LoginActivity.getUserService().login(iName, iPassword);
+                LoginActivity.getUserService().login(iName, iPassword);
+                /*User u = LoginActivity.getUserService().login(iName, iPassword);
                 if(u != null){
                     Intent intent = new Intent(getActivity(), UsersiteActivity.class);
                     startActivity(intent);
@@ -64,7 +66,7 @@ public class LoginFragment extends Fragment {
                     Toast.makeText(getActivity(),
                             R.string.innskr_villa,
                             Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
         });
 
