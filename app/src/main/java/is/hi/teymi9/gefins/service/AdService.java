@@ -14,6 +14,7 @@ public class AdService {
 
     AdRepository adRepository = new AdRepository();
 
+    Ad currentAd = null;
 
     private List<Ad> adList;
 
@@ -31,6 +32,12 @@ public class AdService {
         return "Skráning auglýsingar tókst!"; // eitthvað vesen að nálgast strings.xml héðan...
     }
 
+    public Ad getCurrentAd() {
+        return currentAd;
+    }
 
+    public void setCurrentAd(Ad currentUser) {
+        this.currentAd = currentAd;
+    }
 
 }

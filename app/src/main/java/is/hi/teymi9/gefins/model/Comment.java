@@ -1,9 +1,11 @@
 package is.hi.teymi9.gefins.model;
 
+import java.util.UUID;
+
 /**
  * Módel klasi fyrir athugasemdir (Comment)
  *
- * @author Ólöf
+ * @author Ólöf Fríða
  * @version 1.0
  */
 
@@ -11,7 +13,7 @@ package is.hi.teymi9.gefins.model;
 public class Comment {
 
     // unique auðkenni fyrir comment
-    private int commentId;
+    private UUID commentId = UUID.randomUUID();
     // höfundur, þ.e. sá sem skrifaði commentið
     private String username;
     // commentið sjálft
@@ -21,12 +23,11 @@ public class Comment {
 
     /**
      * Smiður með viðföndum
-     * @param commentId auðkenni comments
      * @param username notendanafn höfundar
      * @param comment commentið sjálft
      * @param adId auðkenni auglýsingar sem comment tilheyrir
      */
-    public Comment(int commentId, String username, String comment, int adId) {
+    public Comment(String username, String comment, int adId) {
         this.commentId = commentId;
         this.username = username;
         this.comment = comment;
@@ -37,14 +38,6 @@ public class Comment {
      * Tómur smiður
      */
     public Comment() {
-    }
-
-    public int getCommentId() {
-        return commentId;
-    }
-
-    public void setCommentId(int commentId) {
-        this.commentId = commentId;
     }
 
     public String getUsername() {
