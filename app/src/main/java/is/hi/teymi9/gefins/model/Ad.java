@@ -32,6 +32,8 @@ public class Ad {
     private String adUsername;
     // athugasemdir sem gerðar hafa verið við auglýsinguna
     private ArrayList<Comment> adComments;
+    // póstnúmer staðsetning hlutar
+    private String adLocation;
 
     /**
      * Smiður með viðföngum
@@ -44,9 +46,10 @@ public class Ad {
      * @param adDescription lýsing
      * @param adUsername höfundur
      * @param adComments athugasemdir
+     * @param adLocation staðsetning
      */
     public Ad(int adID, String giveOrTake, String adName, String adType, String adTypeOfType,
-              String adColor, String adDescription, String adUsername, ArrayList<Comment> adComments) {
+              String adColor, String adDescription, String adUsername, ArrayList<Comment> adComments, String adLocation) {
         this.adID = adID;
         this.giveOrTake = giveOrTake;
         this.adName = adName;
@@ -56,6 +59,7 @@ public class Ad {
         this.adDescription = adDescription;
         this.adUsername = adUsername;
         this.adComments = adComments;
+        this.adLocation = adLocation;
     }
 
     /**
@@ -104,7 +108,7 @@ public class Ad {
         this.adComments = adComments;
     }
 
+    public String getAdLocation() { return adLocation; }
 
-
-
+    public void setAdLocation(String adLocation) { this.adLocation = adLocation; }
 }

@@ -99,6 +99,8 @@
         <item>Marglitaður</item>
         <item>Annað</item>
     </string-array>
+    <string name="stadsetning">Staðsetning hlutar(póstnúmer):</string>
+    <string name="postnumer2">Póstnúmer</string>
     <!--add type-->
     <string name="tilbaka">Tilbaka</string>
     <string name="addtype">Staðfesta</string>

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import is.hi.teymi9.gefins.model.Ad;
+import is.hi.teymi9.gefins.model.*;
 
 /**
  * Fragment fyrir viðmótið í AddAdActivity og virknina þar.
@@ -47,6 +48,10 @@ public class AddAdFragment extends Fragment {
     private EditText mDescription;
     //Strengur sem inniheldur notendanafn
     private String mUsername;
+    //Staðsetning hlutar í póstnúmeri
+    private EditText mLocation;
+    //Nýr ArrayList<Comment>
+    private ArrayList<Comment> CommentList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +72,8 @@ public class AddAdFragment extends Fragment {
         mNameOfAd = (EditText) v.findViewById(R.id.nafn2);
         mDescription = (EditText) v.findViewById(R.id.skrifalysingu);
         mUsername = LoginActivity.getUserService().getCurrentUser().getUsername();
+        mGiveOrTake = "Gefins";
+        mLocation = (EditText) v.findViewById(R.id.postnumer2);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.hlutir_array, android.R.layout.simple_spinner_item);
@@ -149,7 +156,7 @@ public class AddAdFragment extends Fragment {
                         mSpinner.getSelectedItem().toString(),
                         mSpinner2.getSelectedItem().toString(),
                         mSpinner3.getSelectedItem().toString(),
-                        mDescription.getText().toString(), mUsername, new ArrayList<>());
+                        mDescription.getText().toString(), mUsername, CommentList, mLocation.getText().toString());
 
                 String message = AddAdActivity.getAdService().addAd(mNewAd, false);
 

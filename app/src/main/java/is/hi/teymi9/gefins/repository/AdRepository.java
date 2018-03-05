@@ -27,11 +27,10 @@ public class AdRepository {
 
     //Skilar lista af auglýsingum
     public List<Ad> getAdList() {
-
         if(AdList.isEmpty()) {
-            Ad ad = new Ad(1, "gefins", "Mjúkur sófi", "Húsgögn", "Sófi", "Svartur", "Mjúkur 3ja sæta sófi úr microsoft efni", "olla", comments);
-            Ad ad2 = new Ad(2, "óska eftir", "Eldhúsborð", "Húsgögn", "Borð", "Hvítur", "4 manna eldhúsborð úr Ikea", "sandra", comments);
-            Ad ad3 = new Ad(3, "gefins", "Leðurjakki", "Fatnaður", "Yfirhöfn", "Svartur", "Stuttur leðurjakki í stærð 38", "sandra", comments);
+            Ad ad = new Ad(1, "gefins", "Mjúkur sófi", "Húsgögn", "Sófi", "Svartur", "Mjúkur 3ja sæta sófi úr microsoft efni", "olla", comments, "105");
+            Ad ad2 = new Ad(2, "óska eftir", "Eldhúsborð", "Húsgögn", "Borð", "Hvítur", "4 manna eldhúsborð úr Ikea", "sandra", comments, "201");
+            Ad ad3 = new Ad(3, "gefins", "Leðurjakki", "Fatnaður", "Yfirhöfn", "Svartur", "Stuttur leðurjakki í stærð 38", "sandra", comments, "123");
 
             AdList.add(ad);
             AdList.add(ad2);
