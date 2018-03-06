@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import is.hi.teymi9.gefins.model.Ad;
 
@@ -152,6 +153,31 @@ public class AddAdFragment extends Fragment {
                         mDescription.getText().toString(), mUsername, new ArrayList<>());
 
                 String message = AddAdActivity.getAdService().addAd(mNewAd, false);
+                List<Ad> adList = AddAdActivity.getAdService().getAllAds();
+                System.out.println("getAllAds í AddAdFragment eftir að búið er að búa til nýja auglýsingu: " + adList.toString());
+
+                //Sýna í system.out.print hvað listinn inniheldur
+                int countAds = adList.size();
+                System.out.println("allAds í DisplayAdsFragment stærð: " + countAds);
+
+                String[] adName = new String[countAds];
+                String[] adGiveOrTake = new String[countAds];
+                String[] adDescription = new String[countAds];
+
+                int i = 0;
+                for(Ad a: adList) {
+                    String name = a.getAdName();
+                    String giveOrTake = a.getGiveOrTake();
+                    String description = a.getAdDescription();
+                    adName[i] = name;
+                    adGiveOrTake[i] = giveOrTake;
+                    adDescription[i] = description;
+                    System.out.println("name augl: " + name);
+                    System.out.println("giveorTake: " + giveOrTake);
+                    System.out.println("description augl: " + description);
+                    System.out.println(i);
+                    i++;
+                }
 
                 Toast.makeText(getActivity(),
                         message,

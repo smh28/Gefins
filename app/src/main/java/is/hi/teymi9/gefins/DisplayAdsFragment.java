@@ -36,7 +36,7 @@ public class DisplayAdsFragment extends Fragment {
         System.out.println("allAds: " + allAds);
 
         int countAds = allAds.size();
-        System.out.println("allAds stærð: " + countAds);
+        System.out.println("allAds í DisplayAdsFragment stærð: " + countAds);
 
         String[] adName = new String[countAds];
         String[] adGiveOrTake = new String[countAds];

@@ -19,7 +19,7 @@ public class AdService {
 
     public List<Ad> getAllAds() {
         adList = adRepository.getAdList();
-        System.out.println("getAllAds adList: " + adList.toString());
+        System.out.println("getAllAds adList í AdService: " + adList.toString());
         return adList;
     }
 

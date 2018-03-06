@@ -27,6 +27,29 @@ public class AdRepository {
 
     //Skilar lista af auglýsingum
     public List<Ad> getAdList() {
+        System.out.println("í getAdList í AdRepository áður en listinn er myndaður úr harðkóðuðu: " + AdList);
+        //Sýna í system.out.print hvað listinn inniheldur
+        int countAds = AdList.size();
+        System.out.println("allAds í DisplayAdsFragment stærð: " + countAds);
+
+        String[] adName = new String[countAds];
+        String[] adGiveOrTake = new String[countAds];
+        String[] adDescription = new String[countAds];
+
+        int i = 0;
+        for(Ad a: AdList) {
+            String name = a.getAdName();
+            String giveOrTake = a.getGiveOrTake();
+            String description = a.getAdDescription();
+            adName[i] = name;
+            adGiveOrTake[i] = giveOrTake;
+            adDescription[i] = description;
+            System.out.println("name augl: " + name);
+            System.out.println("giveorTake: " + giveOrTake);
+            System.out.println("description augl: " + description);
+            System.out.println(i);
+            i++;
+        }
 
         if(AdList.isEmpty()) {
             Ad ad = new Ad(1, "gefins", "Mjúkur sófi", "Húsgögn", "Sófi", "Svartur", "Mjúkur 3ja sæta sófi úr microsoft efni", "olla", comments);
