@@ -83,8 +83,7 @@ public class UserService implements Serializable {
      * @return Listi af users
      */
     public List<User> getAllUsers(){
-        userList = userRepository.getAll();
-        System.out.println("getAllUsers userList: " + userList.toString());
+        String method = "/getUsers";
         return userList;
     }
 
@@ -143,12 +142,13 @@ public class UserService implements Serializable {
                                     if (u.getUsername() == null) {
                                         Toast.makeText(loginActivity, R.string.login_failed, Toast.LENGTH_LONG).show();
                                     }
-                                    if(u.isHasadminauthority()) {
+                                    else{
                                         setCurrentUser(u);
-                                        ((LoginActivity) loginActivity).adminLogin();
-                                    }else {
-                                        setCurrentUser(u);
-                                        ((LoginActivity) loginActivity).loginWasSucessful();
+                                        if(u.isHasadminauthority()){
+                                            ((LoginActivity) loginActivity).adminLogin();
+                                        } else {
+                                            ((LoginActivity) loginActivity).loginWasSucessful();
+                                        }
                                     }
                                 }
                             });

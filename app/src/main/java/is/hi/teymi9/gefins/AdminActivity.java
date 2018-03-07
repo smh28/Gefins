@@ -17,7 +17,6 @@ public class AdminActivity extends SingleFragmentActivity {
     protected Fragment createFragment() {
         return new AdminFragment();
     }
-
     /**
      * "Custom" fall til að búa til nýtt Intent sem tekur við "Extras" ef einhver eru og bætir
      * þeim við
@@ -28,6 +27,5 @@ public class AdminActivity extends SingleFragmentActivity {
         Intent intent = new Intent(packageContext, AdminActivity.class);
         return intent;
     }
-
 
 }
