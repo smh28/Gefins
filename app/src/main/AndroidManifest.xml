@@ -28,6 +28,10 @@
         </activity>
         <activity android:name=".DisplayAdsActivity">
         </activity>
+        <activity android:name=".AdminActivity">
+        </activity>
+        <activity android:name=".addCommentActivity">
+        </activity>
 
     </application>
 

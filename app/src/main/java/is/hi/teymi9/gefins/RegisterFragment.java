@@ -93,7 +93,6 @@ public class RegisterFragment extends Fragment {
                             message,
                             Toast.LENGTH_SHORT).show();
 
-
                 }
                 else {
                     Toast.makeText(getActivity(),
