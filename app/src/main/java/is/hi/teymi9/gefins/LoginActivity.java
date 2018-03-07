@@ -34,5 +34,10 @@ public class LoginActivity extends SingleFragmentActivity {
         Intent intent = new Intent(this, UsersiteActivity.class);
         startActivity(intent);
     }
+
+    public void adminLogin() {
+        Intent intent = new Intent(this, AdminActivity.class);
+        startActivity(intent);
+    }
 }
 

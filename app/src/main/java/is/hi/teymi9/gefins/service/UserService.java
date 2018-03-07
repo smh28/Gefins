@@ -143,7 +143,10 @@ public class UserService implements Serializable {
                                     if (u.getUsername() == null) {
                                         Toast.makeText(loginActivity, R.string.login_failed, Toast.LENGTH_LONG).show();
                                     }
-                                    else {
+                                    if(u.isHasadminauthority()) {
+                                        setCurrentUser(u);
+                                        ((LoginActivity) loginActivity).adminLogin();
+                                    }else {
                                         setCurrentUser(u);
                                         ((LoginActivity) loginActivity).loginWasSucessful();
                                     }
