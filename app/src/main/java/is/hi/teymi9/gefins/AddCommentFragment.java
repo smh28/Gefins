@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.Comment;
 
 
@@ -32,7 +33,7 @@ public class AddCommentFragment extends Fragment {
     // Takki sem fer til baka
     private Button mCancel;
     // strengur sem inniheldur auglýsingu
-    private int mAd;
+    private Ad mAd;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class AddCommentFragment extends Fragment {
         mCancel = (Button) v.findViewById(R.id.tilbaka);
         mComment = (EditText) v.findViewById(R.id.commentText);
         mUsername = LoginActivity.getUserService().getCurrentUser().getUsername();
-        mAd = AddAdActivity.getAdService().getCurrentAd().getAdID();
+        mAd = AddAdActivity.getAdService().getCurrentAd();
 
         // Villumeðhöndlun á comment ( má ekki vera tómt )
 

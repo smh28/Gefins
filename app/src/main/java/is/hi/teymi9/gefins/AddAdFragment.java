@@ -151,7 +151,7 @@ public class AddAdFragment extends Fragment {
                 System.out.println(mDescription.getText().toString());
                 System.out.println(mUsername);
 
-                Ad mNewAd = new Ad(1, mGiveOrTake,
+                Ad mNewAd = new Ad(mGiveOrTake,
                         mNameOfAd.getText().toString(),
                         mSpinner.getSelectedItem().toString(),
                         mSpinner2.getSelectedItem().toString(),

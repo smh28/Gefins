@@ -112,6 +112,8 @@
     <string name="create_user_failed">Ekki tókst að búa til nýjan notanda. Vinsamlegast reynið aftur.</string>
     <string name="login_failed">Ekki tókst að skrá inn. Vinsamlegast reynið aftur.</string>
     <string name="update_user_failed">Ekki tókst að uppfæra notanda. Vinsamlegast reynið aftur.</string>
+    <string name="my_ads">Mínar auglýsingar</string>
+    <string name="no_ads_found">Engar auglýsingar fundust</string>
 
 
 </resources>

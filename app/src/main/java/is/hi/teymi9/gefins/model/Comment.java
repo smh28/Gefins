@@ -13,25 +13,25 @@ import java.util.UUID;
 public class Comment {
 
     // unique auðkenni fyrir comment
-    private UUID commentId = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
     // höfundur, þ.e. sá sem skrifaði commentið
     private String username;
     // commentið sjálft
     private String comment;
-    // auðkenni fyrir auglýsinguna sem commentið tilheyrir
-    private int adId;
+    // auglýsinguna sem commentið tilheyrir
+    private Ad ad;
 
     /**
      * Smiður með viðföndum
      * @param username notendanafn höfundar
      * @param comment commentið sjálft
-     * @param adId auðkenni auglýsingar sem comment tilheyrir
+     * @param ad auglýsing sem comment tilheyrir
      */
-    public Comment(String username, String comment, int adId) {
-        this.commentId = commentId;
+    public Comment(String username, String comment, Ad ad) {
+        this.id = id;
         this.username = username;
         this.comment = comment;
-        this.adId = adId;
+        this.ad = ad;
     }
 
     /**
@@ -56,11 +56,11 @@ public class Comment {
         this.comment = comment;
     }
 
-    public int getAdId() {
-        return adId;
+    public UUID getId() {
+        return id;
     }
 
-    public void setAdId(int adId) {
-        this.adId = adId;
+    public void setId(UUID id) {
+        this.id = id;
     }
 }
