@@ -24,6 +24,7 @@ public class UsersiteFragment extends Fragment {
     private Button mSearch;
     private Button mAddAd;
     private Button mEditUser;
+    private Button mMyAds;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,13 +41,14 @@ public class UsersiteFragment extends Fragment {
         mSearch = (Button) v.findViewById(R.id.search_button);
         mAddAd = (Button) v.findViewById(R.id.add_ad_button);
         mEditUser = (Button) v.findViewById(R.id.edit_user_button);
+        mMyAds = (Button) v.findViewById(R.id.my_ads_button);
 
 
         mSearch.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
-            startActivity(intent);
+                Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -73,6 +75,16 @@ public class UsersiteFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = AddAdActivity.newIntent(getActivity());
                 startActivity(intent);
+            }
+        });
+
+        mMyAds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DisplayAdsActivity.getAdService().getUserAds(LoginActivity.getUserService().getCurrentUser(), getActivity());
+
+                // Fyrir callbackið:
+
             }
         });
 

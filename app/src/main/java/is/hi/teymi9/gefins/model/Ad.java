@@ -2,6 +2,9 @@ package is.hi.teymi9.gefins.model;
 
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 import is.hi.teymi9.gefins.model.Comment;
 
 /**
@@ -15,7 +18,7 @@ import is.hi.teymi9.gefins.model.Comment;
 public class Ad {
 
     // unique auðkenni fyrir ad
-    private int adID;
+    private UUID id = UUID.randomUUID();
     // er auglýsingin að gefa eða þiggja?
     private String giveOrTake;
     // heiti
@@ -31,13 +34,12 @@ public class Ad {
     // höfundur auglýsingar
     private String adUsername;
     // athugasemdir sem gerðar hafa verið við auglýsinguna
-    private ArrayList<Comment> adComments;
+    private List<Comment> adComments;
     // póstnúmer staðsetning hlutar
     private String adLocation;
 
     /**
      * Smiður með viðföngum
-     * @param adID auðkenni
      * @param giveOrTake gefa eða þiggja?
      * @param adName heiti
      * @param adType tegund
@@ -48,9 +50,8 @@ public class Ad {
      * @param adComments athugasemdir
      * @param adLocation staðsetning
      */
-    public Ad(int adID, String giveOrTake, String adName, String adType, String adTypeOfType,
+    public Ad(String giveOrTake, String adName, String adType, String adTypeOfType,
               String adColor, String adDescription, String adUsername, ArrayList<Comment> adComments, String adLocation) {
-        this.adID = adID;
         this.giveOrTake = giveOrTake;
         this.adName = adName;
         this.adType = adType;
@@ -68,9 +69,9 @@ public class Ad {
     public Ad() {
     }
 
-    public int getAdID() { return adID; }
+    public UUID getId() { return id; }
 
-    public void setAdID(int adID) { this.adID = adID; }
+    public void setId(UUID id) { this.id = id; }
 
     public String getGiveOrTake() { return giveOrTake; }
 
@@ -100,7 +101,7 @@ public class Ad {
 
     public void setAdUsername(String adUsername) { this.adUsername = adUsername; }
 
-    public ArrayList<Comment> getAdComments() {
+    public List<Comment> getAdComments() {
         return adComments;
     }
 

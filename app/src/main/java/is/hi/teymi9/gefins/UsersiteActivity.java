@@ -37,4 +37,9 @@ public class UsersiteActivity extends SingleFragmentActivity {
         return intent;
     }
 
+    public void displayUserAds() {
+        Intent intent = new Intent(this, DisplayAdsActivity.class);
+        startActivity(intent);
+    }
+
 }

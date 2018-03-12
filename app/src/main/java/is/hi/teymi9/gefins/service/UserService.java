@@ -59,7 +59,7 @@ public class UserService implements Serializable {
     private List<User> userList;
     // Addressan á servernum sem tala skal við. Haft localhost á þróunarskeiði en
     // verður síðar meir skipt út fyrir Heroku þjóninn
-    //private String serverUrl = "http://192.168.1.8:8080";
+    //private String serverUrl = "http://192.168.1.3:8080";
     private String serverUrl = "https://gefins.herokuapp.com";
     // LoginActivity sem UserService hefur samskipti við
     private Activity loginActivity = null;
@@ -423,7 +423,7 @@ public class UserService implements Serializable {
      * Tekið úr Stormy eftir Sigurð Gauta
      * @return true ef nettenging er til staðar, annars false
      */
-    private boolean isNetworkAvailable(Activity a) {
+    public boolean isNetworkAvailable(Activity a) {
         ConnectivityManager manager = (ConnectivityManager) a.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = manager.getActiveNetworkInfo();
         boolean isAvailable = false;

@@ -24,6 +24,10 @@ public class DisplayAdsFragment extends Fragment {
     //TextView content;
     List<Ad> allAds;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
