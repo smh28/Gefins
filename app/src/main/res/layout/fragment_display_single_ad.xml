@@ -9,26 +9,79 @@
     android:gravity="top"
     android:orientation="vertical">
 
-
+<!-- Erum bara að nota efsta text view fyrir allan textann eins og er,
+skipta niður á text view til að fá betra útlit -->
     <TextView
         android:id="@+id/adName"
         android:layout_width="match_parent"
-        android:layout_height="124dp"
-        android:padding="34dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp"
         android:textAlignment="center"  />
 
+    <TextView
+        android:id="@+id/adGiveOrTake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20sp"
+        android:gravity="left"  />
+
+    <TextView
+        android:id="@+id/adType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="15sp"
+        android:gravity="left"  />
+
+    <TextView
+        android:id="@+id/adTypeOfType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="15sp"
+        android:gravity="left"  />
+
+    <TextView
+        android:id="@+id/adColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="15sp"
+        android:gravity="left"  />
 
     <TextView
         android:id="@+id/adDescription"
         android:layout_width="match_parent"
-        android:layout_height="124dp"
-        android:padding="34dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="30sp"
-        android:textAlignment="center"  />
+        android:textSize="15sp"
+        android:gravity="left"  />
 
+    <TextView
+        android:id="@+id/adLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="15sp"
+        android:gravity="left"  />
+
+    <TextView
+        android:id="@+id/adUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="15sp"
+        android:gravity="left"  />
 
 
 </LinearLayout>

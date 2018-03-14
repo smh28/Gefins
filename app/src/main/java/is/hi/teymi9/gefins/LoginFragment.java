@@ -34,6 +34,8 @@ public class LoginFragment extends Fragment {
     private String iName;
     // Geymir lykilorð þess sem srká skal inn
     private String iPassword;
+    //Takki til að sýna lista yfir auglýsingar
+    private Button mAds;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class LoginFragment extends Fragment {
         mLogin = (Button) v.findViewById(R.id.skra_inn);
         mUserName = (EditText) v.findViewById(R.id.user);
         mPsw = (EditText) v.findViewById(R.id.psw);
+        mAds = (Button) v.findViewById(R.id.syna_auglysingar);
 
         mLogin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -77,6 +80,15 @@ public class LoginFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        mAds.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = DisplayAdsActivity.newIntent(getActivity());
+                startActivity(intent);
+            }
+        });
+
 
         return v;
     }

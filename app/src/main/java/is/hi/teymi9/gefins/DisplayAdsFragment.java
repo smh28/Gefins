@@ -39,33 +39,50 @@ public class DisplayAdsFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_display_ads, container, false);   //var R.layout.fragment_display_ads
         ListView lv = (ListView) v.findViewById(R.id.listOfAds);      //var listOfAds
 
-
         mBack = (Button) v.findViewById(R.id.displayAdTilbaka);
-
         allAds = DisplayAdsActivity.getAdService().getAllAds();
-        System.out.println("allAds: " + allAds);
 
         int countAds = allAds.size();
         System.out.println("allAds stærð: " + countAds);
 
+        //Býr til tóm strengjafylki að sömu stærð og fjöldi auglýsinga
         String[] adName = new String[countAds];
         String[] adGiveOrTake = new String[countAds];
+        String[] adType = new String[countAds];
+        String[] adTypeOfType = new String[countAds];
+        String[] adColor = new String[countAds];
         String[] adDescription = new String[countAds];
+        String[] adLocation = new String[countAds];
+        String[] adUsername = new String[countAds];
 
         int i = 0;
         for(Ad a: allAds) {
-            String name = a.getAdName();
-            String giveOrTake = a.getGiveOrTake();
-            String description = a.getAdDescription();
-            adName[i] = name;
-            adGiveOrTake[i] = giveOrTake;
-            adDescription[i] = description;
-            System.out.println("name augl: " + name);
-            System.out.println("giveorTake: " + giveOrTake);
-            System.out.println("description augl: " + description);
-            System.out.println(i);
-                i++;
-            }
+            //Býr til streng sem sækir hvert atriði auglýsingarinnar
+            //String name = a.getAdName();
+            //String giveOrTake = a.getGiveOrTake();
+            //String type = a.getAdType();
+            //String typeOfType = a.getAdTypeOfType();
+            //String color = a.getAdColor();
+            //String description = a.getAdDescription();
+            //String location = a.getAdLocation();
+            //String username = a.getAdUsername();
+
+            adName[i] = a.getAdName();
+            adGiveOrTake[i] = a.getGiveOrTake();
+            adType[i] = a.getAdType();
+            adTypeOfType[i] = a.getAdTypeOfType();
+            adColor[i] = a.getAdColor();
+            adDescription[i] = a.getAdDescription();
+            adLocation[i] = a.getAdLocation();
+            adUsername[i] = a.getAdUsername();
+
+            System.out.println("ítrun nr.: " + i);
+            System.out.println("name augl: " + adName[i]);
+            System.out.println("giveorTake: " + adGiveOrTake[i]);
+            System.out.println("description augl: " + adDescription[i]);
+
+            i++;
+        }
 
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
                 getActivity(),
@@ -77,9 +94,20 @@ public class DisplayAdsFragment extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String adPicked = "Þú valdir auglýsinguna " +
-                        String.valueOf(lv.getItemAtPosition(position));
-                Toast.makeText(getActivity(), adPicked, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), DisplaySingleAdActivity.class);
+                intent.putExtra("name", adName[position]);
+                intent.putExtra("giveOrTake", adGiveOrTake[position]);
+                intent.putExtra("type", adType[position]);
+                intent.putExtra("typeOfTye", adTypeOfType[position]);
+                intent.putExtra("color", adColor[position]);
+                intent.putExtra("description", adDescription[position]);
+                intent.putExtra("location", adLocation[position]);
+                intent.putExtra("username", adUsername[position]);
+
+                startActivity(intent);
+                //String adPicked = "Þú valdir auglýsinguna " +
+                //        String.valueOf(lv.getItemAtPosition(position));
+                //Toast.makeText(getActivity(), adPicked, Toast.LENGTH_SHORT).show();
             }
         });
 
