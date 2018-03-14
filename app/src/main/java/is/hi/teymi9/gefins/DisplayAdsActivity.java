@@ -24,7 +24,7 @@ public class DisplayAdsActivity extends SingleFragmentActivity {
     }
 
     public static Intent newIntent(Context packageContext) {
-        Intent intent = new Intent(packageContext, AddAdActivity.class);
+        Intent intent = new Intent(packageContext, DisplayAdsActivity.class);
         return intent;
     }
 

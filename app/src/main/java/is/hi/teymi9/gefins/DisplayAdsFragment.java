@@ -1,5 +1,6 @@
 package is.hi.teymi9.gefins;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +25,8 @@ public class DisplayAdsFragment extends Fragment {
 
     //TextView content;
     List<Ad> allAds;
+    // Tilbaka takki
+    private Button mBack;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,8 +37,10 @@ public class DisplayAdsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_display_ads, container, false);   //var R.layout.fragment_display_ads
-
         ListView lv = (ListView) v.findViewById(R.id.listOfAds);      //var listOfAds
+
+
+        mBack = (Button) v.findViewById(R.id.displayAdTilbaka);
 
         allAds = DisplayAdsActivity.getAdService().getAllAds();
         System.out.println("allAds: " + allAds);
@@ -74,6 +80,15 @@ public class DisplayAdsFragment extends Fragment {
                 String adPicked = "Þú valdir auglýsinguna " +
                         String.valueOf(lv.getItemAtPosition(position));
                 Toast.makeText(getActivity(), adPicked, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Sendir notanda tilbaka á usersite síðuna
+        mBack.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                startActivity(intent);
             }
         });
 

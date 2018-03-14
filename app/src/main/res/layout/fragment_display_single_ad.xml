@@ -11,29 +11,24 @@
 
 
     <TextView
-        android:id="@+id/display_site"
+        android:id="@+id/adName"
         android:layout_width="match_parent"
         android:layout_height="124dp"
         android:padding="34dp"
-        android:text="@string/display_site"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp"
         android:textAlignment="center"  />
 
 
-    <ListView
-        android:id="@+id/listOfAds"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-    </ListView>
+    <TextView
+        android:id="@+id/adDescription"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        android:padding="34dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="30sp"
+        android:textAlignment="center"  />
 
 
-    <Button
-        android:id="@+id/displayAdTilbaka"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/displayAdTilbakaTexti"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="301dp" />
 
 </LinearLayout>

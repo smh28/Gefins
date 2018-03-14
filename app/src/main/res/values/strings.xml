@@ -114,6 +114,7 @@
     <string name="update_user_failed">Ekki tókst að uppfæra notanda. Vinsamlegast reynið aftur.</string>
     <string name="my_ads">Mínar auglýsingar</string>
     <string name="no_ads_found">Engar auglýsingar fundust</string>
+    <string name="displayAdTilbakaTexti">Tilbaka</string>
 
 
 </resources>
