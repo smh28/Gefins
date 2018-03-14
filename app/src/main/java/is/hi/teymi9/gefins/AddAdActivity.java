@@ -30,8 +30,7 @@ public class AddAdActivity extends SingleFragmentActivity {
      * þeim við
      * @param packageContext Context þess activity sem ræsir AddAdActivity
      * @return Nýtt intent fyrir AddAdActivity
-     */
-    public static Intent newIntent(Context packageContext) {
+     */    public static Intent newIntent(Context packageContext) {
         Intent intent = new Intent(packageContext, AddAdActivity.class);
         return intent;
     }
