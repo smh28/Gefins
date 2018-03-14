@@ -1,18 +1,26 @@
 package is.hi.teymi9.gefins;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * Created by Sandra on 14.3.2018.
+ * Fragment fyrir viðmótið í DisplaySingleAdActivity og virknina þar.
+ *
+ * @author Sandra
+ * @version 1.0
  */
 
 public class DisplaySingleAdFragment extends Fragment {
+
+    // Tilbaka takki
+    private Button mBack;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +41,8 @@ public class DisplaySingleAdFragment extends Fragment {
         TextView tv7 = (TextView)v.findViewById((R.id.adLocation));
         TextView tv8 = (TextView)v.findViewById((R.id.adUsername));
 
+        mBack = (Button) v.findViewById(R.id.singleAdTilbaka);
+
         Bundle bundle = getActivity().getIntent().getExtras();
 
         if(bundle != null) {
@@ -52,8 +62,17 @@ public class DisplaySingleAdFragment extends Fragment {
             tv6.setText("Lýsing: " + adDescription);
             tv7.setText("Staðsetning: " + adLocation);
             tv8.setText("Höfundur auglýsingar: " + adUsername);
-
         }
+
+        //Sendir notanda tilbaka á usersite síðuna
+        mBack.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return v;
     }
 }

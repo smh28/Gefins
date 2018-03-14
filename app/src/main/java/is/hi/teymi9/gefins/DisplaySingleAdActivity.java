@@ -7,10 +7,11 @@ import android.support.v4.app.Fragment;
 import is.hi.teymi9.gefins.service.AdService;
 
 /**
- * Activity í Gefins sem sýnir staka auglýsingu
+ * Activity í Gefins sem sýnir upplýsingar yfir staka auglýsingu
  * author Sandra
  * @version 1.0
  */
+
 
 public class DisplaySingleAdActivity extends SingleFragmentActivity {
 

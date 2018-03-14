@@ -32,7 +32,7 @@
         android:id="@+id/displayAdTilbaka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/displayAdTilbakaTexti"
+        android:text="@string/tilbaka"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="301dp" />
 
