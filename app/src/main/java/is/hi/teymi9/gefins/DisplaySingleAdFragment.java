@@ -24,6 +24,7 @@ public class DisplaySingleAdFragment extends Fragment {
 
     // Tilbaka takki
     private Button mBack;
+    //Þjónusta fyrir notanda
     public static UserService userService = new UserService();
 
     @Override
@@ -73,7 +74,7 @@ public class DisplaySingleAdFragment extends Fragment {
             tv8.setText("Höfundur auglýsingar: " + adUsername);
         }
 
-        //Sendir notanda tilbaka á usersite síðuna ef hann er loggaður inn
+        //Sendir notanda tilbaka á lista yfir auglýsingar síðuna ef hann er loggaður inn
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
