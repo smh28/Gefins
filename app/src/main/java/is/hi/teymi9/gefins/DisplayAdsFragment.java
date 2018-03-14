@@ -15,6 +15,8 @@ import android.widget.Toast;
 import java.util.List;
 
 import is.hi.teymi9.gefins.model.Ad;
+import is.hi.teymi9.gefins.model.User;
+import is.hi.teymi9.gefins.service.UserService;
 
 /**
  * Fragment fyrir viðmótið í DisplayAdsActivity og virknina þar.
@@ -30,6 +32,12 @@ public class DisplayAdsFragment extends Fragment {
     List<Ad> allAds;
     // Tilbaka takki
     private Button mBack;
+    //Þjónusta fyrir notanda
+    public static UserService userService = new UserService();
+
+    public static UserService getUserService() {
+        return userService;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -114,12 +122,19 @@ public class DisplayAdsFragment extends Fragment {
             }
         });
 
-        //Sendir notanda tilbaka á usersite síðuna
+        //Sendir notanda tilbaka á usersite síðuna ef hann er loggaður inn
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
+                User currentUser = userService.getCurrentUser();
+                if(currentUser != null) {
+                    Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 

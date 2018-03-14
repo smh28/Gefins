@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import is.hi.teymi9.gefins.model.User;
+import is.hi.teymi9.gefins.service.UserService;
+
 /**
  * Fragment fyrir viðmótið í DisplaySingleAdActivity og virknina þar.
  *
@@ -21,11 +24,18 @@ public class DisplaySingleAdFragment extends Fragment {
 
     // Tilbaka takki
     private Button mBack;
+    //Þjónusta fyrir notanda
+    public static UserService userService = new UserService();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
+    public static UserService getUserService() {
+        return userService;
+    }
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,12 +74,19 @@ public class DisplaySingleAdFragment extends Fragment {
             tv8.setText("Höfundur auglýsingar: " + adUsername);
         }
 
-        //Sendir notanda tilbaka á usersite síðuna
+        //Sendir notanda tilbaka á lista yfir auglýsingar síðuna ef hann er loggaður inn
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
-                startActivity(intent);
+                User currentUser = userService.getCurrentUser();
+                if(currentUser != null) {
+                    Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
