@@ -15,7 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
     /**
-     * Skilar réttur Fragmenti sem búa skal til
+     * Skilar réttu Fragmenti sem búa skal til
      * @return Fragmentið sem búa skal til
      */
     protected abstract Fragment createFragment();
