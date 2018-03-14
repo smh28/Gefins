@@ -22,8 +22,11 @@ public class UsersiteFragment extends Fragment {
     private Button mLogout;
     // Takki fyrir leit
     private Button mSearch;
+    // Takki fyrir að bæta við auglýsingu
     private Button mAddAd;
+    // Takki fyrir að uppfæra notendaupplýsingar
     private Button mEditUser;
+    // Takki fyrir mínar auglýsingar
     private Button mMyAds;
 
     @Override

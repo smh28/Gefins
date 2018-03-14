@@ -30,11 +30,17 @@ public class LoginActivity extends SingleFragmentActivity {
         return userService;
     }
 
+    /**
+     * Ræsir UsersiteActivity þegar að innskráning hefur tekist
+     */
     public void loginWasSucessful() {
         Intent intent = new Intent(this, UsersiteActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Ræsir AdminActivity þegar að innskráning fyrir admin hefur tekist
+     */
     public void adminLogin() {
         Intent intent = new Intent(this, AdminActivity.class);
         startActivity(intent);

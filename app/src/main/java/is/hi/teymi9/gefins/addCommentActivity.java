@@ -26,7 +26,12 @@ public class addCommentActivity extends SingleFragmentActivity {
     public static CommentService getCommentService() {
         return commentService;
     }
-
+    /**
+     * "Custom" fall til að búa til nýtt Intent sem tekur við "Extras" ef einhver eru og bætir
+     * þeim við
+     * @param packageContext Context þess activity sem ræsir addCommentActivity
+     * @return Nýtt intent fyrir addCommentActivity
+     */
     public static Intent newIntent(Context packageContext) {
         Intent intent = new Intent(packageContext, addCommentActivity.class);
         return intent;

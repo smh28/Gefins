@@ -8,7 +8,8 @@ import is.hi.teymi9.gefins.service.AdService;
 
 /**
  * Activity í Gefins sem sýnir lista af auglýsingum
- * author Sandra
+ *
+ * @author Sandra
  * @version 1.0
  */
 
@@ -22,7 +23,12 @@ public class DisplayAdsActivity extends SingleFragmentActivity {
     public static AdService getAdService() {
         return adService;
     }
-
+    /**
+     * "Custom" fall til að búa til nýtt Intent sem tekur við "Extras" ef einhver eru og bætir
+     * þeim við
+     * @param packageContext Context þess activity sem ræsir AddAdActivity
+     * @return Nýtt intent fyrir AddAdActivity
+     */
     public static Intent newIntent(Context packageContext) {
         Intent intent = new Intent(packageContext, AddAdActivity.class);
         return intent;

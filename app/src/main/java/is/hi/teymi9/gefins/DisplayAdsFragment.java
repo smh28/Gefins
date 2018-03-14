@@ -15,7 +15,10 @@ import java.util.List;
 import is.hi.teymi9.gefins.model.Ad;
 
 /**
- * author sandra
+ * Fragment fyrir viðmótið í DisplayAdsActivity og virknina þar
+ *
+ * @author Sandra
+ * @version 1.0
  */
 
 public class DisplayAdsFragment extends Fragment {
