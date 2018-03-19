@@ -69,4 +69,18 @@
         android:drawablePadding="24dp"
         android:text="@string/my_ads" />
 
+    <Button
+        android:id="@+id/new_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="24dp"
+        android:text="@string/ny_skilaboð" />
+
+    <Button
+        android:id="@+id/inbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="24dp"
+        android:text="@string/innholf" />
+
 </LinearLayout>

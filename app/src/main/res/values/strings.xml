@@ -114,6 +114,15 @@
     <string name="update_user_failed">Ekki tókst að uppfæra notanda. Vinsamlegast reynið aftur.</string>
     <string name="my_ads">Mínar auglýsingar</string>
     <string name="no_ads_found">Engar auglýsingar fundust</string>
+    <string name="til">Til:</string>
+    <string name="vidfangsefni">Viðfangsefni:</string>
+    <string name="skilabod">Skilaboð:</string>
+    <string name="senda">Senda skilaboð</string>
+    <string name="senda_skilaboð">Senda ný skilaboð</string>
+    <string name="innholf">Innhólf</string>
+    <string name="ny_skilaboð">Skrifa ný einkaskilaboð</string>
+    <string name="send_message_failed">Ekki tókst að senda skilaboð.</string>
+    <string name="send_message_successful">Skilaboð send!</string>
 
 
 </resources>
