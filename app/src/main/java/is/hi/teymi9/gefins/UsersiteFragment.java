@@ -107,7 +107,11 @@ public class UsersiteFragment extends Fragment {
         mInbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO
+                WriteMessageActivity
+                        .getMessageService()
+                        .getUserMessages(LoginActivity
+                                        .getUserService()
+                                        .getCurrentUser(), getActivity());
             }
         });
 

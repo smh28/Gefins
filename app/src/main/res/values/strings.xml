@@ -123,6 +123,8 @@
     <string name="ny_skilaboð">Skrifa ný einkaskilaboð</string>
     <string name="send_message_failed">Ekki tókst að senda skilaboð.</string>
     <string name="send_message_successful">Skilaboð send!</string>
+    <string name="no_messages_found">Engin skilaboð fundust!</string>
+    <string name="inbox">Innhólf</string>
 
 
 </resources>

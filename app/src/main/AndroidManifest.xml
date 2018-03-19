@@ -36,6 +36,8 @@
         </activity>
         <activity android:name=".WriteMessageActivity">
         </activity>
+        <activity android:name=".InboxActivity">
+        </activity>
 
     </application>
 

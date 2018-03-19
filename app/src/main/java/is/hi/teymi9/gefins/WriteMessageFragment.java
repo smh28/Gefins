@@ -54,7 +54,7 @@ public class WriteMessageFragment extends Fragment {
                 String subject = mSubject.getText().toString();
                 String message = mMessage.getText().toString();
                 Message m = new Message(from, to, subject, message);
-                WriteMessageActivity.getMessageService().sendMessage(m);
+                WriteMessageActivity.getMessageService().sendMessage(m, getActivity());
             }
         });
 
