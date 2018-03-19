@@ -38,6 +38,10 @@
         </activity>
         <activity android:name=".InboxActivity">
         </activity>
+        <activity android:name=".MessageDetailsActivity">
+        </activity>
+        <activity android:name=".OutboxActivity">
+        </activity>
 
     </application>
 

@@ -29,5 +29,13 @@ public class InboxActivity extends SingleFragmentActivity {
         return intent;
     }
 
+    /**
+     * býr til og ræsir activity til að sýna lista af skilaboðum
+     */
+    public void displayOutbox() {
+        Intent intent = OutboxActivity.newIntent(this);
+        startActivity(intent);
+    }
+
 }
 

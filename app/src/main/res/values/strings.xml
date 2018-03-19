@@ -102,7 +102,7 @@
     <string name="stadsetning">Staðsetning hlutar(póstnúmer):</string>
     <string name="postnumer2">Póstnúmer</string>
     <!--add type-->
-    <string name="tilbaka">Tilbaka</string>
+    <string name="tilbaka">Til baka</string>
     <string name="addtype">Staðfesta</string>
     <string name="hvaderthetta">Hvað er þetta?</string>
     <string name="texti2">Hvað</string>
@@ -125,6 +125,8 @@
     <string name="send_message_successful">Skilaboð send!</string>
     <string name="no_messages_found">Engin skilaboð fundust!</string>
     <string name="inbox">Innhólf</string>
+    <string name="reply">Svara</string>
+    <string name="outbox">Úthólf</string>
 
 
 </resources>

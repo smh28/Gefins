@@ -39,6 +39,19 @@ public class WriteMessageActivity extends SingleFragmentActivity {
         return intent;
     }
 
+    /**
+     * "Custom" fall til að búa til nýtt Intent sem tekur við "Extras" ef einhver eru
+     * og bætir þeim við
+     *
+     * @param packageContext Context þess activity sem ræsir WriteMessageActivity
+     * @return Nýtt intent fyrir WriteMessageActivity
+     */
+    public static Intent newIntent(Context packageContext, String recipient) {
+        Intent intent = new Intent(packageContext, WriteMessageActivity.class);
+        intent.putExtra("recipient", recipient);
+        return intent;
+    }
+
     public void sendMessageSuccessful() {
         Intent intent = UsersiteActivity.newIntent(this);
         startActivity(intent);

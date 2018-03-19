@@ -13,6 +13,8 @@ import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import is.hi.teymi9.gefins.InboxActivity;
 import is.hi.teymi9.gefins.R;
 import is.hi.teymi9.gefins.UsersiteActivity;
 import is.hi.teymi9.gefins.WriteMessageActivity;
@@ -41,8 +43,8 @@ public class MessageService implements Serializable {
     public static final String TAG = MessageService.class.getSimpleName();
     // Addressan á servernum sem tala skal við. Haft localhost á þróunarskeiði en
     // verður síðar meir skipt út fyrir Heroku þjóninn
-    private String serverUrl = "http://192.168.1.2:8080";
-    //private String serverUrl = "https://gefins.herokuapp.com";
+    //private String serverUrl = "http://192.168.1.2:8080";
+    private String serverUrl = "https://gefins.herokuapp.com";
     // WriteMessageActivity sem MessageService hefur samskipti við
     private Activity writeMessageActivity = null;
     // Gson hlutur fyrir JSON vinnslu
@@ -58,6 +60,9 @@ public class MessageService implements Serializable {
 
     public List<Message> getMessages() {
         return messageRep.getMessageList();
+    }
+    public List<Message> getOutboxMessages() {
+        return messageRep.getOutboxMessageList();
     }
 
     /**
@@ -195,6 +200,81 @@ public class MessageService implements Serializable {
                                     } else {
                                         messageRep.setMessageList(messageList);
                                         ((UsersiteActivity) a).displayInbox();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(a, R.string.create_user_failed, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(a, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Sækir skilaboð til ákveðins notanda á bakenda
+     * @param u notandi hvers skilaboð skal sækja
+     */
+    public void getMySentMessages(User u, Activity a) {
+        String method = "/getMySentMessages";
+        if(isNetworkAvailable(a)) {
+            RequestBody body = RequestBody.create(MediaType.parse(
+                    "application/json; charset=utf-8"),
+                    gson.toJson(u));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(u));
+            System.out.println("Beiðni send á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            a.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Type type = new TypeToken<List<Message>>() {}.getType();
+                                    ArrayList<Message> messageList = gson.fromJson(jsonData, type);
+                                    if (messageList.size() == 0) {
+                                        Toast.makeText(a, R.string.no_messages_found, Toast.LENGTH_LONG).show();
+                                    } else {
+                                        messageRep.setOutboxMessageList(messageList);
+                                        ((InboxActivity) a).displayOutbox();
                                     }
                                 }
                             });

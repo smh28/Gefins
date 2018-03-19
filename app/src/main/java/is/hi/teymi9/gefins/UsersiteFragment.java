@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -32,6 +33,8 @@ public class UsersiteFragment extends Fragment {
     private Button mInbox;
     // Takki fyrir ný einkaskilaboð
     private Button mNewMessage;
+    // Titiltextinn á síðunni
+    private TextView mTitle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,11 @@ public class UsersiteFragment extends Fragment {
         mMyAds = (Button) v.findViewById(R.id.my_ads_button);
         mInbox = (Button) v.findViewById(R.id.inbox);
         mNewMessage = (Button) v.findViewById(R.id.new_message);
+        mTitle = (TextView) v.findViewById(R.id.title);
+
+        if(LoginActivity.getUserService().getCurrentUser() != null) {
+            mTitle.setText("Velkomin(n) " + LoginActivity.getUserService().getCurrentUser().getUsername());
+        }
 
         mSearch.setOnClickListener(new View.OnClickListener(){
             @Override

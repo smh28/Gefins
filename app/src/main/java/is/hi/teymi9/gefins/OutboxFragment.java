@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import is.hi.teymi9.gefins.model.Message;
  * @version 1.0
  */
 
-public class InboxFragment extends Fragment {
+public class OutboxFragment extends Fragment {
 
     //TextView content;
     List<Message> allMessages;
@@ -31,6 +31,8 @@ public class InboxFragment extends Fragment {
     private Button mBack;
     // Takki fyrir útbox
     private Button mOutbox;
+    // Titill síðu
+    private TextView mTitle;
 
 
     @Override
@@ -44,16 +46,20 @@ public class InboxFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_inbox, container, false);   //var R.layout.fragment_display_ads
         ListView lv = (ListView) v.findViewById(R.id.listOfMessages);      //var listOfAds
 
+        mTitle = (TextView) v.findViewById(R.id.inbox_text);
+        mTitle.setText(R.string.outbox);
         mBack = (Button) v.findViewById(R.id.inboxTilbaka);
         mOutbox = (Button) v.findViewById(R.id.outbox_button);
-        allMessages = WriteMessageActivity.getMessageService().getMessages();
+        mOutbox.setEnabled(false);
+        mOutbox.setVisibility(View.GONE);
+        allMessages = WriteMessageActivity.getMessageService().getOutboxMessages();
 
         int countMessages = allMessages.size();
         System.out.println("allMessages stærð: " + countMessages);
 
         //Býr til tóm strengjafylki að sömu stærð og fjöldi auglýsinga
         String[] messageSubject = new String[countMessages];
-        String[] messageAuthor = new String[countMessages];
+        String[] messageRecipient = new String[countMessages];
         String[] messageDate = new String[countMessages];
         String[] messageContent = new String[countMessages];
         String[] messageSummary = new String[countMessages];
@@ -61,10 +67,10 @@ public class InboxFragment extends Fragment {
         int i = 0;
         for(Message m: allMessages) {
             messageSubject[i] = m.getSubject();
-            messageAuthor[i] = m.getSender();
+            messageRecipient[i] = m.getRecipient();
             messageDate[i] = m.getDate();
             messageContent[i] = m.getMessage();
-            messageSummary[i] = m.getSubject() + "\n" + m.getSender() + "\n " + m.getDate();
+            messageSummary[i] = m.getSubject() + "\n" + m.getRecipient() + "\n " + m.getDate();
 
             i++;
         }
@@ -81,10 +87,10 @@ public class InboxFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), MessageDetailsActivity.class);
                 intent.putExtra("subject", messageSubject[position]);
-                intent.putExtra("sender", messageAuthor[position]);
+                intent.putExtra("sender", messageRecipient[position]);
                 intent.putExtra("date", messageDate[position]);
                 intent.putExtra("content", messageContent[position]);
-                intent.putExtra("inMessage", true);
+                intent.putExtra("inMessage", false);
                 startActivity(intent);
                 //String messagePicked = "Þú valdir auglýsinguna " +
                 //        String.valueOf(lv.getItemAtPosition(position));
@@ -92,24 +98,12 @@ public class InboxFragment extends Fragment {
             }
         });
 
-        //Sendir notanda tilbaka á usersite síðuna
+        //Sendir notanda tilbaka í inbox
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                Intent intent = new Intent(getActivity(), InboxActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        //Sendir notanda í outboxið
-        mOutbox.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                WriteMessageActivity
-                        .getMessageService()
-                        .getMySentMessages(LoginActivity
-                                .getUserService()
-                                .getCurrentUser(), getActivity());
             }
         });
 

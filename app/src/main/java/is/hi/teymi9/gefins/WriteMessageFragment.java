@@ -46,6 +46,13 @@ public class WriteMessageFragment extends Fragment {
 
         mSend = (Button) v.findViewById(R.id.send);
 
+        Bundle bundle = getActivity().getIntent().getExtras();
+
+        if(bundle != null) {
+            String recipient = bundle.getString("recipient");
+            mTo.setText(recipient);
+        }
+
         mSend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

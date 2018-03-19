@@ -9,27 +9,44 @@
     android:gravity="top"
     android:orientation="vertical">
 
-
     <TextView
-        android:id="@+id/inbox_text"
+        android:id="@+id/subject"
         android:layout_width="match_parent"
-        android:layout_height="124dp"
-        android:padding="34dp"
-        android:text="@string/inbox"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp"
         android:textAlignment="center"  />
 
-
-    <ListView
-        android:id="@+id/listOfMessages"
+    <TextView
+        android:id="@+id/sender"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-    </ListView>
+        android:padding="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20sp"
+        android:gravity="left"  />
 
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="15sp"
+        android:gravity="left"  />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="15sp"
+        android:gravity="left"  />
 
     <Button
-        android:id="@+id/inboxTilbaka"
+        android:id="@+id/messageDetailsTilbaka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tilbaka"
@@ -37,11 +54,12 @@
         tools:layout_editor_absoluteY="301dp" />
 
     <Button
-        android:id="@+id/outbox_button"
+        android:id="@+id/reply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/outbox"
+        android:text="@string/reply"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="301dp" />
+
 
 </LinearLayout>

@@ -18,6 +18,7 @@ import is.hi.teymi9.gefins.model.Message;
 public class MessageRepository {
 
     private ArrayList<Message> messageList = new ArrayList();
+    private ArrayList<Message> outboxMessageList = new ArrayList();
 
     public List<Message> getMessageList() {
         return messageList;
@@ -25,6 +26,14 @@ public class MessageRepository {
 
     public void setMessageList(ArrayList<Message> messageList) {
         this.messageList = messageList;
+    }
+
+    public ArrayList<Message> getOutboxMessageList() {
+        return outboxMessageList;
+    }
+
+    public void setOutboxMessageList(ArrayList<Message> outboxMessageList) {
+        this.outboxMessageList = outboxMessageList;
     }
 
     public void addMesssage(Message m) {
