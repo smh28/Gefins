@@ -23,6 +23,10 @@ public class CommentRepository {
      * @return comments, skilar lista af commentum
      */
     public List<Comment> getAll(){
+        Comment c1 = new Comment("sandra","comment 1",1);
+        Comment c2 = new Comment("sandra", "comment 2", 2);
+        comments.add(c1);
+        comments.add(c2);
         return comments;
     }
 

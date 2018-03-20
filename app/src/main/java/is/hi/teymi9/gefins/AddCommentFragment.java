@@ -56,7 +56,7 @@ public class AddCommentFragment extends Fragment {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Comment newComment = new Comment(mUsername, mComment.toString(),mAd);
+                Comment newComment = new Comment(mUsername, mComment.toString(),1);
                 addCommentActivity.getCommentService().addAd(newComment);
             }
         });

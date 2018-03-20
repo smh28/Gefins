@@ -5,23 +5,24 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 
 import is.hi.teymi9.gefins.service.AdService;
+import is.hi.teymi9.gefins.service.CommentService;
 
 /**
- * Activity í Gefins sem sýnir upplýsingar yfir staka auglýsingu
- * author Sandra
+ * Activity í Gefins sem sýnir athugasemdir fyrir valda auglýsingu
+ * author Ólöf Fríða
  * @version 1.0
  */
 
 
-public class DisplaySingleAdActivity extends SingleFragmentActivity {
+public class DisplayCommentActivity extends SingleFragmentActivity {
 
-    public static AdService adService = new AdService();
+    public static CommentService commentService = new CommentService();
+
 
     @Override
     protected Fragment createFragment() {
-        return new DisplaySingleAdFragment();
+        return new DisplayCommentsFragment();
     }
-
 
     /**
      * "Custom" fall til að búa til nýtt Intent sem tekur við "Extras" ef einhver eru
@@ -31,7 +32,7 @@ public class DisplaySingleAdActivity extends SingleFragmentActivity {
      * @return Nýtt intent fyrir DisplaySingleAdActivity
      */
     public static Intent newIntent(Context packageContext) {
-        Intent intent = new Intent(packageContext, DisplaySingleAdActivity.class);
+        Intent intent = new Intent(packageContext, DisplayCommentActivity.class);
         return intent;
     }
 

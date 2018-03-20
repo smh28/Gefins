@@ -21,6 +21,8 @@ public class DisplaySingleAdFragment extends Fragment {
 
     // Tilbaka takki
     private Button mBack;
+    // Takki sem leyfir notanda að skoða ummæli
+    private Button mComment;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class DisplaySingleAdFragment extends Fragment {
         TextView tv8 = (TextView)v.findViewById((R.id.adUsername));
 
         mBack = (Button) v.findViewById(R.id.singleAdTilbaka);
+        mComment = (Button) v.findViewById(R.id.comments);
 
         Bundle bundle = getActivity().getIntent().getExtras();
 
@@ -63,6 +66,16 @@ public class DisplaySingleAdFragment extends Fragment {
             tv7.setText("Staðsetning: " + adLocation);
             tv8.setText("Höfundur auglýsingar: " + adUsername);
         }
+
+        // Fer yfir í athugasemdir
+        mComment.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DisplayCommentActivity.class);
+                intent.putExtra("id", "1");
+                startActivity(intent);
+            }
+        });
 
         //Sendir notanda tilbaka á usersite síðuna
         mBack.setOnClickListener(new View.OnClickListener(){
