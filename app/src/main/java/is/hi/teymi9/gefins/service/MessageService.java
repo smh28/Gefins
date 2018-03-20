@@ -71,7 +71,7 @@ public class MessageService implements Serializable {
      */
     public void sendMessage(Message m, Activity a) {
         String method = "/sendMessage";
-        if(isNetworkAvailable(getWriteMessageActivity())) {
+        if(isNetworkAvailable(a)) {
             RequestBody body = RequestBody.create(MediaType.parse(
                     "application/json; charset=utf-8"),
                     gson.toJson(m));
@@ -118,8 +118,11 @@ public class MessageService implements Serializable {
                                         Toast.makeText(a, R.string.send_message_failed, Toast.LENGTH_LONG).show();
                                     }
                                     else{
-                                        Toast.makeText(a, R.string.send_message_successful, Toast.LENGTH_LONG).show();
-                                        ((WriteMessageActivity)a).sendMessageSuccessful();
+                                        if(a instanceof WriteMessageActivity) {
+                                            Toast.makeText(a, R.string.send_message_successful, Toast.LENGTH_LONG).show();
+                                            ((WriteMessageActivity)a).sendMessageSuccessful();
+                                        }
+
                                     }
                                 }
                             });

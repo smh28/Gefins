@@ -9,7 +9,6 @@
     android:gravity="top"
     android:orientation="vertical">
 
-
     <TextView
         android:id="@+id/inbox_text"
         android:layout_width="match_parent"
@@ -19,14 +18,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp"
         android:textAlignment="center"  />
-
-
-    <ListView
-        android:id="@+id/listOfMessages"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-    </ListView>
-
 
     <Button
         android:id="@+id/inboxTilbaka"
@@ -43,5 +34,10 @@
         android:text="@string/outbox"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="301dp" />
+
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/inbox_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

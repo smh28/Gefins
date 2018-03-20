@@ -3,6 +3,8 @@ package is.hi.teymi9.gefins;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,7 @@ import java.util.List;
 import is.hi.teymi9.gefins.model.Message;
 
 /**
- * Fragment fyrir viðmótið í InboxActivity og virknina þar.
+ * Fragment fyrir viðmótið í OutboxActivity og virknina þar.
  *
  * @author Einar
  * @version 1.0
@@ -34,6 +36,12 @@ public class OutboxFragment extends Fragment {
     // Titill síðu
     private TextView mTitle;
 
+    private RecyclerView mOutboxRecyclerView;
+    private MessageAdapter mAdapter;
+
+    public OutboxFragment() {
+        allMessages = WriteMessageActivity.getMessageService().getOutboxMessages();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,70 +52,90 @@ public class OutboxFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_inbox, container, false);   //var R.layout.fragment_display_ads
-        ListView lv = (ListView) v.findViewById(R.id.listOfMessages);      //var listOfAds
+
+        mOutboxRecyclerView = (RecyclerView)v.findViewById(R.id.inbox_recycler_view);
+        mOutboxRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mTitle = (TextView) v.findViewById(R.id.inbox_text);
         mTitle.setText(R.string.outbox);
+
+        updateUI();
+
         mBack = (Button) v.findViewById(R.id.inboxTilbaka);
         mOutbox = (Button) v.findViewById(R.id.outbox_button);
         mOutbox.setEnabled(false);
         mOutbox.setVisibility(View.GONE);
-        allMessages = WriteMessageActivity.getMessageService().getOutboxMessages();
 
-        int countMessages = allMessages.size();
-        System.out.println("allMessages stærð: " + countMessages);
-
-        //Býr til tóm strengjafylki að sömu stærð og fjöldi auglýsinga
-        String[] messageSubject = new String[countMessages];
-        String[] messageRecipient = new String[countMessages];
-        String[] messageDate = new String[countMessages];
-        String[] messageContent = new String[countMessages];
-        String[] messageSummary = new String[countMessages];
-
-        int i = 0;
-        for(Message m: allMessages) {
-            messageSubject[i] = m.getSubject();
-            messageRecipient[i] = m.getRecipient();
-            messageDate[i] = m.getDate();
-            messageContent[i] = m.getMessage();
-            messageSummary[i] = m.getSubject() + "\n" + m.getRecipient() + "\n " + m.getDate();
-
-            i++;
-        }
-
-        ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,   //var: android.R.layout.simple_list_item_1   /  R.layout.fragment_list_of_ads
-                messageSummary
-        );
-
-        lv.setAdapter(listViewAdapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), MessageDetailsActivity.class);
-                intent.putExtra("subject", messageSubject[position]);
-                intent.putExtra("sender", messageRecipient[position]);
-                intent.putExtra("date", messageDate[position]);
-                intent.putExtra("content", messageContent[position]);
-                intent.putExtra("inMessage", false);
-                startActivity(intent);
-                //String messagePicked = "Þú valdir auglýsinguna " +
-                //        String.valueOf(lv.getItemAtPosition(position));
-                //Toast.makeText(getActivity(), messagePicked, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //Sendir notanda tilbaka í inbox
+        //Sendir notanda tilbaka á usersite síðuna
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), InboxActivity.class);
+                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
                 startActivity(intent);
             }
         });
 
         return v;
+    }
+
+    private void updateUI() {
+        List<Message> messages = WriteMessageActivity.getMessageService().getOutboxMessages();
+        mAdapter = new MessageAdapter(messages);
+        mOutboxRecyclerView.setAdapter(mAdapter);
+    }
+
+    private class MessageHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        private TextView mSubjectTextView;
+        private TextView mRecipientTextView;
+        private TextView mDateTextView;
+        private Message mMessage;
+
+        public MessageHolder(LayoutInflater inflater, ViewGroup parent) {
+            super(inflater.inflate(R.layout.list_item_message, parent, false));
+            itemView.setOnClickListener(this);
+
+            mSubjectTextView = (TextView) itemView.findViewById(R.id.message_subject);
+            mRecipientTextView = (TextView) itemView.findViewById(R.id.message_sender);
+            mDateTextView = (TextView) itemView.findViewById(R.id.message_date);
+        }
+
+        public void bind(Message m) {
+            mMessage = m;
+            mSubjectTextView.setText(mMessage.getSubject());
+            mRecipientTextView.setText(mMessage.getRecipient());
+            mDateTextView.setText(mMessage.getDate().toString());
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = MessageDetailsActivity.newIntent(getActivity(), mMessage, false);
+            startActivity(intent);
+        }
+    }
+
+    private class MessageAdapter extends RecyclerView.Adapter<MessageHolder> {
+        private List<Message> mMessages;
+        public MessageAdapter(List<Message> messages) {
+            mMessages = messages;
+        }
+
+        @Override
+        public MessageHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+            return new MessageHolder(layoutInflater, parent);
+        }
+
+        @Override
+        public void onBindViewHolder(MessageHolder holder, int position) {
+            Message message = mMessages.get(position);
+            holder.bind(message);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mMessages.size();
+        }
     }
 }
 

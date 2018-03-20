@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import is.hi.teymi9.gefins.model.Message;
 import is.hi.teymi9.gefins.service.AdService;
 
 /**
@@ -27,8 +28,18 @@ public class MessageDetailsActivity extends SingleFragmentActivity {
      * @param packageContext Context þess activity sem ræsir MessageDetailsActivity
      * @return Nýtt intent fyrir MessageDetailsActivity
      */
-    public static Intent newIntent(Context packageContext) {
+    public static Intent newIntent(Context packageContext, Message m, boolean inMessage) {
         Intent intent = new Intent(packageContext, MessageDetailsActivity.class);
+        intent.putExtra("subject", m.getSubject());
+        if(inMessage) {
+            intent.putExtra("sender", m.getSender());
+        }
+        else {
+            intent.putExtra("sender", m.getRecipient());
+        }
+        intent.putExtra("date", m.getDate());
+        intent.putExtra("content", m.getMessage());
+        intent.putExtra("inMessage", inMessage);
         return intent;
     }
 

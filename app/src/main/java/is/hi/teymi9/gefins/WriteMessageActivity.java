@@ -16,9 +16,12 @@ import is.hi.teymi9.gefins.service.MessageService;
 public class WriteMessageActivity extends SingleFragmentActivity {
 
     // Static MessageService sem er sameiginlegt fyrir allt forritið
-    private static MessageService messageService = new MessageService();
+    private static MessageService messageService = null;
 
     public static MessageService getMessageService() {
+        if(messageService == null) {
+            messageService = new MessageService();
+        }
         return messageService;
     }
 
