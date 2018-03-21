@@ -37,7 +37,7 @@ public class MessageDetailsActivity extends SingleFragmentActivity {
         else {
             intent.putExtra("sender", m.getRecipient());
         }
-        intent.putExtra("date", m.getDate());
+        intent.putExtra("date", m.getDate().toString());
         intent.putExtra("content", m.getMessage());
         intent.putExtra("inMessage", inMessage);
         return intent;

@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.util.Log;
 import android.widget.Toast;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.io.Serializable;
@@ -43,12 +44,12 @@ public class MessageService implements Serializable {
     public static final String TAG = MessageService.class.getSimpleName();
     // Addressan á servernum sem tala skal við. Haft localhost á þróunarskeiði en
     // verður síðar meir skipt út fyrir Heroku þjóninn
-    //private String serverUrl = "http://192.168.1.2:8080";
-    private String serverUrl = "https://gefins.herokuapp.com";
+    private String serverUrl = "http://192.168.1.2:8080";
+    //private String serverUrl = "https://gefins.herokuapp.com";
     // WriteMessageActivity sem MessageService hefur samskipti við
     private Activity writeMessageActivity = null;
     // Gson hlutur fyrir JSON vinnslu
-    Gson gson = new Gson();
+    Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
     // okhttp3 client fyrir samskipti við bakenda
     OkHttpClient client;
     // repository til að geyma local skilaboð

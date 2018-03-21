@@ -24,14 +24,14 @@ public class Message {
     // skilaboðin sjálf
     private String message;
     // dagsetning skilaboða, nota String vegna vesens með serialization á Date
-    private String date;
+    private Date date;
     // er viðtakandi búinn að lesa skilaboðin?
     private boolean read;
 
     // Smiður
     public Message(String sender, String recipient, String subject, String message) {
         id = UUID.randomUUID();
-        date = new Date().toString();
+        date = new Date();
         read = false;
         this.sender = sender;
         this.recipient = recipient;
@@ -79,11 +79,11 @@ public class Message {
         this.message = message;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

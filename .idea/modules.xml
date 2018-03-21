@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Gefins.iml" filepath="$PROJECT_DIR$/.idea/Gefins.iml" />
+      <module fileurl="file://C:\Users\Einar\AndroidStudioProjects\Gefins2\.idea\Gefins.iml" filepath="C:\Users\Einar\AndroidStudioProjects\Gefins2\.idea\Gefins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Gefins2.iml" filepath="$PROJECT_DIR$/Gefins2.iml" />
       <module fileurl="file://C:\Users\oloff\Desktop\Gefins\Gefins2.iml" filepath="C:\Users\oloff\Desktop\Gefins\Gefins2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
