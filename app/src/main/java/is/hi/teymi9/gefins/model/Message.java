@@ -23,7 +23,7 @@ public class Message {
     private String subject;
     // skilaboðin sjálf
     private String message;
-    // dagsetning skilaboða, nota String vegna vesens með serialization á Date
+    // dagsetning skilaboða
     private Date date;
     // er viðtakandi búinn að lesa skilaboðin?
     private boolean read;
