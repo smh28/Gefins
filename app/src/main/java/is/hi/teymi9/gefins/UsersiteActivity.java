@@ -37,8 +37,19 @@ public class UsersiteActivity extends SingleFragmentActivity {
         return intent;
     }
 
+    /**
+     * Býr til að ræsir activity til að sýna lista yfir auglýsingar
+     */
     public void displayUserAds() {
         Intent intent = new Intent(this, DisplayAdsActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * býr til og ræsir activity til að sýna lista af skilaboðum
+     */
+    public void displayInbox() {
+        Intent intent = InboxActivity.newIntent(this);
         startActivity(intent);
     }
 
