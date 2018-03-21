@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import is.hi.teymi9.gefins.service.UserService;
+
 /**
  * Activity í Gefins sem sýnir upphafssíðu notanda
  *
@@ -12,6 +14,12 @@ import android.support.v4.app.Fragment;
  */
 
 public class AdminActivity extends SingleFragmentActivity {
+
+    public static UserService userService = new UserService();
+
+    public static UserService getUserService() {
+        return userService;
+    }
 
     @Override
     protected Fragment createFragment() {

@@ -9,6 +9,7 @@
     <string name="nyskraning">Skráðu þig sem nýjan notanda!</string>
     <string name="innskraning">Þú ert skráður inn</string>
     <string name="innskr_villa">Innskráning þín tókst ekki</string>
+    <string name="adminSite">Admin síðan</string>
     <!--user site-->
     <string name="user_site">Síðan þín</string>
     <string name="search_button">Leita að hlut</string>
@@ -32,6 +33,7 @@
     <string name="lysing">Lýsing:</string>
     <string name="lysing2">Lýsing</string>
     <string name="gefins">Gefins</string>
+    <string name="comment">Sjá athugasemdir</string>
     <string name="oskaeftir">Óska eftir</string>
     <string name="skraauglys">Skrá auglýsingu</string>
     <string name="tegund">Tegund:</string>

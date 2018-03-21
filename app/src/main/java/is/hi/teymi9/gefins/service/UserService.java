@@ -139,6 +139,7 @@ public class UserService implements Serializable {
                                 @Override
                                 public void run() {
                                     User u = gson.fromJson(jsonData, User.class);
+                                    System.out.print(u);
                                     if (u.getUsername() == null) {
                                         Toast.makeText(loginActivity, R.string.login_failed, Toast.LENGTH_LONG).show();
                                     }

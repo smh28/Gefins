@@ -65,6 +65,7 @@ public class DisplayAdsFragment extends Fragment {
         String[] adDescription = new String[countAds];
         String[] adLocation = new String[countAds];
         String[] adUsername = new String[countAds];
+        String[] adId = new String[countAds];
 
         int i = 0;
         for(Ad a: allAds) {
@@ -77,7 +78,6 @@ public class DisplayAdsFragment extends Fragment {
             //String description = a.getAdDescription();
             //String location = a.getAdLocation();
             //String username = a.getAdUsername();
-
             adName[i] = a.getAdName();
             adGiveOrTake[i] = a.getGiveOrTake();
             adType[i] = a.getAdType();
@@ -86,6 +86,7 @@ public class DisplayAdsFragment extends Fragment {
             adDescription[i] = a.getAdDescription();
             adLocation[i] = a.getAdLocation();
             adUsername[i] = a.getAdUsername();
+            adId[i] = a.getId().toString();
 
             System.out.println("ítrun nr.: " + i);
             System.out.println("name augl: " + adName[i]);
@@ -114,6 +115,7 @@ public class DisplayAdsFragment extends Fragment {
                 intent.putExtra("description", adDescription[position]);
                 intent.putExtra("location", adLocation[position]);
                 intent.putExtra("username", adUsername[position]);
+                intent.putExtra("id", adId[position]);
 
                 startActivity(intent);
                 //String adPicked = "Þú valdir auglýsinguna " +

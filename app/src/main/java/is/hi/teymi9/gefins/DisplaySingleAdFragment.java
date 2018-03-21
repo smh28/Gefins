@@ -24,6 +24,9 @@ public class DisplaySingleAdFragment extends Fragment {
 
     // Tilbaka takki
     private Button mBack;
+    // Takki sem leyfir notanda að skoða ummæli
+    private Button mComment;
+
     //Þjónusta fyrir notanda
     public static UserService userService = new UserService();
 
@@ -52,6 +55,7 @@ public class DisplaySingleAdFragment extends Fragment {
         TextView tv8 = (TextView)v.findViewById((R.id.adUsername));
 
         mBack = (Button) v.findViewById(R.id.singleAdTilbaka);
+        mComment = (Button) v.findViewById(R.id.comments);
 
         Bundle bundle = getActivity().getIntent().getExtras();
 
@@ -74,7 +78,17 @@ public class DisplaySingleAdFragment extends Fragment {
             tv8.setText("Höfundur auglýsingar: " + adUsername);
         }
 
-        //Sendir notanda tilbaka á lista yfir auglýsingar síðuna ef hann er loggaður inn
+        // Fer yfir í athugasemdir
+        mComment.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DisplayCommentActivity.class);
+                intent.putExtra("id", "1");
+                startActivity(intent);
+            }
+        });
+
+        //Sendir notanda tilbaka á lista yfir auglýsingar síðuna ef hann er loggaður inn annars á login síðuna
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
