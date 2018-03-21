@@ -29,10 +29,11 @@ public class CommentService implements Serializable {
         return commentList;
     }
 
-    public List<Comment> getCommentsByAdId(int id) {
+    public List<Comment> getCommentsByAd(Ad ad) {
 
-        Comment c1 = new Comment("user1","vei þetta virkar :)", 1);
-        Comment c2 = new Comment("user2", "Vúbbvúbb! hér er ég", 1);
+
+        Comment c1 = new Comment("user1","vei þetta virkar :)", ad);
+        Comment c2 = new Comment("user2", "Vúbbvúbb! hér er ég", ad);
         commentList.add(c1);
         commentList.add(c2);
         System.out.print(commentList);

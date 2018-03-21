@@ -56,7 +56,8 @@ public class AddCommentFragment extends Fragment {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Comment newComment = new Comment(mUsername, mComment.toString(),1);
+                Ad ad = new Ad("gefins", "Mjúkur sófi", "Húsgögn", "Sófi", "Svartur", "Mjúkur 3ja sæta sófi úr microsoft efni", "olla", null, "105");
+                Comment newComment = new Comment(mUsername, mComment.toString(),ad);
                 addCommentActivity.getCommentService().addAd(newComment);
             }
         });

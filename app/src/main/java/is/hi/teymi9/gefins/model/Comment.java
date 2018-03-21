@@ -19,7 +19,7 @@ public class Comment {
     // commentið sjálft
     private String comment;
     // auglýsinguna sem commentið tilheyrir
-    private int ad;
+    private Ad ad;
 
     /**
      * Smiður með viðföndum
@@ -27,8 +27,7 @@ public class Comment {
      * @param comment commentið sjálft
      * @param ad auglýsing sem comment tilheyrir
      */
-    public Comment(String username, String comment, int ad) {
-        this.id = id;
+    public Comment(String username, String comment, Ad ad) {
         this.username = username;
         this.comment = comment;
         this.ad = ad;

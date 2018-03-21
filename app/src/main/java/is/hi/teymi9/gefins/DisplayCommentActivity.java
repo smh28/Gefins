@@ -17,7 +17,11 @@ import is.hi.teymi9.gefins.service.CommentService;
 public class DisplayCommentActivity extends SingleFragmentActivity {
 
     public static CommentService commentService = new CommentService();
+    public static AdService adService = new AdService();
 
+    public static AdService getAdService() {
+        return adService;
+    }
 
     @Override
     protected Fragment createFragment() {

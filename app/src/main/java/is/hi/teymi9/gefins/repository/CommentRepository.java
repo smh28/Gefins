@@ -3,6 +3,7 @@ package is.hi.teymi9.gefins.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.Comment;
 
 
@@ -23,8 +24,10 @@ public class CommentRepository {
      * @return comments, skilar lista af commentum
      */
     public List<Comment> getAll(){
-        Comment c1 = new Comment("sandra","comment 1",1);
-        Comment c2 = new Comment("sandra", "comment 2", 2);
+        Ad ad = new Ad("gefins", "Mjúkur sófi", "Húsgögn", "Sófi", "Svartur", "Mjúkur 3ja sæta sófi úr microsoft efni", "olla", comments, "105");
+
+        Comment c1 = new Comment("sandra","comment 1",ad);
+        Comment c2 = new Comment("sandra", "comment 2", ad);
         comments.add(c1);
         comments.add(c2);
         return comments;
