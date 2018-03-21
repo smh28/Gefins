@@ -10,29 +10,29 @@
 
     <Button
         android:id="@+id/logout_button"
-        android:layout_width="122dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="top|right"
-        android:drawablePadding="24dp"
+        android:drawablePadding="12dp"
         android:text="@string/logout_button" />
 
     <Button
         android:id="@+id/edit_user_button"
-        android:layout_width="300dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="top|right"
-        android:drawablePadding="24dp"
+        android:drawablePadding="12dp"
         android:text="@string/edit_user_button" />
 
 
     <TextView
-        android:id="@+id/texti1"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="124dp"
         android:padding="34dp"
         android:text="@string/user_site"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textAlignment="center"  />
 
 
@@ -68,5 +68,19 @@
         android:layout_height="wrap_content"
         android:drawablePadding="24dp"
         android:text="@string/my_ads" />
+
+    <Button
+        android:id="@+id/new_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="24dp"
+        android:text="@string/ny_skilaboð" />
+
+    <Button
+        android:id="@+id/inbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="24dp"
+        android:text="@string/innholf" />
 
 </LinearLayout>
