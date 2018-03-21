@@ -98,6 +98,7 @@ public class DisplayAdsFragment extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DisplayAdsActivity.getAdService().setCurrentAd(allAds.get(position));
                 Intent intent = new Intent(getActivity(), DisplaySingleAdActivity.class);
                 intent.putExtra("name", adName[position]);
                 intent.putExtra("giveOrTake", adGiveOrTake[position]);
@@ -107,7 +108,8 @@ public class DisplayAdsFragment extends Fragment {
                 intent.putExtra("description", adDescription[position]);
                 intent.putExtra("location", adLocation[position]);
                 intent.putExtra("username", adUsername[position]);
-                intent.putExtra("id", adId[position]);
+
+
 
                 startActivity(intent);
                 //String adPicked = "Þú valdir auglýsinguna " +

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.Comment;
 
 /**
@@ -29,7 +30,7 @@ public class DisplayCommentsFragment extends Fragment {
     // Tilbaka takki
     private Button mBack;
     // id á auglýsingunni sem verið er að skoða
-    private String adId;
+    private Ad ad;
     // allar athugasemdir sem tengjast auglýsingunni
     private List<Comment> lComments;
 
@@ -46,11 +47,10 @@ public class DisplayCommentsFragment extends Fragment {
 
         mBack = (Button) v.findViewById(R.id.singleAdTilbaka);
         mComments = (ListView) v.findViewById(R.id.commentList);
-        Bundle bundle = getActivity().getIntent().getExtras();
-        adId = bundle.getString("id");
-        int id = Integer.parseInt(adId);
 
-        lComments = DisplayCommentActivity.commentService.getCommentsByAdId(id);
+        ad = DisplayCommentActivity.adService.getCurrentAd();
+
+        lComments = DisplayCommentActivity.commentService.getCommentsByAd(ad);
 
         String[] userComment = new String[lComments.size()];
         String[] comment = new String[lComments.size()];

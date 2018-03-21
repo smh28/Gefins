@@ -72,7 +72,6 @@ public class DisplaySingleAdFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DisplayCommentActivity.class);
-                intent.putExtra("id", "1");
                 startActivity(intent);
             }
         });
