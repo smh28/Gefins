@@ -50,12 +50,11 @@ public class DisplayCommentsFragment extends Fragment {
 
         ad = DisplayCommentActivity.adService.getCurrentAd();
 
-        lComments = DisplayCommentActivity.commentService.getCommentsByAd(ad);
+        lComments = DisplayCommentActivity.commentService.getAllComments();
+        DisplayCommentActivity.commentService.getAdComments(DisplayAdsActivity.adService.getCurrentAd(), getActivity());
 
         String[] userComment = new String[lComments.size()];
         String[] comment = new String[lComments.size()];
-
-        // Sækja öll comment sem tengjast þessari auglýsingu með gefnu id
 
 
         int i = 0;

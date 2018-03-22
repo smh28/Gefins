@@ -23,6 +23,14 @@ public class DisplayCommentActivity extends SingleFragmentActivity {
         return adService;
     }
 
+    /**
+     * Býr til að ræsir activity til að sýna lista yfir auglýsingar
+     */
+    public void displayAdComments() {
+        Intent intent = new Intent(this, DisplayAdsActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected Fragment createFragment() {
         return new DisplayCommentsFragment();
