@@ -82,8 +82,7 @@ public class DisplaySingleAdFragment extends Fragment {
         mComment.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), DisplayCommentActivity.class);
-                startActivity(intent);
+                DisplayCommentActivity.commentService.getAdComments(DisplayAdsActivity.adService.getCurrentAd(), getActivity());
             }
         });
 

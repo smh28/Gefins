@@ -24,6 +24,14 @@ public class DisplaySingleAdActivity extends SingleFragmentActivity {
 
 
     /**
+     * Býr til að ræsir activity til að sýna lista yfir auglýsingar
+     */
+    public void displayAdComments() {
+        Intent intent = new Intent(this, DisplayCommentActivity.class);
+        startActivity(intent);
+    }
+
+    /**
      * "Custom" fall til að búa til nýtt Intent sem tekur við "Extras" ef einhver eru
      * og bætir þeim við
      *
