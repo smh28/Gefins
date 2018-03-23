@@ -52,7 +52,7 @@ public class LoginFragment extends Fragment {
         mLogin = (Button) v.findViewById(R.id.skra_inn);
         mUserName = (EditText) v.findViewById(R.id.user);
         mPsw = (EditText) v.findViewById(R.id.psw);
-        mAds = (Button) v.findViewById(R.id.syna_auglysingar);
+        //mAds = (Button) v.findViewById(R.id.syna_auglysingar);
 
         mLogin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -81,14 +81,17 @@ public class LoginFragment extends Fragment {
             }
         });
 
+/*
         mAds.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = DisplayAdsActivity.newIntent(getActivity());
-                startActivity(intent);
+                //Intent intent = DisplayAdsActivity.newIntent(getActivity());
+                //startActivity(intent);
+                System.out.println("Ýtir á hnappinn Listi yfir auglýsingar");
+                DisplayAdsActivity.getAdService().getAds(getActivity());
             }
         });
-
+*/
 
         return v;
     }
