@@ -27,13 +27,13 @@ import is.hi.teymi9.gefins.service.UserService;
 
 public class DisplayAdsFragment extends Fragment {
 
-
     //TextView content;
     List<Ad> allAds;
     // Tilbaka takki
     private Button mBack;
     //Þjónusta fyrir notanda
     public static UserService userService = new UserService();
+    //Þjónusta fyrir auglýsingar
 
     public static UserService getUserService() {
         return userService;
