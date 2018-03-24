@@ -1,6 +1,8 @@
 package is.hi.teymi9.gefins;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -59,6 +61,25 @@ public class UsersiteActivity extends SingleFragmentActivity {
     public void displayInbox() {
         Intent intent = InboxActivity.newIntent(this);
         startActivity(intent);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Útskráning")
+                .setMessage("Ertu viss um að þú viljir skrá þig út?")
+                .setPositiveButton("Já", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("Nei", null)
+                .show();
     }
 
 }
