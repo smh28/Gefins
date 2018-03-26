@@ -16,6 +16,7 @@ import java.util.List;
 
 import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.User;
+import is.hi.teymi9.gefins.service.AdService;
 import is.hi.teymi9.gefins.service.UserService;
 
 /**
@@ -52,6 +53,9 @@ public class DisplayAdsFragment extends Fragment {
 
         mBack = (Button) v.findViewById(R.id.displayAdTilbaka);
         allAds = DisplayAdsActivity.getAdService().getAllAds();
+
+        User currentUser = LoginActivity.getUserService().getCurrentUser();
+        System.out.println("DisplayAdsFragment í upphafi: currentUser er " + currentUser);
 
         int countAds = allAds.size();
         System.out.println("allAds stærð: " + countAds);
@@ -131,6 +135,7 @@ public class DisplayAdsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 User currentUser = userService.getCurrentUser();
+                System.out.println("DisplayAdsFragment í back hnappi: currentUser er " + currentUser);
                 if(currentUser != null) {
                     Intent intent = new Intent(getActivity(), UsersiteActivity.class);
                     startActivity(intent);

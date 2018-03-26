@@ -40,7 +40,7 @@ public class UsersiteActivity extends SingleFragmentActivity {
     }
 
     /**
-     * Ræsir activity til að sýna lista yfir auglýsingar
+     * Býr til og ræsir activity til að sýna lista yfir auglýsingar
      */
     public void displayAds() {
         Intent intent = new Intent(this, DisplayAdsActivity.class);
