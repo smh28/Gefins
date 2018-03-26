@@ -43,6 +43,9 @@ public class DisplaySingleAdFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        User currentUser = LoginActivity.getUserService().getCurrentUser();
+        System.out.println("DisplaySingleAdFragment í upphafi: currentUser er " + currentUser);
+
         View v = inflater.inflate(R.layout.fragment_display_single_ad,
                 container, false);
         TextView tv1 = (TextView)v.findViewById((R.id.adName));
@@ -57,7 +60,14 @@ public class DisplaySingleAdFragment extends Fragment {
         mBack = (Button) v.findViewById(R.id.singleAdTilbaka);
         mComment = (Button) v.findViewById(R.id.comments);
 
+        currentUser = LoginActivity.getUserService().getCurrentUser();
+        System.out.println("DisplaySingleAdFragment á undan bundle: currentUser er " + currentUser);
+
         Bundle bundle = getActivity().getIntent().getExtras();
+
+        currentUser = LoginActivity.getUserService().getCurrentUser();
+        System.out.println("DisplaySingleAdFragment á eftir bundle: currentUser er " + currentUser);
+
 
         if(bundle != null) {
             String adName = bundle.getString("name");
@@ -77,6 +87,9 @@ public class DisplaySingleAdFragment extends Fragment {
             tv7.setText("Staðsetning: " + adLocation);
             tv8.setText("Höfundur auglýsingar: " + adUsername);
         }
+        currentUser = LoginActivity.getUserService().getCurrentUser();
+        System.out.println("DisplaySingleAdFragment á eftir bundle og if setningu: currentUser er " + currentUser);
+
 
         // Fer yfir í athugasemdir
         mComment.setOnClickListener(new View.OnClickListener(){
@@ -86,11 +99,16 @@ public class DisplaySingleAdFragment extends Fragment {
             }
         });
 
+        currentUser = LoginActivity.getUserService().getCurrentUser();
+        System.out.println("DisplaySingleAdFragment rétt á undan mBack aðferð: currentUser er " + currentUser);
         //Sendir notanda tilbaka á lista yfir auglýsingar síðuna ef hann er loggaður inn annars á login síðuna
         mBack.setOnClickListener(new View.OnClickListener(){
+           User currentUser = LoginActivity.getUserService().getCurrentUser();
+
             @Override
             public void onClick(View v) {
-                User currentUser = userService.getCurrentUser();
+                currentUser = userService.getCurrentUser();
+                System.out.println("DisplaySingleAdFragment ofarlega inni í mBack hnappnum: currentUser er " + currentUser);
                 if(currentUser != null) {
                     Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
                     startActivity(intent);

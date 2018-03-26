@@ -144,6 +144,7 @@ public class UserService implements Serializable {
                                         Toast.makeText(loginActivity, R.string.login_failed, Toast.LENGTH_LONG).show();
                                     }
                                     else{
+                                        System.out.println("Login fallið: currentUser er " + u.getUsername());
                                         setCurrentUser(u);
                                         if(u.isHasadminauthority()){
                                             ((LoginActivity) loginActivity).adminLogin();
@@ -169,6 +170,7 @@ public class UserService implements Serializable {
             Toast.makeText(registerActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
         }
     }
+
 
 
     // Gamla login fallið
@@ -260,6 +262,7 @@ public class UserService implements Serializable {
                                         Toast.makeText(registerActivity, R.string.create_user_failed, Toast.LENGTH_LONG).show();
                                     }
                                     else {
+                                        System.out.println("Login fallið: currentUser er " + u.getUsername());
                                         setCurrentUser(u);
                                         ((RegisterActivity) registerActivity).createUserWasSucessful();
                                     }

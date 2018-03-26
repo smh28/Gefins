@@ -79,6 +79,8 @@ public class AdService {
     public void getAds(Activity a) {
         String method = "/getAds";
         if(LoginActivity.getUserService().isNetworkAvailable(a)) {
+            User currentUser = LoginActivity.getUserService().getCurrentUser();
+            System.out.println("AdService í upphafi getAds: currentUser er " + currentUser);
             //RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(u));
             Request request = new Request.Builder()
                     .url(serverUrl + method)
@@ -123,6 +125,8 @@ public class AdService {
                                     if (adList.size() == 0) {
                                         Toast.makeText(a, R.string.no_ads_found, Toast.LENGTH_LONG).show();
                                     } else {
+                                        User currentUser = LoginActivity.getUserService().getCurrentUser();
+                                        System.out.println("AdService í lok getAds: currentUser er " + currentUser);
                                         adRepository.setAdList(adList);
                                         ((UsersiteActivity) a).displayAds();
 
@@ -131,7 +135,7 @@ public class AdService {
                             });
                         }
                         else {
-                            Toast.makeText(a, R.string.create_user_failed, Toast.LENGTH_LONG).show();
+                            Toast.makeText(a, R.string.display_ads_failed, Toast.LENGTH_LONG).show();
                         }
                     } catch (IOException e) {
                         Log.e(TAG, "Exception caught: ", e);
@@ -154,6 +158,8 @@ public class AdService {
     public void getUserAds(User u, Activity a) {
         String method = "/getUserAds";
         if(LoginActivity.getUserService().isNetworkAvailable(a)) {
+            User currentUser = LoginActivity.getUserService().getCurrentUser();
+            System.out.println("AdService í upphafi getUserAds: currentUser er " + currentUser);
             RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(u));
             Request request = new Request.Builder()
                     .url(serverUrl + method)
@@ -198,6 +204,8 @@ public class AdService {
                                     if (adList.size() == 0) {
                                         Toast.makeText(a, R.string.no_ads_found, Toast.LENGTH_LONG).show();
                                     } else {
+                                        User currentUser = LoginActivity.getUserService().getCurrentUser();
+                                        System.out.println("AdService í lok getUserAds: currentUser er " + currentUser);
                                         adRepository.setAdList(adList);
                                         ((UsersiteActivity) a).displayUserAds();
                                     }
