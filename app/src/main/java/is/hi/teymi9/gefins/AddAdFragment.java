@@ -56,6 +56,7 @@ public class AddAdFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AddAdActivity.getAdService().setAddAdActivity(getActivity());
     }
 
     @Override
@@ -158,7 +159,7 @@ public class AddAdFragment extends Fragment {
                         mSpinner3.getSelectedItem().toString(),
                         mDescription.getText().toString(), mUsername, CommentList, mLocation.getText().toString());
 
-                String message = AddAdActivity.getAdService().addAd(mNewAd, false);
+                String message = AddAdActivity.getAdService().addAd(mNewAd);
 
                 Toast.makeText(getActivity(),
                         message,

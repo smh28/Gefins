@@ -1,6 +1,9 @@
 package is.hi.teymi9.gefins.service;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 import android.view.Display;
 import android.widget.Toast;
@@ -20,6 +23,7 @@ import java.util.List;
 import is.hi.teymi9.gefins.LoginActivity;
 import is.hi.teymi9.gefins.R;
 import is.hi.teymi9.gefins.UsersiteActivity;
+import is.hi.teymi9.gefins.AddAdActivity;
 import is.hi.teymi9.gefins.DisplayAdsActivity;
 import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.User;
@@ -45,9 +49,10 @@ public class AdService {
     Ad currentAd = null;
 
     private List<Ad> adList;
-    // DisplayAdsActivity sem UserService hefur samskipti við
+    // DisplayAdsActivity sem AdService hefur samskipti við
     private Activity displayAdsActivity = null;
-
+    // addAdActivity sem AdService hefur samskipti við
+    private Activity addAdActivity = null;
     //private String serverUrl = "http://192.168.1.3:8080";
     private String serverUrl = "https://gefins.herokuapp.com";
     // Gson hlutur fyrir JSON vinnslu
@@ -65,6 +70,85 @@ public class AdService {
         return adList;
     }
 
+
+    /**
+     * Sendir auglýsingu sem búa skal til á bakenda þar sem henni er bætt við
+     * @param u Auglýsing sem bæta skal við
+     * @return Skilaboð þess efnis hvort að tókst að bæta auglýsingu við
+     */
+    public String addAd(Ad u) {
+        String method = "/createAd";
+        Activity newActivity = getAddAdActivity();
+        System.out.println("AdService í addAd: newActivity er " + newActivity);
+        if(LoginActivity.getUserService().isNetworkAvailable(getAddAdActivity())) {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(u));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(u));
+            System.out.println("Ný auglýsing send á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    addAdActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    addAdActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            addAdActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    //if (jsonData.toString().compareTo("Create user failed. Please try again.") == 0) {
+                                    //    Toast.makeText(addAdActivity, R.string.create_user_failed, Toast.LENGTH_LONG).show();
+                                    //}
+                                    //else {
+                                        //setCurrentUser(u);
+                                        //((AddAdActivity) addAdActivity).createUserWasSucessful();
+                                        Toast.makeText(addAdActivity, R.string.create_ad_success, Toast.LENGTH_LONG).show();
+                                    //}
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(addAdActivity, R.string.create_ad_failed, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(addAdActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+        return "";
+    }
+
+/* Gamla local fallið
     public String addAd(Ad u, boolean validate) {
         if(validate) {
             // ganga úr skugga um að user info sé valid og user sé ekki þegar til
@@ -72,6 +156,7 @@ public class AdService {
         adRepository.addAd(u);
         return "Skráning auglýsingar tókst!"; // eitthvað vesen að nálgast strings.xml héðan...
     }
+*/
 
     /**
      * Nær í auglýsingar á bakenda og birtir þær í viðmóti
@@ -229,6 +314,29 @@ public class AdService {
 
     }
 
+
+    /**
+     * Skilar upplýsingum um hvort nettenging sé til staðar.
+     * Tekið úr Stormy eftir Sigurð Gauta
+     * @return true ef nettenging er til staðar, annars false
+     */
+    public boolean isNetworkAvailable(Activity a) {
+        ConnectivityManager manager = (ConnectivityManager) a.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean isAvailable = false;
+        if(networkInfo!= null && networkInfo.isConnected()) isAvailable = true;
+        System.out.println("Network is available: " + isAvailable);
+        return isAvailable;
+    }
+
+    public Activity getAddAdActivity() {
+        return addAdActivity;
+    }
+
+    public void setAddAdActivity(Activity addAdActivity) {
+        this.addAdActivity = addAdActivity;
+    }
+
     public Ad getCurrentAd() {
         return currentAd;
     }
@@ -239,3 +347,4 @@ public class AdService {
 
 
 }
+
