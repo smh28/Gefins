@@ -108,6 +108,8 @@
     <string name="addtype">Staðfesta</string>
     <string name="hvaderthetta">Hvað er þetta?</string>
     <string name="texti2">Hvað</string>
+    <string name="create_ad_failed">Ekki tókst að búa til nýja auglýsingu. Vinsamlegast reynið aftur.</string>
+    <string name="create_ad_success">Ný auglýsing hefur verið búin til.</string>
     <!--display ads-->
     <string name="display_site">Listi yfir auglýsingar</string>
     <string name="network_unavailable_message">Nettenging ekki til staðar</string>

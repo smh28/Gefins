@@ -33,6 +33,7 @@ public class DisplaySingleAdFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LoginActivity.getUserService().setDisplaySingleAdActivity(getActivity());
     }
 
     public static UserService getUserService() {

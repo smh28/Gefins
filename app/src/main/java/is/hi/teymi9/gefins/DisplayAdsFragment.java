@@ -43,6 +43,7 @@ public class DisplayAdsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LoginActivity.getUserService().setDisplayAdsActivity(getActivity());
     }
 
     @Override

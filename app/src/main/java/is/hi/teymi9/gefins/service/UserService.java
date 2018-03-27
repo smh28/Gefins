@@ -69,6 +69,12 @@ public class UserService implements Serializable {
     private Activity registerActivity = null;
     // EditUserActivity sem UserService hefur samskipti við
     private Activity editUserActivity = null;
+    // DisplayAdsActivity sem UserService hefur samskipti við
+    private Activity displayAdsActivity = null;
+    // DisplaySingleAdActivity sem UserService hefur samskipti við
+    private Activity displaySingleAdActivity = null;
+    // AddAdActivity sem UserService hefur samskipti við
+    private Activity addAdActivity = null;
     // Gson hlutur fyrir JSON vinnslu
     Gson gson = new Gson();
     // okhttp3 client fyrir samskipti við bakenda
@@ -96,6 +102,8 @@ public class UserService implements Serializable {
     public void login(String username, String password) {
         Credentials loginCredentials = new Credentials(username, password);
         String method = "/login";
+        Activity newActivity = getLoginActivity();
+        System.out.println("UserService í login: newActivity er " + newActivity);
         if(isNetworkAvailable(getLoginActivity())) {
             RequestBody body = RequestBody.create(MediaType.parse(
                     "application/json; charset=utf-8"),
@@ -218,6 +226,8 @@ public class UserService implements Serializable {
      */
     public String addUser(User u) {
         String method = "/createUser";
+        Activity newActivity = getRegisterActivity();
+        System.out.println("UserService í addUser: newActivity er " + newActivity);
         if(isNetworkAvailable(getRegisterActivity())) {
             RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(u));
             Request request = new Request.Builder()
@@ -458,6 +468,22 @@ public class UserService implements Serializable {
 
     public void setRegisterActivity(Activity registerActivity) {
         this.registerActivity = registerActivity;
+    }
+
+    public Activity getDisplayAdsActivity() {
+        return displayAdsActivity;
+    }
+
+    public void setDisplayAdsActivity(Activity displayAdsActivity) {
+        this.displayAdsActivity = displayAdsActivity;
+    }
+
+    public Activity getDisplaySingleAdActivity() {
+        return displaySingleAdActivity;
+    }
+
+    public void setDisplaySingleAdActivity(Activity displaySingleAdActivity) {
+        this.displaySingleAdActivity = displaySingleAdActivity;
     }
 
     public Activity getEditUserActivity() {
