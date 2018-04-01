@@ -12,10 +12,11 @@
     <string name="adminSite">Admin síðan</string>
     <!--user site-->
     <string name="user_site">Síðan þín</string>
-    <string name="search_button">Leita að hlut</string>
+    <string name="usersite_text2">Skoðaðu auglýsingar:</string>
+    <string name="search_button">Skoða allar auglýsingar</string>
     <string name="newAd_button">Gefa eða óska eftir hlut</string>
     <string name="clickSearch">Skoðaðu allar auglýsingar</string>
-    <string name="usersite_text1">Skráðu nýja auglýsingu:</string>
+    <string name="usersite_text1">--------</string>
     <string name="logout_button">Útskrá</string>
     <string name="tolvupostur">Tölvupóstur</string>
     <string name="lykilord_aftur">Endurtakið lykilorð:</string>
