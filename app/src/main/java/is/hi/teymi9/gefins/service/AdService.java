@@ -49,6 +49,7 @@ public class AdService {
     Ad currentAd = null;
 
     private List<Ad> adList;
+    private Ad ad = null;
     // DisplayAdsActivity sem AdService hefur samskipti við
     private Activity displayAdsActivity = null;
     // addAdActivity sem AdService hefur samskipti við
@@ -235,6 +236,93 @@ public class AdService {
         }
 
     }
+
+
+    /**
+     * Nær í auglýsingar á bakenda sem tilheyra ákveðnum flokkum og birtir þær í viðmóti
+     */
+    public void getAdsByType(String yfirflokkur, String undirflokkur, Activity a) {
+        System.out.println("Í upphafi getAdsByType er yfirflokkur (á að vera null) " + ad.getAdType());
+        System.out.println("Í upphafi getAdsByType er undirflokkur (á að vera null) " + ad.getAdTypeOfType());
+        if(yfirflokkur!="all"){
+           ad.setAdType(yfirflokkur);
+        }
+        if(undirflokkur!="all"){
+            ad.setAdTypeOfType(undirflokkur);
+        }
+        String method = "/getAdsByType";
+        if(LoginActivity.getUserService().isNetworkAvailable(a)) {
+            User currentUser = LoginActivity.getUserService().getCurrentUser();
+            System.out.println("AdService í upphafi getAdsByType: currentUser er " + currentUser);
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(ad));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(ad));
+            System.out.println("Beiðni um adsByType send á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            a.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Type type = new TypeToken<List<Ad>>() {}.getType();
+                                    ArrayList<Ad> adList = gson.fromJson(jsonData, type);
+                                    if (adList.size() == 0) {
+                                        Toast.makeText(a, R.string.no_ads_found, Toast.LENGTH_LONG).show();
+                                    } else {
+                                        User currentUser = LoginActivity.getUserService().getCurrentUser();
+                                        System.out.println("AdService í lok getAdsByType: currentUser er " + currentUser);
+                                        adRepository.setAdList(adList);
+                                        ((UsersiteActivity) a).displayAds();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(a, R.string.display_ads_failed, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(a, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+
+    }
+
 
 
     /**
