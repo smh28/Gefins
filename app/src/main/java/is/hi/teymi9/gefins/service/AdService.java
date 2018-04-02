@@ -248,21 +248,31 @@ public class AdService {
     /**
      * Nær í auglýsingar á bakenda sem tilheyra ákveðnum flokkum og birtir þær í viðmóti
      */
-    public void getAdsByType(String yfirflokkur, String undirflokkur, Activity a) {
+    public void getAdsByType(String giveOrTake, String yfirflokkur, String undirflokkur, String litur, Activity a) {
         ArrayList<Comment> comments = new ArrayList<Comment>();
         Ad ad = new Ad(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, comments, EMPTY_STRING);
-        System.out.println("Í upphafi getAdsByType er yfirflokkur (á að vera tómur strengur) " + ad.getAdType());
-        System.out.println("Í upphafi getAdsByType er undirflokkur (á að vera tómur strengur) " + ad.getAdTypeOfType());
+
+        System.out.println("GiveOrTake er: " + giveOrTake);
         System.out.println("Yfirflokkur er: " + yfirflokkur);
         System.out.println("Undirflokkur er: " + undirflokkur);
+        System.out.println("Litur er: " + litur);
+
+        //Setja inn öll leitarskilyrði inn í nýju, tómu auglýsinguna ad
+        ad.setGiveOrTake(giveOrTake);
         if(!"Allt".equals(yfirflokkur)){
            ad.setAdType(yfirflokkur);
         }
         if(!"Allt".equals(undirflokkur)){
             ad.setAdTypeOfType(undirflokkur);
         }
+        if(!"Allir".equals(litur)){
+            ad.setAdColor(litur);
+        }
+        System.out.println("ad.giveOrTake er: " + ad.getGiveOrTake());
         System.out.println("ad.type er: " + ad.getAdType());
         System.out.println("ad.typeOfType er: " + ad.getAdTypeOfType());
+        System.out.println("ad.color er: " + ad.getAdColor());
+
         String method = "/getAdsByType";
         if(LoginActivity.getUserService().isNetworkAvailable(a)) {
             User currentUser = LoginActivity.getUserService().getCurrentUser();
@@ -319,7 +329,6 @@ public class AdService {
                                         User currentUser = LoginActivity.getUserService().getCurrentUser();
                                         System.out.println("AdService í lok getAdsByType: currentUser er " + currentUser);
                                         adRepository.setAdList(adList);
-                                        //((UsersiteActivity) a).displayUserAds();
                                         ((SearchTypeActivity) a).displayAds();
 
                                     }
