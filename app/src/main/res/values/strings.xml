@@ -14,7 +14,7 @@
     <string name="user_site">Síðan þín</string>
     <string name="usersite_text2">Skoðaðu auglýsingar:</string>
     <string name="search_button">Skoða allar auglýsingar</string>
-    <string name="searchType_button">Leita eftir flokkum</string>
+    <string name="searchType_button">Leita eftir augl.flokkum</string>
     <string name="newAd_button">Gefa eða óska eftir hlut</string>
     <string name="clickSearch">Skoðaðu allar auglýsingar</string>
     <string name="usersite_text1">--------</string>
@@ -139,6 +139,15 @@
     <string name="ad_deleted_successfully">Tókst að eyða auglýsingu</string>
     <string name="ad_not_deleted">Ekki tókst að eyða auglýsingu</string>
     <!--search type site-->
+    <string name="search_text1">Auglýsingaleit</string>
+    <string name="search_text2">Leitarskilyrðin:</string>
+    <string-array name="searchHlutir_array">
+        <item>Allt</item>
+        <item>Húsgögn</item>
+        <item>Fatnaður</item>
+        <item>Matur</item>
+        <item>Annað</item>
+    </string-array>
     <string-array name="searchHusgogn_array">
         <item>Allt</item>
         <item>Borð</item>
