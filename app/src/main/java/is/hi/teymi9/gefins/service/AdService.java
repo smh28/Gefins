@@ -255,12 +255,14 @@ public class AdService {
         System.out.println("Í upphafi getAdsByType er undirflokkur (á að vera tómur strengur) " + ad.getAdTypeOfType());
         System.out.println("Yfirflokkur er: " + yfirflokkur);
         System.out.println("Undirflokkur er: " + undirflokkur);
-        if(yfirflokkur!="Allt"){
+        if(!"Allt".equals(yfirflokkur)){
            ad.setAdType(yfirflokkur);
         }
-        if(undirflokkur!="Allt"){
+        if(!"Allt".equals(undirflokkur)){
             ad.setAdTypeOfType(undirflokkur);
         }
+        System.out.println("ad.type er: " + ad.getAdType());
+        System.out.println("ad.typeOfType er: " + ad.getAdTypeOfType());
         String method = "/getAdsByType";
         if(LoginActivity.getUserService().isNetworkAvailable(a)) {
             User currentUser = LoginActivity.getUserService().getCurrentUser();
