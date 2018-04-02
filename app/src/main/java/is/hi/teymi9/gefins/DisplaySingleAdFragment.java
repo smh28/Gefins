@@ -1,6 +1,8 @@
 package is.hi.teymi9.gefins;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -138,7 +140,19 @@ public class DisplaySingleAdFragment extends Fragment {
         mDeleteAd.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                DisplayAdsActivity.adService.deleteAd(DisplayAdsActivity.adService.getCurrentAd(), getActivity());
+                new AlertDialog.Builder(getActivity())
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Eyða auglýsingu")
+                        .setMessage("Ertu viss um að þú viljir eyða auglýsingunni?")
+                        .setPositiveButton("Já", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                DisplayAdsActivity.adService.deleteAd(DisplayAdsActivity.adService.getCurrentAd(), getActivity());
+                            }
+                        })
+                        .setNegativeButton("Nei", null)
+                        .show();
             }
         });
 
