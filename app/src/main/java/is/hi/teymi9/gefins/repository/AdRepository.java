@@ -2,6 +2,7 @@ package is.hi.teymi9.gefins.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.Comment;
@@ -52,4 +53,13 @@ public class AdRepository {
         this.adList = adList;
 
     }
+
+    /**
+     * Eyðir auglýsingu úr kerfinu
+     * @param ad auglýsing sem skal eyða
+     */
+    public void deleteAd(Ad ad) {
+        adList.remove(ad);
+    }
+
 }
