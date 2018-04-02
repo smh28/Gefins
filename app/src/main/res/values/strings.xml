@@ -14,6 +14,7 @@
     <string name="user_site">Síðan þín</string>
     <string name="usersite_text2">Skoðaðu auglýsingar:</string>
     <string name="search_button">Skoða allar auglýsingar</string>
+    <string name="searchType_button">Leita eftir flokkum</string>
     <string name="newAd_button">Gefa eða óska eftir hlut</string>
     <string name="clickSearch">Skoðaðu allar auglýsingar</string>
     <string name="usersite_text1">--------</string>
@@ -30,6 +31,7 @@
     <string name="skraauglysingu">Skrá nýja auglýsingu</string>
     <!--add ad-->
     <string name="nafnaaugl">Nafn á auglýsingu:</string>
+    <string name="nafnaaugl2">EKKI Nafn á auglýsingu:</string>
     <string name="nafnaauglysingu">Nafn á auglýsingu</string>
     <string name="lysing">Lýsing:</string>
     <string name="lysing2">Lýsing</string>
@@ -133,7 +135,65 @@
     <string name="inbox">Innhólf</string>
     <string name="reply">Svara</string>
     <string name="outbox">Úthólf</string>
-
+    <!--search type site-->
+    <string-array name="searchHusgogn_array">
+        <item>Allt</item>
+        <item>Borð</item>
+        <item>Stóll</item>
+        <item>Sófi</item>
+        <item>Hirsla</item>
+        <item>Raftæki</item>
+        <item>Hreinlætistæki</item>
+        <item>Spegill</item>
+        <item>Ljós</item>
+        <item>Annað</item>
+    </string-array>
+    <string-array name="searchMatur_array">
+        <item>Allt</item>
+        <item>Ávöxtur</item>
+        <item>Grænmeti</item>
+        <item>Þurrmatur</item>
+        <item>Kjöt</item>
+        <item>Niðursuðuvara</item>
+        <item>Drykkjarvara</item>
+        <item>Annað</item>
+    </string-array>
+    <string-array name="searchFatnadur_array">
+        <item>Allt</item>
+        <item>Buxur</item>
+        <item>Bolur</item>
+        <item>Skyrta</item>
+        <item>Pils</item>
+        <item>Blússa</item>
+        <item>Höfuðfat</item>
+        <item>Skór</item>
+        <item>Yfirhöfn</item>
+        <item>Aukahlutir</item>
+        <item>Annað</item>
+    </string-array>
+    <string-array name="searchAnnad_array">
+        <item>Annað</item>
+    </string-array>
+    <string-array name="searchLitir_array">
+        <item>Allir</item>
+        <item>Gulur</item>
+        <item>Rauður</item>
+        <item>Grænn</item>
+        <item>Blár</item>
+        <item>Bleikur</item>
+        <item>Fjólublár</item>
+        <item>Appelsínugulur</item>
+        <item>Drappaður</item>
+        <item>Brúnn</item>
+        <item>Hvítur</item>
+        <item>Svartur</item>
+        <item>Grár</item>
+        <item>Gylltur</item>
+        <item>Silfur</item>
+        <item>Brons</item>
+        <item>Marglitaður</item>
+        <item>Annað</item>
+    </string-array>
 
 
 </resources>

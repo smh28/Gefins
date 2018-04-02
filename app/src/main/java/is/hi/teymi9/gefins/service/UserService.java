@@ -67,6 +67,8 @@ public class UserService implements Serializable {
     private Activity usersiteActivity = null;
     // RegisterActivity sem UserService hefur samskipti við
     private Activity registerActivity = null;
+    // SearchTypeActivity sem UserService hefur samskipti við
+    private Activity searchTypeActivity = null;
     // EditUserActivity sem UserService hefur samskipti við
     private Activity editUserActivity = null;
     // DisplayAdsActivity sem UserService hefur samskipti við
@@ -468,6 +470,14 @@ public class UserService implements Serializable {
 
     public void setRegisterActivity(Activity registerActivity) {
         this.registerActivity = registerActivity;
+    }
+
+    public Activity getSearchTypeActivity() {
+        return searchTypeActivity;
+    }
+
+    public void setSearchTypeActivity(Activity searchTypeActivity) {
+        this.searchTypeActivity = searchTypeActivity;
     }
 
     public Activity getDisplayAdsActivity() {
