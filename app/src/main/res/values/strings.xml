@@ -142,11 +142,11 @@
     <string name="search_text1">Auglýsingaleit</string>
     <string name="search_text2">Leitarskilyrðin:</string>
     <string-array name="searchHlutir_array">
-        <item>Allt</item>
         <item>Húsgögn</item>
         <item>Fatnaður</item>
         <item>Matur</item>
         <item>Annað</item>
+        <item>Allt</item>
     </string-array>
     <string-array name="searchHusgogn_array">
         <item>Allt</item>
@@ -182,6 +182,8 @@
         <item>Yfirhöfn</item>
         <item>Aukahlutir</item>
         <item>Annað</item>
+    </string-array>
+    <string-array name="searchAllt_array">
     </string-array>
     <string-array name="searchAnnad_array">
         <item>Annað</item>

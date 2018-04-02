@@ -77,7 +77,7 @@ public class SearchTypeFragment extends Fragment {
 
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.hlutir_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searchHlutir_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -97,6 +97,9 @@ public class SearchTypeFragment extends Fragment {
                     mSpinner2.setAdapter(adapter2);
                 } else if(spinnerValue.equalsIgnoreCase("Matur")) {
                     ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.searchMatur_array, android.R.layout.simple_spinner_item);
+                    mSpinner2.setAdapter(adapter2);
+                } else if(spinnerValue.equalsIgnoreCase("Allt")) {
+                    ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.searchAllt_array, android.R.layout.simple_spinner_item);
                     mSpinner2.setAdapter(adapter2);
                 } else {
                     ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.searchAnnad_array, android.R.layout.simple_spinner_item);
@@ -121,7 +124,7 @@ public class SearchTypeFragment extends Fragment {
         // Apply the adapter to the spinner
         mSpinner3.setAdapter(adapter3);
 
-/* Prufa frá internetinu - þarf að breyta til að athuga hvort virki (Sandra)
+/* Prufa frá netinu - þarf að breyta til að athuga hvort virki (Sandra)
         mGiveorTake.setOnClickListener(new RadioGroup.OnClickListener() {
 
             @Override
@@ -169,33 +172,14 @@ public class SearchTypeFragment extends Fragment {
                 System.out.println("Í SearchType Spinner3 = litur: " + mSpinner3.getSelectedItem().toString());
                 System.out.println("Í SearchType mGiveOrTake = gefins eða óska eftir: " + mGiveOrTake);
 
-                /*
-                Ad mNewAd = new Ad(mGiveOrTake,
-                        mNameOfAd.getText().toString(),
+                 //Kallar á aðferðina getAdsByType í AdService sem sér um að sækja og birta réttar auglýsingar
+                SearchTypeActivity.getAdService().getAdsByType(
+                        mGiveOrTake,
                         mSpinner.getSelectedItem().toString(),
                         mSpinner2.getSelectedItem().toString(),
                         mSpinner3.getSelectedItem().toString(),
-                        null, mUsername, CommentList, mLocation.getText().toString());
-
-                String message = AddAdActivity.getAdService().addAd(mNewAd);
-                */
-
-                //Kallar á aðferðina getAdsByType í AdService sem sér um að sækja og birta réttar auglýsingar
-                SearchTypeActivity.getAdService().getAdsByType(
-                        mSpinner.getSelectedItem().toString(),
-                        mSpinner2.getSelectedItem().toString(),
                         getActivity()
                 );
-
-
-                /*
-                Toast.makeText(getActivity(),
-                        message,
-                        Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
-                */
 
             }
         });
