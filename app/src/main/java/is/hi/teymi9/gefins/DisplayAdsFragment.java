@@ -58,8 +58,9 @@ public class DisplayAdsFragment extends Fragment {
         User currentUser = LoginActivity.getUserService().getCurrentUser();
         System.out.println("DisplayAdsFragment í upphafi: currentUser er " + currentUser);
 
+        //Finnur fjölda auglýsinga
         int countAds = allAds.size();
-        System.out.println("allAds stærð: " + countAds);
+        System.out.println("allAds stærð (fjöldi auglýsinga): " + countAds);
 
         //Býr til tóm strengjafylki að sömu stærð og fjöldi auglýsinga
         String[] adName = new String[countAds];
@@ -74,15 +75,7 @@ public class DisplayAdsFragment extends Fragment {
 
         int i = 0;
         for(Ad a: allAds) {
-            //Býr til streng sem sækir hvert atriði auglýsingarinnar
-            //String name = a.getAdName();
-            //String giveOrTake = a.getGiveOrTake();
-            //String type = a.getAdType();
-            //String typeOfType = a.getAdTypeOfType();
-            //String color = a.getAdColor();
-            //String description = a.getAdDescription();
-            //String location = a.getAdLocation();
-            //String username = a.getAdUsername();
+            //Fylla inn í strengjafylkin
             adName[i] = a.getAdName();
             adGiveOrTake[i] = a.getGiveOrTake();
             adType[i] = a.getAdType();
@@ -122,12 +115,8 @@ public class DisplayAdsFragment extends Fragment {
                 intent.putExtra("location", adLocation[position]);
                 intent.putExtra("username", adUsername[position]);
 
-
-
                 startActivity(intent);
-                //String adPicked = "Þú valdir auglýsinguna " +
-                //        String.valueOf(lv.getItemAtPosition(position));
-                //Toast.makeText(getActivity(), adPicked, Toast.LENGTH_SHORT).show();
+
             }
         });
 

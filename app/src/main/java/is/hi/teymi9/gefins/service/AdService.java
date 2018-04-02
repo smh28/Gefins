@@ -22,10 +22,12 @@ import java.util.List;
 
 import is.hi.teymi9.gefins.LoginActivity;
 import is.hi.teymi9.gefins.R;
+import is.hi.teymi9.gefins.SearchTypeActivity;
 import is.hi.teymi9.gefins.UsersiteActivity;
 import is.hi.teymi9.gefins.AddAdActivity;
 import is.hi.teymi9.gefins.DisplayAdsActivity;
 import is.hi.teymi9.gefins.model.Ad;
+import is.hi.teymi9.gefins.model.Comment;
 import is.hi.teymi9.gefins.model.User;
 import is.hi.teymi9.gefins.repository.AdRepository;
 import okhttp3.Call;
@@ -42,6 +44,8 @@ import okhttp3.Response;
 
 public class AdService {
 
+    //Tómur strengur
+    String EMPTY_STRING = "";
     // tag til að auðkenna skilaboð í logger
     public static final String TAG = AdService.class.getSimpleName();
     AdRepository adRepository = new AdRepository();
@@ -49,13 +53,14 @@ public class AdService {
     Ad currentAd = null;
 
     private List<Ad> adList;
-    private Ad ad = null;
     // DisplayAdsActivity sem AdService hefur samskipti við
     private Activity displayAdsActivity = null;
     // addAdActivity sem AdService hefur samskipti við
     private Activity addAdActivity = null;
+    // SearchAdActivity sem AdService hefur samskipti við
+    private Activity searchTypeActivity = null;
     //private String serverUrl = "http://192.168.1.3:8080";
-    private String serverUrl = "https://gefins.herokuapp.com";
+        private String serverUrl = "https://gefins.herokuapp.com";
     // Gson hlutur fyrir JSON vinnslu
     Gson gson = new Gson();
     // okhttp3 client fyrir samskipti við bakenda
@@ -65,7 +70,7 @@ public class AdService {
         client = new OkHttpClient();
     }
 
-
+    //Sækir allar auglýsingar sem bakendi hefur sent á framenda til vistunar
     public List<Ad> getAllAds() {
         adList = adRepository.getAdList();
         return adList;
@@ -242,12 +247,16 @@ public class AdService {
      * Nær í auglýsingar á bakenda sem tilheyra ákveðnum flokkum og birtir þær í viðmóti
      */
     public void getAdsByType(String yfirflokkur, String undirflokkur, Activity a) {
-        System.out.println("Í upphafi getAdsByType er yfirflokkur (á að vera null) " + ad.getAdType());
-        System.out.println("Í upphafi getAdsByType er undirflokkur (á að vera null) " + ad.getAdTypeOfType());
-        if(yfirflokkur!="all"){
+        ArrayList<Comment> comments = new ArrayList<Comment>();
+        Ad ad = new Ad(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, comments, EMPTY_STRING);
+        System.out.println("Í upphafi getAdsByType er yfirflokkur (á að vera tómur strengur) " + ad.getAdType());
+        System.out.println("Í upphafi getAdsByType er undirflokkur (á að vera tómur strengur) " + ad.getAdTypeOfType());
+        System.out.println("Yfirflokkur er: " + yfirflokkur);
+        System.out.println("Undirflokkur er: " + undirflokkur);
+        if(yfirflokkur!="Allt"){
            ad.setAdType(yfirflokkur);
         }
-        if(undirflokkur!="all"){
+        if(undirflokkur!="Allt"){
             ad.setAdTypeOfType(undirflokkur);
         }
         String method = "/getAdsByType";
@@ -295,13 +304,20 @@ public class AdService {
                                 public void run() {
                                     Type type = new TypeToken<List<Ad>>() {}.getType();
                                     ArrayList<Ad> adList = gson.fromJson(jsonData, type);
+                                    System.out.println("adList er að stærð: " + adList.size());
+                                    for(Ad a: adList) {
+                                        System.out.println(a.getAdName());
+                                    }
+                                    System.out.println("AdService í response er adList stærð: " + adList.size());
                                     if (adList.size() == 0) {
                                         Toast.makeText(a, R.string.no_ads_found, Toast.LENGTH_LONG).show();
                                     } else {
                                         User currentUser = LoginActivity.getUserService().getCurrentUser();
                                         System.out.println("AdService í lok getAdsByType: currentUser er " + currentUser);
                                         adRepository.setAdList(adList);
-                                        ((UsersiteActivity) a).displayAds();
+                                        //((UsersiteActivity) a).displayUserAds();
+                                        ((SearchTypeActivity) a).displayAds();
+
                                     }
                                 }
                             });
@@ -423,6 +439,14 @@ public class AdService {
 
     public void setAddAdActivity(Activity addAdActivity) {
         this.addAdActivity = addAdActivity;
+    }
+
+    public Activity getSearchTypeActivity() {
+        return searchTypeActivity;
+    }
+
+    public void setSearchTypeActivity(Activity searchTypeActivity) {
+        this.searchTypeActivity = searchTypeActivity;
     }
 
     public Ad getCurrentAd() {

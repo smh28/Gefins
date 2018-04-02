@@ -30,6 +30,8 @@
         </activity>
         <activity android:name=".DisplaySingleAdActivity">
         </activity>
+        <activity android:name=".SearchTypeActivity">
+        </activity>
         <activity android:name=".AdminActivity">
         </activity>
         <activity android:name=".addCommentActivity">

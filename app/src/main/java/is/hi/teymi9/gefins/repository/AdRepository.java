@@ -45,6 +45,11 @@ public class AdRepository {
     }
 
     public void setAdList(ArrayList<Ad> adList) {
+        System.out.println("AdRepository setAdList, adList inniheldur: ");
+        for(Ad a: adList) {
+            System.out.println(a.getAdName());
+        }
         this.adList = adList;
+
     }
 }

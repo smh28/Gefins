@@ -1,0 +1,100 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <!-- Radio buttons til að velja milli gefins og óska eftir -->
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkedButton="@+id/radio_give"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="390dp">
+
+        <RadioButton
+            android:id="@+id/radio_give"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:duplicateParentState="false"
+            android:text="@string/gefins"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="384dp" />
+
+
+        <RadioButton
+            android:id="@+id/radio_take"
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+            android:text="@string/oskaeftir"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="388dp" />
+    </RadioGroup>
+
+    <!-- Fyrirsögn fyrir tegund (yfirflokk) -->
+    <TextView
+        android:id="@+id/textinn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tegund"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <!-- Spinner fyrir tegund (yfirflokk) -->
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="42dp" />
+
+    <!-- Fyrirsögn fyrir tegund af tegund (undirflokk) -->
+    <TextView
+        android:id="@+id/texti2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tegundaftegund" />
+
+    <!-- Spinner fyrir tegund af tegund (undirflokk) -->
+    <Spinner
+        android:id="@+id/spinner5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Fyrirsögn fyrir lit -->
+    <TextView
+        android:id="@+id/litur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/litur" />
+
+    <!-- Spinner fyrir lit -->
+    <Spinner
+        android:id="@+id/spinner6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Hnappur tilbaka -->
+    <Button
+        android:id="@+id/tilbaka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tilbaka"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="84dp" />
+
+    <!-- Hnappur til að staðfesta -->
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addtype"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="147dp" />
+
+</LinearLayout>
