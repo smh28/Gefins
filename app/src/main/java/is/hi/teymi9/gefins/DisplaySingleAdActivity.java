@@ -15,7 +15,7 @@ import is.hi.teymi9.gefins.service.AdService;
 
 public class DisplaySingleAdActivity extends SingleFragmentActivity {
 
-    public static AdService adService = new AdService();
+    public static AdService adService = DisplayAdsActivity.getAdService();
 
     @Override
     protected Fragment createFragment() {
@@ -41,6 +41,14 @@ public class DisplaySingleAdActivity extends SingleFragmentActivity {
     public static Intent newIntent(Context packageContext) {
         Intent intent = new Intent(packageContext, DisplaySingleAdActivity.class);
         return intent;
+    }
+
+    /**
+     * Callback þegar auglýsingu er eytt. Fer aftur í lista af auglýsingum.
+     */
+    public void adDeletedSuccessfully() {
+        Intent intent = new Intent(this, DisplayAdsActivity.class);
+        startActivity(intent);
     }
 
 }

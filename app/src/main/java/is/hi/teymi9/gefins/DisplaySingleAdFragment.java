@@ -27,6 +27,8 @@ public class DisplaySingleAdFragment extends Fragment {
     private Button mBack;
     // Takki sem leyfir notanda að skoða ummæli
     private Button mComment;
+    // Takki til að eyða auglýsingu
+    private Button mDeleteAd;
 
     //Þjónusta fyrir notanda
     public static UserService userService = new UserService();
@@ -61,6 +63,7 @@ public class DisplaySingleAdFragment extends Fragment {
 
         mBack = (Button) v.findViewById(R.id.singleAdTilbaka);
         mComment = (Button) v.findViewById(R.id.comments);
+        mDeleteAd = (Button) v.findViewById(R.id.delete_button);
 
         currentUser = LoginActivity.getUserService().getCurrentUser();
         System.out.println("DisplaySingleAdFragment á undan bundle: currentUser er " + currentUser);
@@ -88,6 +91,16 @@ public class DisplaySingleAdFragment extends Fragment {
             tv6.setText("Lýsing: " + adDescription);
             tv7.setText("Staðsetning: " + adLocation);
             tv8.setText("Höfundur auglýsingar: " + adUsername);
+
+            if(LoginActivity.getUserService().getCurrentUser().getUsername().compareTo(adUsername) != 0) {
+                // aftengi eyða takka ef notandi er ekki höfundurinn
+                mDeleteAd.setEnabled(false);
+                mDeleteAd.setVisibility(View.GONE);
+            }
+            else {
+                mDeleteAd.setEnabled(true);
+                mDeleteAd.setVisibility(View.VISIBLE);
+            }
         }
         currentUser = LoginActivity.getUserService().getCurrentUser();
         System.out.println("DisplaySingleAdFragment á eftir bundle og if setningu: currentUser er " + currentUser);
@@ -109,7 +122,7 @@ public class DisplaySingleAdFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                currentUser = userService.getCurrentUser();
+                currentUser = LoginActivity.getUserService().getCurrentUser();
                 System.out.println("DisplaySingleAdFragment ofarlega inni í mBack hnappnum: currentUser er " + currentUser);
                 if(currentUser != null) {
                     Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
@@ -119,6 +132,13 @@ public class DisplaySingleAdFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        mDeleteAd.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                DisplayAdsActivity.adService.deleteAd(DisplayAdsActivity.adService.getCurrentAd(), getActivity());
             }
         });
 

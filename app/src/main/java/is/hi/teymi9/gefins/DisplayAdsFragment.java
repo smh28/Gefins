@@ -109,7 +109,7 @@ public class DisplayAdsFragment extends Fragment {
                 intent.putExtra("name", adName[position]);
                 intent.putExtra("giveOrTake", adGiveOrTake[position]);
                 intent.putExtra("type", adType[position]);
-                intent.putExtra("typeOfTye", adTypeOfType[position]);
+                intent.putExtra("typeOfType", adTypeOfType[position]);
                 intent.putExtra("color", adColor[position]);
                 intent.putExtra("description", adDescription[position]);
                 intent.putExtra("location", adLocation[position]);
@@ -124,7 +124,7 @@ public class DisplayAdsFragment extends Fragment {
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                User currentUser = userService.getCurrentUser();
+                User currentUser = LoginActivity.getUserService().getCurrentUser();
                 System.out.println("DisplayAdsFragment í back hnappi: currentUser er " + currentUser);
                 if(currentUser != null) {
                     Intent intent = new Intent(getActivity(), UsersiteActivity.class);

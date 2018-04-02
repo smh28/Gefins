@@ -19,7 +19,9 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import is.hi.teymi9.gefins.DisplaySingleAdActivity;
 import is.hi.teymi9.gefins.LoginActivity;
 import is.hi.teymi9.gefins.R;
 import is.hi.teymi9.gefins.SearchTypeActivity;
@@ -59,8 +61,8 @@ public class AdService {
     private Activity addAdActivity = null;
     // SearchAdActivity sem AdService hefur samskipti við
     private Activity searchTypeActivity = null;
-    //private String serverUrl = "http://192.168.1.3:8080";
-        private String serverUrl = "https://gefins.herokuapp.com";
+    //private String serverUrl = "http://192.168.1.2:8080";
+    private String serverUrl = "https://gefins.herokuapp.com";
     // Gson hlutur fyrir JSON vinnslu
     Gson gson = new Gson();
     // okhttp3 client fyrir samskipti við bakenda
@@ -418,6 +420,87 @@ public class AdService {
 
     }
 
+    /**
+     * Eyðir ad locally og sendir beiðni á bakenda um að eyða ad þar líka
+     * @param ad auglýsing sem skal eyða
+     * @param a activity sem kallar á að eyða auglýsingu
+     */
+    public void deleteAd(Ad ad, Activity a) {
+        String method = "/deleteAd";
+        if(LoginActivity.getUserService().isNetworkAvailable(a)) {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(ad));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(ad));
+            System.out.println("Beiðni um að eyða ad send á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            a.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (jsonData.toString().compareTo("Ad deleted successfully") == 0) {
+                                        Toast.makeText(a, R.string.ad_deleted_successfully, Toast.LENGTH_LONG).show();
+                                        adRepository.deleteAd(ad);
+                                        getAllAds();
+                                        ((DisplaySingleAdActivity)a).adDeletedSuccessfully();
+                                    }
+                                    else {
+                                        Toast.makeText(a, R.string.ad_not_deleted, Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            a.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(a, R.string.ad_not_deleted, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(a, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+
+    }
+
 
     /**
      * Skilar upplýsingum um hvort nettenging sé til staðar.
@@ -453,10 +536,9 @@ public class AdService {
         return currentAd;
     }
 
-    public void setCurrentAd(Ad currentUser) {
+    public void setCurrentAd(Ad currentAd) {
         this.currentAd = currentAd;
     }
-
 
 }
 

@@ -135,6 +135,9 @@
     <string name="inbox">Innhólf</string>
     <string name="reply">Svara</string>
     <string name="outbox">Úthólf</string>
+    <string name="eyda_auglysingu">Eyða auglýsingu</string>
+    <string name="ad_deleted_successfully">Tókst að eyða auglýsingu</string>
+    <string name="ad_not_deleted">Ekki tókst að eyða auglýsingu</string>
     <!--search type site-->
     <string-array name="searchHusgogn_array">
         <item>Allt</item>
