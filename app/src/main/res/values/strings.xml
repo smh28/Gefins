@@ -208,6 +208,12 @@
         <item>Marglitaður</item>
         <item>Annað</item>
     </string-array>
+    <!--Admin-site-->
+    <string name="adminwelcome">Velkominn kerfisstjóri</string>
+    <string name="eydanotanda">Eyða notanda</string>
+    <string name="eydaauglysingu">Eyða auglýsingu</string>
+    <string name="skodasidu">Skoða auglýsingar</string>
+    <string name="eyda">Eyða</string>
 
 
 </resources>
