@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.User;
 import is.hi.teymi9.gefins.service.UserService;
 
@@ -31,6 +33,8 @@ public class DisplaySingleAdFragment extends Fragment {
     private Button mComment;
     // Takki til að eyða auglýsingu
     private Button mDeleteAd;
+    // Takki til að uppfæra auglýsingu
+    private Button mUpdateAd;
 
     //Þjónusta fyrir notanda
     public static UserService userService = new UserService();
@@ -66,6 +70,7 @@ public class DisplaySingleAdFragment extends Fragment {
         mBack = (Button) v.findViewById(R.id.singleAdTilbaka);
         mComment = (Button) v.findViewById(R.id.comments);
         mDeleteAd = (Button) v.findViewById(R.id.delete_button);
+        mUpdateAd = (Button) v.findViewById(R.id.update_button);
 
         currentUser = LoginActivity.getUserService().getCurrentUser();
         System.out.println("DisplaySingleAdFragment á undan bundle: currentUser er " + currentUser);
@@ -98,10 +103,14 @@ public class DisplaySingleAdFragment extends Fragment {
                 // aftengi eyða takka ef notandi er ekki höfundurinn
                 mDeleteAd.setEnabled(false);
                 mDeleteAd.setVisibility(View.GONE);
+                mUpdateAd.setEnabled(false);
+                mUpdateAd.setVisibility(View.GONE);
             }
             else {
                 mDeleteAd.setEnabled(true);
                 mDeleteAd.setVisibility(View.VISIBLE);
+                mUpdateAd.setEnabled(true);
+                mUpdateAd.setVisibility(View.VISIBLE);
             }
         }
         currentUser = LoginActivity.getUserService().getCurrentUser();
@@ -134,6 +143,15 @@ public class DisplaySingleAdFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        mUpdateAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), EditAdActivity.class);
+                startActivity(intent);
             }
         });
 
