@@ -5,29 +5,21 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
-import android.view.Display;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import is.hi.teymi9.gefins.DisplaySingleAdActivity;
 import is.hi.teymi9.gefins.LoginActivity;
 import is.hi.teymi9.gefins.R;
 import is.hi.teymi9.gefins.SearchTypeActivity;
 import is.hi.teymi9.gefins.UsersiteActivity;
-import is.hi.teymi9.gefins.AddAdActivity;
-import is.hi.teymi9.gefins.DisplayAdsActivity;
 import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.Comment;
 import is.hi.teymi9.gefins.model.User;
@@ -250,7 +242,7 @@ public class AdService {
      */
     public void getAdsByType(String giveOrTake, String yfirflokkur, String undirflokkur, String litur, Activity a) {
         ArrayList<Comment> comments = new ArrayList<Comment>();
-        Ad ad = new Ad(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, comments, EMPTY_STRING);
+        Ad ad = new Ad("Gefins", EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, comments, EMPTY_STRING);
 
         System.out.println("GiveOrTake er: " + giveOrTake);
         System.out.println("Yfirflokkur er: " + yfirflokkur);
@@ -258,7 +250,9 @@ public class AdService {
         System.out.println("Litur er: " + litur);
 
         //Setja inn öll leitarskilyrði inn í nýju, tómu auglýsinguna ad
-        ad.setGiveOrTake(giveOrTake);
+        if(giveOrTake != null) {
+            ad.setGiveorTake(giveOrTake);
+        }
         if(!"Allt".equals(yfirflokkur)){
            ad.setAdType(yfirflokkur);
         }
@@ -268,7 +262,7 @@ public class AdService {
         if(!"Allir".equals(litur)){
             ad.setAdColor(litur);
         }
-        System.out.println("ad.giveOrTake er: " + ad.getGiveOrTake());
+        System.out.println("ad.giveOrTake er: " + ad.getGiveorTake());
         System.out.println("ad.type er: " + ad.getAdType());
         System.out.println("ad.typeOfType er: " + ad.getAdTypeOfType());
         System.out.println("ad.color er: " + ad.getAdColor());

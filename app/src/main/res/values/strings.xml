@@ -184,6 +184,7 @@
         <item>Annað</item>
     </string-array>
     <string-array name="searchAllt_array">
+        <item>Allt</item>
     </string-array>
     <string-array name="searchAnnad_array">
         <item>Annað</item>
