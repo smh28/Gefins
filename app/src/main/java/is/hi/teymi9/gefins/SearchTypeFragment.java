@@ -59,8 +59,6 @@ public class SearchTypeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_search_type, container, false);
 
-
-
         //Yfirflokkkur
         mSpinner = (Spinner) v.findViewById(R.id.spinner4);
         //Undirflokkur
@@ -124,25 +122,6 @@ public class SearchTypeFragment extends Fragment {
         // Apply the adapter to the spinner
         mSpinner3.setAdapter(adapter3);
 
-/* Prufa frá netinu - þarf að breyta til að athuga hvort virki (Sandra)
-        mGiveorTake.setOnClickListener(new RadioGroup.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                // get selected radio button from radioGroup
-                int selectedId = mGiveorTake.getCheckedRadioButtonId();
-
-                // find the radiobutton by returned id
-                radioButton = (RadioButton) findViewById(selectedId);
-
-                Toast.makeText(MyAndroidAppActivity.this,
-                        radioButton.getText(), Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
-*/
 
         /**
          * Listener sem breytir strengnum mGiveOrTake í "Gefins" eða "Óska eftir" eftir því í hvorn
@@ -163,6 +142,10 @@ public class SearchTypeFragment extends Fragment {
         });
 
 
+        /**
+         * Listener sem tekur inn valdar breytur fyrir leitarvalið þegar staðfestingarhnappurinn
+         * er valinn og kallar á aðferðina getAdsByType til að birta valdar auglýsingar
+         */
         mConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
