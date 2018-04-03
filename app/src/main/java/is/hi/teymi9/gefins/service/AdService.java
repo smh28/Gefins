@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import is.hi.teymi9.gefins.AdminActivity;
+import is.hi.teymi9.gefins.AdminDeleteAdActivity;
 import is.hi.teymi9.gefins.DisplaySingleAdActivity;
 import is.hi.teymi9.gefins.LoginActivity;
 import is.hi.teymi9.gefins.R;
@@ -76,6 +78,22 @@ public class AdService {
     public List<Ad> getAllAds() {
         adList = adRepository.getAdList();
         return adList;
+    }
+
+    /**
+     * Eyðir auglýsingu með ákveðnu nafni
+     * @param adName
+     * @param act
+     */
+    public void deleteAdByName(String adName, Activity act) {
+        System.out.println(adName);
+        adList = adRepository.getAdList();
+        for(Ad a: adList) {
+            if(adName.equals(a.getAdName())) {
+                System.out.println(a);
+                deleteAd(a,act);
+            }
+        }
     }
 
 
@@ -221,8 +239,11 @@ public class AdService {
                                         User currentUser = LoginActivity.getUserService().getCurrentUser();
                                         System.out.println("AdService í lok getAds: currentUser er " + currentUser);
                                         adRepository.setAdList(adList);
-                                        ((UsersiteActivity) a).displayAds();
-
+                                        if(currentUser.getUsername().equals("olla")) {
+                                            ((AdminActivity) a).displayAds();
+                                        } else {
+                                            ((UsersiteActivity) a).displayAds();
+                                        }
                                     }
                                 }
                             });
@@ -431,6 +452,8 @@ public class AdService {
 
     }
 
+
+
     /**
      * Eyðir ad locally og sendir beiðni á bakenda um að eyða ad þar líka
      * @param ad auglýsing sem skal eyða
@@ -482,7 +505,12 @@ public class AdService {
                                         Toast.makeText(a, R.string.ad_deleted_successfully, Toast.LENGTH_LONG).show();
                                         adRepository.deleteAd(ad);
                                         getAllAds();
-                                        ((DisplaySingleAdActivity)a).adDeletedSuccessfully();
+                                        User currentUser = LoginActivity.getUserService().getCurrentUser();
+                                        if(currentUser.getUsername().equals("olla")) {
+                                            ((AdminDeleteAdActivity)a).adDeletedSuccessfully();
+                                        } else {
+                                            ((DisplaySingleAdActivity)a).adDeletedSuccessfully();
+                                        }
                                     }
                                     else {
                                         Toast.makeText(a, R.string.ad_not_deleted, Toast.LENGTH_LONG).show();

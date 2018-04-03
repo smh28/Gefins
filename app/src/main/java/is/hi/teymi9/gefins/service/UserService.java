@@ -77,6 +77,8 @@ public class UserService implements Serializable {
     private Activity displaySingleAdActivity = null;
     // AddAdActivity sem UserService hefur samskipti við
     private Activity addAdActivity = null;
+    // AdminDeleteUserActivity sem UserService hefur samskipti við
+    private Activity adminDeleteUserActivity = null;
     // Gson hlutur fyrir JSON vinnslu
     Gson gson = new Gson();
     // okhttp3 client fyrir samskipti við bakenda
@@ -92,6 +94,16 @@ public class UserService implements Serializable {
      */
     public List<User> getAllUsers(){
         String method = "/getUsers";
+        if (isNetworkAvailable(getAdminDeleteUserActivity())) {
+            RequestBody body = RequestBody.create(MediaType.parse(
+                    "application/json; charset=utf-8"),
+                    gson.toJson(userList));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(userList));
+        }
         return userList;
     }
 
@@ -502,5 +514,11 @@ public class UserService implements Serializable {
 
     public void setEditUserActivity(Activity editUserActivity) {
         this.editUserActivity = editUserActivity;
+    }
+
+    public Activity getAdminDeleteUserActivity() {return adminDeleteUserActivity; }
+
+    public void setAdminDeleteUserActivity(Activity adminDeleteUserActivity) {
+        this.adminDeleteUserActivity = adminDeleteUserActivity;
     }
 }
