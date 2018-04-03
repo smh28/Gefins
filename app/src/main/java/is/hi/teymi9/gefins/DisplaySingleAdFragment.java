@@ -31,10 +31,11 @@ public class DisplaySingleAdFragment extends Fragment {
     private Button mBack;
     // Takki sem leyfir notanda að skoða ummæli
     private Button mComment;
-    // Takki til að eyða auglýsingu
-    private Button mDeleteAd;
     // Takki til að uppfæra auglýsingu
     private Button mUpdateAd;
+    // Takki til að eyða auglýsingu
+    private Button mDeleteAd;
+
 
     //Þjónusta fyrir notanda
     public static UserService userService = new UserService();
@@ -150,8 +151,9 @@ public class DisplaySingleAdFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), EditAdActivity.class);
+                Intent intent = EditAdActivity.newIntent(getActivity());
                 startActivity(intent);
+
             }
         });
 

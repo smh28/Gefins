@@ -17,16 +17,16 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import is.hi.teymi9.gefins.model.Ad;
-import is.hi.teymi9.gefins.model.*;
+import is.hi.teymi9.gefins.model.Comment;
 
 /**
- * Fragment fyrir viðmótið í AddAdActivity og virknina þar.
+ * Fragment fyrir viðmótið í EditAdActivity og virknina þar.
  *
- * @author Kristín María
+ * @author Sandra
  * @version 1.0
  */
 
-public class AddAdFragment extends Fragment {
+public class EditAdFragment extends Fragment {
 
     //Spinner þar sem að valið er hvernig tegund hluturinn sem verið er að gefa/óska eftir er
     private Spinner mSpinner;
@@ -35,7 +35,7 @@ public class AddAdFragment extends Fragment {
     //Spinner þar sem að valið er hvernig litur er á þeim hlut sem verið er að gefa/óska eftir
     private Spinner mSpinner3;
     //Takki fyrir staðfestingu á nýrri auglýsingu
-    private Button mConfirm;
+    private Button mUpdateAd;
     //Takki þar sem farið er tilbaka á notendasíðu
     private Button mBack;
     //RadioGroup sem heldur utan um takkana Gefins og Óska eftir
@@ -53,21 +53,23 @@ public class AddAdFragment extends Fragment {
     //Nýr ArrayList<Comment>
     private ArrayList<Comment> CommentList = new ArrayList<>();
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AddAdActivity.getAdService().setAddAdActivity(getActivity());
+        LoginActivity.getUserService().setEditAdActivity(getActivity());
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_add_ad, container, false);
+        View v = inflater.inflate(R.layout.fragment_edit_ad, container, false);
 
         mSpinner = (Spinner) v.findViewById(R.id.spinner4);
         mSpinner2 = (Spinner) v.findViewById(R.id.spinner5);
         mSpinner3 = (Spinner) v.findViewById(R.id.spinner6);
-        mConfirm = (Button) v.findViewById(R.id.confirm);
+        mUpdateAd = (Button) v.findViewById(R.id.uppfaera_auglysingu);
         mBack = (Button) v.findViewById(R.id.tilbaka);
         mGiveorTake = (RadioGroup) v.findViewById(R.id.radiogroup);
         mNameOfAd = (EditText) v.findViewById(R.id.nafn2);
@@ -127,20 +129,20 @@ public class AddAdFragment extends Fragment {
          * RadioButton er hakað við í RadioGroup
          */
         mGiveorTake.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-           @Override
-           public void onCheckedChanged(RadioGroup group, int checkedId) {
-               switch(checkedId){
-                   case R.id.radio_give:
-                       mGiveOrTake = "Gefins";
-                       break;
-                   case R.id.radio_take:
-                       mGiveOrTake = "Óska eftir";
-                       break;
-               }
-           }
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.radio_give:
+                        mGiveOrTake = "Gefins";
+                        break;
+                    case R.id.radio_take:
+                        mGiveOrTake = "Óska eftir";
+                        break;
+                }
+            }
         });
 
-        mConfirm.setOnClickListener(new View.OnClickListener() {
+        mUpdateAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -180,6 +182,8 @@ public class AddAdFragment extends Fragment {
 
         return v;
     }
+
+
+
+
 }
-
-

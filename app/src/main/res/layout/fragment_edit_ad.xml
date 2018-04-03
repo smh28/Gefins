@@ -125,7 +125,7 @@
         android:id="@+id/uppfaera_auglysingu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/addtype"
+        android:text="@string/uppfaera_auglysingu"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="147dp" />
 
