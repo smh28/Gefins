@@ -506,6 +506,7 @@ public class UserService implements Serializable {
         this.editUserActivity = editUserActivity;
     }
 
+
     public Activity getEditAdActivity() {
         return editAdActivity;
     }

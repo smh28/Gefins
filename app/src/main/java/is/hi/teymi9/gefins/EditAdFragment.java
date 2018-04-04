@@ -68,7 +68,7 @@ public class EditAdFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LoginActivity.getUserService().setEditAdActivity(getActivity());
+        DisplayAdsActivity.getAdService().setEditAdActivity(getActivity());
     }
 
 
@@ -174,8 +174,6 @@ public class EditAdFragment extends Fragment {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
-
-
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(getActivity(), R.array.litir_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
@@ -190,7 +188,7 @@ public class EditAdFragment extends Fragment {
 
 
         /**
-         * Listener sem breytir strengnum mGiveOrTake í "Gefins" eða "Óska eftir" eftir því í hvorn
+         * Breytir strengnum mGiveOrTake í "Gefins" eða "Óska eftir" eftir því í hvorn
          * RadioButton er hakað við í RadioGroup
          */
         mGiveorTake.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -207,6 +205,10 @@ public class EditAdFragment extends Fragment {
             }
         });
 
+        /**
+         * Uppfærir upplýsingar í auglýsingu á framenda
+         * og sendir beiðni um að uppfæra einnig á bakenda
+         */
         mUpdateAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
