@@ -59,9 +59,23 @@ public class CustomCommentList extends ArrayAdapter<String> {
        viewHolder.tvw1.setText(username[position]);
        viewHolder.tvw2.setText(comment[position]);
        if(LoginActivity.getUserService().getCurrentUser().getUsername().compareTo(username[position]) != 0) {
-           // aftengi eyða takka ef notandi er ekki höfundurinn
-           viewHolder.button.setEnabled(false);
-           viewHolder.button.setVisibility(View.GONE);
+
+           if(LoginActivity.getUserService().getCurrentUser().getUsername().compareTo(DisplaySingleAdActivity.adService.getCurrentAd().getAdUsername()) !=0){
+
+               viewHolder.button.setEnabled(false);
+               viewHolder.button.setVisibility(View.GONE);
+           } else {
+               viewHolder.button.setEnabled(true);
+               viewHolder.button.setVisibility(View.VISIBLE);
+               viewHolder.button.setOnClickListener(new View.OnClickListener(){
+                   @Override
+                   public void onClick(View v) {
+                       Comment c = DisplayCommentActivity.commentService.findComment(commentId[position]);
+                       DisplayCommentActivity.commentService.deleteComment(c, context);
+                   }
+
+               });
+           }
 
        }
        else {
