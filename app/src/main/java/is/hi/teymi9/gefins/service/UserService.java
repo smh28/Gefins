@@ -96,7 +96,7 @@ public class UserService implements Serializable {
      */
     public List<User> getAllUsers(){
         String method = "/getUsers";
-        if (isNetworkAvailable(getAdminDeleteUserActivity())) {
+        /*if (isNetworkAvailable(getAdminDeleteUserActivity())) {
             RequestBody body = RequestBody.create(MediaType.parse(
                     "application/json; charset=utf-8"),
                     gson.toJson(userList));
@@ -105,8 +105,22 @@ public class UserService implements Serializable {
                     .post(body)
                     .build();
             System.out.println(gson.toJson(userList));
-        }
+        }*/
+        userList = userRepository.getAll();
         return userList;
+    }
+
+    /**
+     * Eyðir notanda með ákveðið notendanafn
+     * @param username
+     */
+    public void deleteUserByUserName(String username) {
+        userList = userRepository.getAll();
+        for(User u: userList) {
+            if(username.equals(u.getUsername())){
+                userRepository.deleteUser(u);
+            }
+        }
     }
 
     /**
