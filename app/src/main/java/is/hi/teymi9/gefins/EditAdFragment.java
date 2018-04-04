@@ -217,23 +217,19 @@ public class EditAdFragment extends Fragment {
                 System.out.println(mGiveTake);
                 System.out.println(mNameOfAd.getText().toString());
                 System.out.println(mDescription.getText().toString());
+                System.out.println(mLocation.getText().toString());
                 System.out.println(mUsername);
 
-                Ad mNewAd = new Ad(mGiveTake,
-                        mNameOfAd.getText().toString(),
-                        mSpinner.getSelectedItem().toString(),
-                        mSpinner2.getSelectedItem().toString(),
-                        mSpinner3.getSelectedItem().toString(),
-                        mDescription.getText().toString(), mUsername, CommentList, mLocation.getText().toString());
+                EditAdActivity.getAdService().getCurrentAd().setGiveorTake(mGiveTake);
+                EditAdActivity.getAdService().getCurrentAd().setAdType(mSpinner.getSelectedItem().toString());
+                EditAdActivity.getAdService().getCurrentAd().setAdTypeOfType(mSpinner2.getSelectedItem().toString());
+                EditAdActivity.getAdService().getCurrentAd().setAdColor(mSpinner3.getSelectedItem().toString());
+                EditAdActivity.getAdService().getCurrentAd().setAdName(mNameOfAd.getText().toString());
+                EditAdActivity.getAdService().getCurrentAd().setAdDescription(mDescription.getText().toString());
+                EditAdActivity.getAdService().getCurrentAd().setAdLocation(mLocation.getText().toString());
 
-                String message = AddAdActivity.getAdService().addAd(mNewAd);
+                EditAdActivity.getAdService().updateAd(EditAdActivity.getAdService().getCurrentAd());
 
-                Toast.makeText(getActivity(),
-                        message,
-                        Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
             }
         });
 

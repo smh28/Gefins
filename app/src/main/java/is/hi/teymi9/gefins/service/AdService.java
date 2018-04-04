@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import is.hi.teymi9.gefins.DisplaySingleAdActivity;
+import is.hi.teymi9.gefins.EditAdActivity;
+import is.hi.teymi9.gefins.EditUserActivity;
 import is.hi.teymi9.gefins.LoginActivity;
 import is.hi.teymi9.gefins.R;
 import is.hi.teymi9.gefins.SearchTypeActivity;
@@ -53,6 +55,8 @@ public class AdService {
     private Activity addAdActivity = null;
     // SearchAdActivity sem AdService hefur samskipti við
     private Activity searchTypeActivity = null;
+    // EditAdActivity sem AdService hefur samskipti við
+    private Activity editAdActivity = null;
     //private String serverUrl = "http://192.168.1.2:8080";
     private String serverUrl = "https://gefins.herokuapp.com";
     // Gson hlutur fyrir JSON vinnslu
@@ -425,6 +429,84 @@ public class AdService {
 
     }
 
+
+    /**
+     * Uppfærir auglýsingu þegar upplýsingum hefur verið breytt
+     * Sendir auglýsingu sem á að uppfæra á bakenda þar sem henni er bætt við ef hún er í lagi
+     * @param a Auglýsingin sem á að uppfæra
+     * @return Skilaboð þess efnis hvort að tókst að uppfæra auglýsingu
+     * */
+    public String updateAd(Ad a) {
+        String method = "/updateAd";
+        if(isNetworkAvailable(getEditAdActivity())) {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(a));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(a));
+            System.out.println("Uppfærð auglýsing send á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    editAdActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    editAdActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            editAdActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (jsonData.toString().compareTo("Update ad failed") == 0) {
+                                        Toast.makeText(editAdActivity, R.string.update_ad_failed, Toast.LENGTH_LONG).show();
+                                    }
+                                    else {
+                                        Toast.makeText(editAdActivity, R.string.update_ad_success, Toast.LENGTH_LONG).show();
+                                        ((EditAdActivity) editAdActivity).updateAdWasSuccessful();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(editAdActivity, R.string.update_ad_failed, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(editAdActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+        return "";
+    }
+
+
+
     /**
      * Eyðir ad locally og sendir beiðni á bakenda um að eyða ad þar líka
      * @param ad auglýsing sem skal eyða
@@ -535,6 +617,14 @@ public class AdService {
 
     public void setSearchTypeActivity(Activity searchTypeActivity) {
         this.searchTypeActivity = searchTypeActivity;
+    }
+
+    public Activity getEditAdActivity() {
+        return editAdActivity;
+    }
+
+    public void setEditAdActivity(Activity editAdActivity) {
+        this.editAdActivity = editAdActivity;
     }
 
     public Ad getCurrentAd() {

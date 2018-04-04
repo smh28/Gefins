@@ -211,6 +211,8 @@
         <item>Marglitaður</item>
         <item>Annað</item>
     </string-array>
-
+    <!--edit ad site-->
+    <string name="update_ad_success">Auglýsingin þín hefur verið uppfærð</string>
+    <string name="update_ad_failed">Ekki tókst að uppfæra auglýsingu. Vinsamlegast reynið aftur.</string>
 
 </resources>

@@ -40,5 +40,12 @@ public class EditAdActivity extends SingleFragmentActivity {
         return intent;
     }
 
+    /**
+     * Ræsir DisplayAdsActivity þegar að uppfærsla auglýsingar hefur tekist
+     */
+    public void updateAdWasSuccessful(){
+        Intent intent = new Intent(this, DisplayAdsActivity.class);
+        startActivity(intent);
+    }
 
 }
