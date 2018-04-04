@@ -33,6 +33,8 @@ public class DisplayCommentsFragment extends Fragment {
     private Ad ad;
     // allar athugasemdir sem tengjast auglýsingunni
     private List<Comment> lComments;
+    // Takki til að skrifa nýja athugasemd
+    private Button mNewComment;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,11 +49,11 @@ public class DisplayCommentsFragment extends Fragment {
 
         mBack = (Button) v.findViewById(R.id.singleAdTilbaka);
         mComments = (ListView) v.findViewById(R.id.commentList);
+        mNewComment = (Button) v.findViewById(R.id.newComment);
 
-        ad = DisplayCommentActivity.adService.getCurrentAd();
+
 
         lComments = DisplayCommentActivity.commentService.getAllComments();
-        DisplayCommentActivity.commentService.getAdComments(DisplayAdsActivity.adService.getCurrentAd(), getActivity());
 
         String[] userComment = new String[lComments.size()];
         String[] comment = new String[lComments.size()];
@@ -73,6 +75,14 @@ public class DisplayCommentsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mNewComment.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), addCommentActivity.class);
                 startActivity(intent);
             }
         });

@@ -52,11 +52,96 @@ public class CommentService implements Serializable {
     Gson gson = new Gson();
     // okhttp3 client fyrir samskipti við bakenda
     OkHttpClient client;
+    // Activity
+    private Activity addCommentActivity = null;
+    // Activity
+    private Activity displaySingleAdActivity = null;
 
     public CommentService() {
         client = new OkHttpClient();
     }
 
+    /**
+     * Sendir athugasemd á bakenda þar sem henni er bætt við
+     * @param comment Athugasemdin sem bæta skal við
+     * @return Skilaboð þess efnis hvort að tókst að bæta auglýsingu við
+     */
+    public String addComment(Comment comment) {
+        String method = "/createComment";
+        Activity newActivity = getAddCommentActivity();
+        System.out.println("AdService í addAd: newActivity er " + newActivity);
+        if(LoginActivity.getUserService().isNetworkAvailable(getAddCommentActivity())) {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(comment));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(comment));
+            System.out.println("Ný athugasemd send á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    addCommentActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    addCommentActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            addCommentActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    //if (jsonData.toString().compareTo("Create user failed. Please try again.") == 0) {
+                                    //    Toast.makeText(addAdActivity, R.string.create_user_failed, Toast.LENGTH_LONG).show();
+                                    //}
+                                    //else {
+                                    //setCurrentUser(u);
+                                    //((AddAdActivity) addAdActivity).createUserWasSucessful();
+                                    Toast.makeText(addCommentActivity, R.string.create_ad_success, Toast.LENGTH_LONG).show();
+                                    //}
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(addCommentActivity, R.string.create_ad_failed, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(addCommentActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+        return "";
+    }
+
+    /**
+     * Sækir allar athugasemdir
+     * @return
+     */
     public List<Comment> getAllComments() {
         commentList = commentRep.getCommentList();
         return commentList;
@@ -116,7 +201,7 @@ public class CommentService implements Serializable {
                                         Toast.makeText(a, R.string.no_ads_found, Toast.LENGTH_LONG).show();
                                     } else {
                                         commentRep.setCommentsList(commentList);
-                                        ((DisplayCommentActivity) a).displayAdComments();
+                                        ((DisplaySingleAdActivity) a).displayAdComments();
                                     }
                                 }
                             });
@@ -137,8 +222,27 @@ public class CommentService implements Serializable {
         }
     }
 
+    /**
+     * Bætir athugasemndinni við í repo
+     * @param c
+     */
     public void addAd(Comment c) {
         commentRep.addComment(c);
     }
 
+    /**
+     * skilar activity
+     * @return
+     */
+    public Activity getAddCommentActivity() {
+        return addCommentActivity;
+    }
+
+    /**
+     * nær í activity
+     * @param addCommentActivity
+     */
+    public void setAddCommentActivity(Activity addCommentActivity) {
+        this.addCommentActivity = addCommentActivity;
+    }
 }

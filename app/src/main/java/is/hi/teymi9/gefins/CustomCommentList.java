@@ -44,7 +44,7 @@ public class CustomCommentList extends ArrayAdapter<String> {
 
        if(r==null) {
            LayoutInflater layoutInflater = context.getLayoutInflater();
-           r=layoutInflater.inflate(R.layout.fragment_display_comments,null,true);
+           r=layoutInflater.inflate(R.layout.fragment_comments_layout,null,true);
            viewHolder=new ViewHolder(r);
            r.setTag(viewHolder);
        } else {

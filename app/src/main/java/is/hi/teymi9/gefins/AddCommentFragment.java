@@ -1,5 +1,6 @@
 package is.hi.teymi9.gefins;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.Comment;
@@ -38,7 +40,10 @@ public class AddCommentFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        addCommentActivity.getCommentService().setAddCommentActivity(getActivity());
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,9 +61,15 @@ public class AddCommentFragment extends Fragment {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Ad ad = new Ad("gefins", "Mjúkur sófi", "Húsgögn", "Sófi", "Svartur", "Mjúkur 3ja sæta sófi úr microsoft efni", "olla", null, "105");
-                Comment newComment = new Comment(mUsername, mComment.toString(),ad);
-                addCommentActivity.getCommentService().addAd(newComment);
+                Comment newComment = new Comment(mUsername, mComment.getText().toString(),mAd);
+                String message = addCommentActivity.getCommentService().addComment(newComment);
+
+                Toast.makeText(getActivity(),
+                        message,
+                        Toast.LENGTH_SHORT).show();
+
+                //DisplayCommentActivity.commentService.getAdComments(DisplayAdsActivity.adService.getCurrentAd(), DisplayCommentActivity.commentService.getDisplaySingleAdActivity());
+
             }
         });
 
