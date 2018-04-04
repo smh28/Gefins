@@ -49,12 +49,11 @@ public class AddCommentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_comment, container, false);
-
         mSubmit = (Button) v.findViewById(R.id.confirm);
         mCancel = (Button) v.findViewById(R.id.tilbaka);
         mComment = (EditText) v.findViewById(R.id.commentText);
         mUsername = LoginActivity.getUserService().getCurrentUser().getUsername();
-        mAd = AddAdActivity.getAdService().getCurrentAd();
+        mAd = DisplaySingleAdActivity.adService.getCurrentAd();
 
         // Villumeðhöndlun á comment ( má ekki vera tómt )
 
@@ -63,13 +62,20 @@ public class AddCommentFragment extends Fragment {
             public void onClick(View v) {
                 Comment newComment = new Comment(mUsername, mComment.getText().toString(),mAd);
                 String message = addCommentActivity.getCommentService().addComment(newComment);
-
                 Toast.makeText(getActivity(),
                         message,
                         Toast.LENGTH_SHORT).show();
 
-                //DisplayCommentActivity.commentService.getAdComments(DisplayAdsActivity.adService.getCurrentAd(), DisplayCommentActivity.commentService.getDisplaySingleAdActivity());
-
+                Intent intent = new Intent(getActivity(), DisplaySingleAdActivity.class);
+                intent.putExtra("name", mAd.getAdName());
+                intent.putExtra("giveOrTake", mAd.getGiveOrTake());
+                intent.putExtra("type", mAd.getAdType());
+                intent.putExtra("typeOfType", mAd.getAdTypeOfType());
+                intent.putExtra("color", mAd.getAdColor());
+                intent.putExtra("description", mAd.getAdDescription());
+                intent.putExtra("location", mAd.getAdLocation());
+                intent.putExtra("username", mAd.getAdUsername());
+                startActivity(intent);
             }
         });
 

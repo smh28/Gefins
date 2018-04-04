@@ -44,6 +44,7 @@ public class DisplaySingleAdFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LoginActivity.getUserService().setDisplaySingleAdActivity(getActivity());
+        DisplaySingleAdActivity.adService.setSingleAdActivity(getActivity());
     }
 
     public static UserService getUserService() {

@@ -112,7 +112,6 @@ public class DisplayAdsFragment extends Fragment {
                 intent.putExtra("description", adDescription[position]);
                 intent.putExtra("location", adLocation[position]);
                 intent.putExtra("username", adUsername[position]);
-
                 startActivity(intent);
 
             }
