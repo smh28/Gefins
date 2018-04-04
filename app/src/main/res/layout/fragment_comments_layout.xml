@@ -24,5 +24,11 @@ skipta niður á text view til að fá betra útlit -->
         android:layout_width="match_parent"
         android:layout_height="62dp" />
 
+    <Button
+        android:id="@+id/deleteComment"
+        android:layout_width="111dp"
+        android:layout_height="wrap_content"
+        android:text="Eyða" />
+
 
 </LinearLayout>
