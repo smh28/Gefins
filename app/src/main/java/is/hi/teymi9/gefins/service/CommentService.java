@@ -116,13 +116,13 @@ public class CommentService implements Serializable {
                                     //else {
                                     //setCurrentUser(u);
                                     //((AddAdActivity) addAdActivity).createUserWasSucessful();
-                                    Toast.makeText(addCommentActivity, R.string.create_ad_success, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(addCommentActivity, "Ný athugasemd hefur verið búin til", Toast.LENGTH_LONG).show();
                                     //}
                                 }
                             });
                         }
                         else {
-                            Toast.makeText(addCommentActivity, R.string.create_ad_failed, Toast.LENGTH_LONG).show();
+                            Toast.makeText(addCommentActivity, "Ekki tókst að búa til auglýsingu, vinsamlegast reynið aftur", Toast.LENGTH_LONG).show();
                         }
                     } catch (IOException e) {
                         Log.e(TAG, "Exception caught: ", e);

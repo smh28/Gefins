@@ -61,6 +61,8 @@ public class AdService {
     private Activity addAdActivity = null;
     // SearchAdActivity sem AdService hefur samskipti við
     private Activity searchTypeActivity = null;
+    // SingleAdActivity sem AdService hefur samskipti við
+    private Activity singleAdActivity = null;
     //private String serverUrl = "http://192.168.1.2:8080";
     private String serverUrl = "https://gefins.herokuapp.com";
     // Gson hlutur fyrir JSON vinnslu
@@ -538,6 +540,14 @@ public class AdService {
 
     public void setCurrentAd(Ad currentAd) {
         this.currentAd = currentAd;
+    }
+
+    public Activity getSingleAdActivity(){
+        return singleAdActivity;
+    }
+
+    public void setSingleAdActivity(Activity singleAdActivity){
+        this.singleAdActivity = singleAdActivity;
     }
 
 }
