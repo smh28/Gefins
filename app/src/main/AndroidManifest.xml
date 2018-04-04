@@ -48,6 +48,10 @@
         </activity>
         <activity android:name=".OutboxActivity">
         </activity>
+        <activity android:name=".AdminDeleteUserActivity">
+        </activity>
+        <activity android:name=".AdminDeleteAdActivity">
+        </activity>
 
     </application>
 
