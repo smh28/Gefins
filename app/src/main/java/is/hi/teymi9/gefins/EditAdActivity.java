@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import is.hi.teymi9.gefins.service.AdService;
+
 /**
  * Activity í Gefins til þess að breyta innihaldi auglýsinga
  *
@@ -12,9 +14,17 @@ import android.support.v4.app.Fragment;
  */
 
 public class EditAdActivity extends SingleFragmentActivity {
+
+    //public static AdService adService = new AdService();
+    public static AdService adService = DisplayAdsActivity.getAdService();
+
     @Override
     protected Fragment createFragment() {
         return new EditAdFragment();
+    }
+
+    public static AdService getAdService() {
+        return adService;
     }
 
 
