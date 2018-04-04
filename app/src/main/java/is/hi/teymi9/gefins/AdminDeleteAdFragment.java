@@ -72,7 +72,7 @@ public class AdminDeleteAdFragment extends Fragment {
         for(Ad a: allAds) {
             //Fylla inn í strengjafylkin
             adName[i] = a.getAdName();
-            adGiveOrTake[i] = a.getGiveOrTake();
+            adGiveOrTake[i] = a.getGiveorTake();
             adType[i] = a.getAdType();
             adTypeOfType[i] = a.getAdTypeOfType();
             adColor[i] = a.getAdColor();
