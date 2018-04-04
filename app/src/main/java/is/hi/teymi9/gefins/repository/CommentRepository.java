@@ -62,6 +62,9 @@ public class CommentRepository {
     public void setCommentsList(ArrayList<Comment> comments) {
         this.comments = comments;
     }
+    public void deleteComment(Comment c) {
+        comments.remove(c);
+    }
 
 
 }

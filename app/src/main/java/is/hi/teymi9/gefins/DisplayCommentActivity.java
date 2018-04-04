@@ -31,6 +31,7 @@ public class DisplayCommentActivity extends SingleFragmentActivity {
         startActivity(intent);
     }
 
+
     @Override
     protected Fragment createFragment() {
         return new DisplayCommentsFragment();

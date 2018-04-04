@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import is.hi.teymi9.gefins.DisplayCommentActivity;
 import is.hi.teymi9.gefins.DisplaySingleAdActivity;
@@ -56,9 +57,23 @@ public class CommentService implements Serializable {
     private Activity addCommentActivity = null;
     // Activity
     private Activity displaySingleAdActivity = null;
+    // Current comment
+    private Comment currentComment = null;
 
     public CommentService() {
         client = new OkHttpClient();
+    }
+
+
+    /**
+     *
+     */
+    public Comment findComment(UUID id) {
+        for(Comment c: commentList) {
+            if (id == c.getId())
+                return c;
+        }
+        return null;
     }
 
     /**
@@ -245,4 +260,89 @@ public class CommentService implements Serializable {
     public void setAddCommentActivity(Activity addCommentActivity) {
         this.addCommentActivity = addCommentActivity;
     }
+
+    /**
+     * Eyðir athugasemd locally og sendir beiðni á bakenda um að eyða ad þar líka
+     * @param comment athugasemd sem skal eyða
+     * @param a activity sem kallar á að eyða auglýsingu
+     */
+    public void deleteComment(Comment comment, Activity a) {
+        String method = "/deleteComment";
+        if(LoginActivity.getUserService().isNetworkAvailable(a)) {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(comment));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(comment));
+            System.out.println("Beiðni um að eyða athugasemd send á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            a.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (jsonData.toString().compareTo("Comment deleted successfully") == 0) {
+                                        Toast.makeText(a, R.string.ad_deleted_successfully, Toast.LENGTH_LONG).show();
+                                        commentRep.deleteComment(comment);
+                                        getAllComments();
+                                        ((DisplayCommentActivity)a).displayAdComments();
+                                    }
+                                    else {
+                                        Toast.makeText(a, "Ekki tókst að eyða athugasemdinni", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            a.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(a, "Ekki tókst að eyða athugasemdinni", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(a, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+
+
+
 }

@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.UUID;
 
 import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.Comment;
@@ -57,16 +58,18 @@ public class DisplayCommentsFragment extends Fragment {
 
         String[] userComment = new String[lComments.size()];
         String[] comment = new String[lComments.size()];
+        UUID[] commentId = new UUID[lComments.size()];
 
 
         int i = 0;
         for (Comment c: lComments) {
             userComment[i] = c.getUsername();
             comment[i] = c.getComment();
+            commentId[i] = c.getId();
             i++;
         }
 
-        CustomCommentList customCommentList = new CustomCommentList(getActivity(),userComment, comment );
+        CustomCommentList customCommentList = new CustomCommentList(getActivity(),userComment, comment,commentId);
 
         mComments.setAdapter(customCommentList);
 
