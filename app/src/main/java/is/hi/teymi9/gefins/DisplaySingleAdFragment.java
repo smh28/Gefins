@@ -66,6 +66,7 @@ public class DisplaySingleAdFragment extends Fragment {
         mComment = (Button) v.findViewById(R.id.comments);
         mDeleteAd = (Button) v.findViewById(R.id.delete_button);
 
+        // ná í núverandi notanda
         currentUser = LoginActivity.getUserService().getCurrentUser();
         System.out.println("DisplaySingleAdFragment á undan bundle: currentUser er " + currentUser);
 
@@ -73,7 +74,6 @@ public class DisplaySingleAdFragment extends Fragment {
 
         currentUser = LoginActivity.getUserService().getCurrentUser();
         System.out.println("DisplaySingleAdFragment á eftir bundle: currentUser er " + currentUser);
-
 
         if(bundle != null) {
             String adName = bundle.getString("name");
@@ -93,6 +93,7 @@ public class DisplaySingleAdFragment extends Fragment {
             tv7.setText("Staðsetning: " + adLocation);
             tv8.setText("Höfundur auglýsingar: " + adUsername);
 
+            // Ef núverandi notandi á auglýsinguna sér hann takka sem leyfir honum að eyða auglýsingunni
             if(LoginActivity.getUserService().getCurrentUser().getUsername().compareTo(adUsername) != 0) {
                 // aftengi eyða takka ef notandi er ekki höfundurinn
                 mDeleteAd.setEnabled(false);
@@ -103,6 +104,7 @@ public class DisplaySingleAdFragment extends Fragment {
                 mDeleteAd.setVisibility(View.VISIBLE);
             }
         }
+        // Nær í núverandi notanda
         currentUser = LoginActivity.getUserService().getCurrentUser();
         System.out.println("DisplaySingleAdFragment á eftir bundle og if setningu: currentUser er " + currentUser);
 
@@ -136,6 +138,7 @@ public class DisplaySingleAdFragment extends Fragment {
             }
         });
 
+        // Takki sem eyðir auglýsingu
         mDeleteAd.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

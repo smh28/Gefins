@@ -18,6 +18,7 @@ import is.hi.teymi9.gefins.service.UserService;
  *
  * @author Sanda
  * @version 1.0
+ * @date
  */
 
 public class UsersiteActivity extends SingleFragmentActivity {

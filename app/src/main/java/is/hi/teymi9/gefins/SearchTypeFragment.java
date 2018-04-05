@@ -26,6 +26,7 @@ import is.hi.teymi9.gefins.model.Comment;
  *
  * @author Sandra
  * @version 1.0
+ * @date
  */
 
 
@@ -85,6 +86,7 @@ public class SearchTypeFragment extends Fragment {
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.searchHusgogn_array, android.R.layout.simple_spinner_item);
 
+
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -121,26 +123,6 @@ public class SearchTypeFragment extends Fragment {
         // Apply the adapter to the spinner
         mSpinner3.setAdapter(adapter3);
 
-/* Prufa frá internetinu - þarf að breyta til að athuga hvort virki (Sandra)
-        mGiveorTake.setOnClickListener(new RadioGroup.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                // get selected radio button from radioGroup
-                int selectedId = mGiveorTake.getCheckedRadioButtonId();
-
-                // find the radiobutton by returned id
-                radioButton = (RadioButton) findViewById(selectedId);
-
-                Toast.makeText(MyAndroidAppActivity.this,
-                        radioButton.getText(), Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
-*/
-
         /**
          * Listener sem breytir strengnum mGiveOrTake í "Gefins" eða "Óska eftir" eftir því í hvorn
          * RadioButton er hakað við í RadioGroup
@@ -169,17 +151,6 @@ public class SearchTypeFragment extends Fragment {
                 System.out.println("Í SearchType Spinner3 = litur: " + mSpinner3.getSelectedItem().toString());
                 System.out.println("Í SearchType mGiveOrTake = gefins eða óska eftir: " + mGiveOrTake);
 
-                /*
-                Ad mNewAd = new Ad(mGiveOrTake,
-                        mNameOfAd.getText().toString(),
-                        mSpinner.getSelectedItem().toString(),
-                        mSpinner2.getSelectedItem().toString(),
-                        mSpinner3.getSelectedItem().toString(),
-                        null, mUsername, CommentList, mLocation.getText().toString());
-
-                String message = AddAdActivity.getAdService().addAd(mNewAd);
-                */
-
                 //Kallar á aðferðina getAdsByType í AdService sem sér um að sækja og birta réttar auglýsingar
                 SearchTypeActivity.getAdService().getAdsByType(
                         mSpinner.getSelectedItem().toString(),
@@ -187,19 +158,10 @@ public class SearchTypeFragment extends Fragment {
                         getActivity()
                 );
 
-
-                /*
-                Toast.makeText(getActivity(),
-                        message,
-                        Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
-                */
-
             }
         });
 
+        // takki sem sendir notanda til baka
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

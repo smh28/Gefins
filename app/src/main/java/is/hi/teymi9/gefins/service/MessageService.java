@@ -35,6 +35,7 @@ import okhttp3.Response;
  * Sér um að senda, sækja og sýna einkaskilaboð.
  *
  * @author Einar
+ * @date
  * @version 1.0
  */
 

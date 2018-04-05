@@ -4,15 +4,22 @@ package is.hi.teymi9.gefins.model;
  *
  * @author Einar
  * @date February 2018
+ * @version 1.0
  *
  * Credentials klasi til að senda login upplýsingar á þjón
  */
 
 public class Credentials {
-
+    // Notendanafn
     private String username;
+    // Lykilorð
     private String password;
 
+    /**
+     * Smiður
+     * @param username
+     * @param password
+     */
     public Credentials(String username, String password) {
         this.username = username;
         this.password = password;

@@ -7,6 +7,7 @@ import java.util.UUID;
  * Módel klasi fyrir notanda (User)
  *
  * @author Sandra
+ * @date
  * @version 1.0
  */
 

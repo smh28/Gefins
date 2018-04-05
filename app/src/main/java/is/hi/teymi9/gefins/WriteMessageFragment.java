@@ -16,6 +16,7 @@ import is.hi.teymi9.gefins.model.Message;
  *
  * @author Einar
  * @version 1.0
+ * @date
  */
 
 public class WriteMessageFragment extends Fragment {

@@ -6,6 +6,7 @@ import java.util.UUID;
  * Módel klasi fyrir athugasemdir (Comment)
  *
  * @author Ólöf Fríða
+ * @date March 2018
  * @version 1.0
  */
 

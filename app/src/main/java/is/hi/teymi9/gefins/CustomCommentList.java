@@ -23,16 +23,28 @@ import is.hi.teymi9.gefins.service.AdService;
  * Gerir custom lista fyrir athugasemdir
  *
  * @author Ólöf Fríða
+ * @Date March 2018
  * @version 1.0
+ *
  */
 
 public class CustomCommentList extends ArrayAdapter<String> {
-
+    // listi af notendanöfnum
    private String[] username;
+   // listi af athugasemdunum
    private String[] comment;
+   // Activity
    private Activity context;
+   // Listi af id
    private UUID[] commentId;
 
+    /**
+     * Smiður fyrir custom listann
+     * @param context  activity
+     * @param username notendanafn
+     * @param comment athugasemdin (textinn)
+     * @param commentId id á athugasemd
+     */
    public CustomCommentList(Activity context, String[] username, String[] comment, UUID[] commentId) {
        super(context, R.layout.fragment_display_comments,username);
 
@@ -42,6 +54,13 @@ public class CustomCommentList extends ArrayAdapter<String> {
    this.commentId = commentId;
    }
 
+    /**
+     *
+     * @param position staðsetning
+     * @param convertView
+     * @param parent
+     * @return skilar view
+     */
    @NonNull
    @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

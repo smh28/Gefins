@@ -21,6 +21,7 @@ import is.hi.teymi9.gefins.model.Comment;
  * Fragment fyrir viðmótið í DisplayCommentActivity og virknina þar.
  *
  * @author Ólöf Fríða
+ * @date March 2018
  * @version 1.0
  */
 
@@ -53,14 +54,14 @@ public class DisplayCommentsFragment extends Fragment {
         mNewComment = (Button) v.findViewById(R.id.newComment);
 
 
-
+        // nær í allar athugasemdir
         lComments = DisplayCommentActivity.commentService.getAllComments();
 
         String[] userComment = new String[lComments.size()];
         String[] comment = new String[lComments.size()];
         UUID[] commentId = new UUID[lComments.size()];
 
-
+        // stillir userComment, comment og commentId
         int i = 0;
         for (Comment c: lComments) {
             userComment[i] = c.getUsername();
@@ -69,8 +70,8 @@ public class DisplayCommentsFragment extends Fragment {
             i++;
         }
 
+        // stillir custom listann
         CustomCommentList customCommentList = new CustomCommentList(getActivity(),userComment, comment,commentId);
-
         mComments.setAdapter(customCommentList);
 
         //Sendir notanda tilbaka á usersite síðuna
@@ -82,6 +83,7 @@ public class DisplayCommentsFragment extends Fragment {
             }
         });
 
+        // Takki sem leyfir notanda að skrifa nýja athugasemd
         mNewComment.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

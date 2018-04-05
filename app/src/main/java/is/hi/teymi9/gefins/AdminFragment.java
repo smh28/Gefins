@@ -19,10 +19,11 @@ import is.hi.teymi9.gefins.model.User;
  *
  * @author Ólöf Fríða
  * @version 1.0
+ * @date March 2018
  */
 
 public class AdminFragment extends Fragment {
-
+    // Listi af notendum
     List<User> users;
     // Takki fyrir útskráningu
     private Button mLogout;
@@ -44,6 +45,7 @@ public class AdminFragment extends Fragment {
         mUserList = (ListView) v.findViewById(R.id.userList);
         users = AdminActivity.getUserService().getAllUsers();
         int count = users.size();
+        // Ef listin af notendum er ekki tómur þá birtum við hann
         if(!users.isEmpty()){
 
             String[] userName = new String[count];
@@ -62,7 +64,7 @@ public class AdminFragment extends Fragment {
             mUserList.setAdapter(listViewAdapter);
         }
 
-
+        // Takki sem skráir notandan út
         mLogout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

@@ -17,6 +17,7 @@ import is.hi.teymi9.gefins.model.User;
  *
  * @author Einar
  * @version 1.0
+ * @date
  */
 
 public class EditUserFragment extends Fragment {
@@ -61,8 +62,6 @@ public class EditUserFragment extends Fragment {
         mAddress = (EditText) v.findViewById(R.id.address);
 
         mUsername.setText(LoginActivity.getUserService().getCurrentUser().getUsername());
-        //mPassword.setText(LoginActivity.getUserService().getCurrentUser().getPassword());
-        //mPasswordRepeat.setText(LoginActivity.getUserService().getCurrentUser().getPassword());
         mEmail.setText(LoginActivity.getUserService().getCurrentUser().getEmail());
         mFullName.setText(LoginActivity.getUserService().getCurrentUser().getFullName());
         mPhoneNumber.setText(LoginActivity.getUserService().getCurrentUser().getPhonenr());

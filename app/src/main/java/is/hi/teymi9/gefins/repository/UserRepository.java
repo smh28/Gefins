@@ -10,6 +10,7 @@ import is.hi.teymi9.gefins.model.User;
  * Geymsla fyrir notendur (User)
  *
  * @author Sandra
+ * @date
  * @version 1.0
  */
 

@@ -24,6 +24,7 @@ import is.hi.teymi9.gefins.model.*;
  *
  * @author Kristín María
  * @version 1.0
+ * @date
  */
 
 public class AddAdFragment extends Fragment {
@@ -140,6 +141,7 @@ public class AddAdFragment extends Fragment {
            }
         });
 
+        // Listenner sem staðfestir að búa skal nýja athugasemd
         mConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -11,6 +11,7 @@ import is.hi.teymi9.gefins.model.Comment;
  * Módel klasi fyrir auglýsingu (Ad)
  *
  * @author Kristín María
+ * @date March 2018
  * @version 1.0
  */
 

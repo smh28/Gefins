@@ -37,12 +37,13 @@ import okhttp3.Response;
  *
  * @author Ólöf Fríða
  * @version 1.0
+ * @date March 2018
  */
 
 public class CommentService implements Serializable {
 
     // Geymsla fyrir athugasemdirnar
-    CommentRepository commentRep = new CommentRepository();
+    private CommentRepository commentRep = new CommentRepository();
     // tag til að auðkenna skilaboð í logger
     public static final String TAG = CommentService.class.getSimpleName();
     // Tengjast vefþóni
@@ -64,9 +65,10 @@ public class CommentService implements Serializable {
         client = new OkHttpClient();
     }
 
-
     /**
-     *
+     * finnur athugasemd með viðeigandi id
+     * @param id id
+     * @return listi af athugasemdum
      */
     public Comment findComment(UUID id) {
         for(Comment c: commentList) {
@@ -239,7 +241,7 @@ public class CommentService implements Serializable {
 
     /**
      * Bætir athugasemndinni við í repo
-     * @param c
+     * @param c Comment
      */
     public void addAd(Comment c) {
         commentRep.addComment(c);
@@ -247,7 +249,7 @@ public class CommentService implements Serializable {
 
     /**
      * skilar activity
-     * @return
+     * @return activity
      */
     public Activity getAddCommentActivity() {
         return addCommentActivity;

@@ -12,6 +12,7 @@ import is.hi.teymi9.gefins.model.Comment;
  *
  * @author Ólöf
  * @version 1.0
+ * @date March 2018
  */
 
 public class CommentRepository {

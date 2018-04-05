@@ -11,6 +11,7 @@ import is.hi.teymi9.gefins.service.UserService;
  *
  * @author Ólöf Fríða
  * @version 1.0
+ * @date March 2018
  */
 
 public class AdminActivity extends SingleFragmentActivity {

@@ -9,16 +9,20 @@ import is.hi.teymi9.gefins.service.CommentService;
 
 /**
  * Activity í Gefins sem sýnir athugasemdir fyrir valda auglýsingu
- * author Ólöf Fríða
+ * @author Ólöf Fríða
+ * @date March 2018
  * @version 1.0
  */
 
 
 public class DisplayCommentActivity extends SingleFragmentActivity {
 
+    // commentService breyta
     public static CommentService commentService = new CommentService();
+    // adService breyta
     public static AdService adService = new AdService();
 
+    // skilar adService
     public static AdService getAdService() {
         return adService;
     }
