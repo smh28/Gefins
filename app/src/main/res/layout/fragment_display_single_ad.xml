@@ -92,6 +92,14 @@ skipta niður á text view til að fá betra útlit -->
         tools:layout_editor_absoluteY="301dp" />
 
     <Button
+        android:id="@+id/update_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/uppfaera_auglysingu"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="301dp" />
+
+    <Button
         android:id="@+id/delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import is.hi.teymi9.gefins.model.Comment;
-
 /**
  * Módel klasi fyrir auglýsingu (Ad)
  *
@@ -21,7 +19,7 @@ public class Ad {
     // unique auðkenni fyrir ad
     private UUID id = UUID.randomUUID();
     // er auglýsingin að gefa eða þiggja?
-    private String giveOrTake;
+    private String giveorTake;
     // heiti
     private String adName;
     // tegund
@@ -41,7 +39,7 @@ public class Ad {
 
     /**
      * Smiður með viðföngum
-     * @param giveOrTake gefa eða þiggja?
+     * @param giveorTake gefa eða þiggja?
      * @param adName heiti
      * @param adType tegund
      * @param adTypeOfType undirtegund
@@ -51,9 +49,9 @@ public class Ad {
      * @param adComments athugasemdir
      * @param adLocation staðsetning
      */
-    public Ad(String giveOrTake, String adName, String adType, String adTypeOfType,
+    public Ad(String giveorTake, String adName, String adType, String adTypeOfType,
               String adColor, String adDescription, String adUsername, ArrayList<Comment> adComments, String adLocation) {
-        this.giveOrTake = giveOrTake;
+        this.giveorTake = giveorTake;
         this.adName = adName;
         this.adType = adType;
         this.adTypeOfType = adTypeOfType;
@@ -74,9 +72,9 @@ public class Ad {
 
     public void setId(UUID id) { this.id = id; }
 
-    public String getGiveOrTake() { return giveOrTake; }
+    public String getGiveorTake() { return giveorTake; }
 
-    public void setGiveOrTake(String giveOrTake) { this.giveOrTake = giveOrTake; }
+    public void setGiveorTake(String giveorTake) { this.giveorTake = giveorTake; }
 
     public String getAdName() { return adName; }
 
