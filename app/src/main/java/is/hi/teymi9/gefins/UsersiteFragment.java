@@ -18,6 +18,7 @@ import android.widget.Toast;
  *
  * @author Einar
  * @version 1.0
+ * @date
  */
 
 public class UsersiteFragment extends Fragment {
@@ -62,10 +63,12 @@ public class UsersiteFragment extends Fragment {
         mNewMessage = (Button) v.findViewById(R.id.new_message);
         mTitle = (TextView) v.findViewById(R.id.title);
 
+        // ef ef notandi er til
         if(LoginActivity.getUserService().getCurrentUser() != null) {
             mTitle.setText("Velkomin(n) " + LoginActivity.getUserService().getCurrentUser().getUsername());
         }
 
+        // takki sem leyfir notanda að leita af auglýsingum
         mSearch.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -81,6 +84,7 @@ public class UsersiteFragment extends Fragment {
             }
         });
 
+        // Skráir notanda út
         mLogout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -100,6 +104,7 @@ public class UsersiteFragment extends Fragment {
             }
         });
 
+        // takki sem leyfir notanda að uppfæra upplýsingar um sig
         mEditUser.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -108,6 +113,7 @@ public class UsersiteFragment extends Fragment {
             }
         });
 
+        // Takki sem leyfir notanda að búa til auglýsingu
         mAddAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,6 +122,7 @@ public class UsersiteFragment extends Fragment {
             }
         });
 
+        // Takki sem leyfir notanda að skoða sínar auglýsingar
         mMyAds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

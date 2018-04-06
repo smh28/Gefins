@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
  *
  * @author Einar
  * @version 1.0
+ * @date
  */
 
 public class EditUserActivity extends SingleFragmentActivity {

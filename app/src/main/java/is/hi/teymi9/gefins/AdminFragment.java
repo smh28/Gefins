@@ -21,12 +21,14 @@ import is.hi.teymi9.gefins.model.User;
  *
  * @author Ólöf Fríða og Kristín María
  * @version 1.0
+ * @date March 2018
  */
 
 public class AdminFragment extends Fragment {
 
     // Listi af notendum
     //List<User> users;
+
     // Takki fyrir útskráningu
     private Button mLogout;
     // Takk til að skoða allar auglýsingar
@@ -50,6 +52,7 @@ public class AdminFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_adminsite, container, false);
 
         mLogout = (Button) v.findViewById(R.id.logout_button);
+
         mSeeAllAds = (Button) v.findViewById(R.id.see_all_ads_button);
         mDeleteAd = (Button) v.findViewById(R.id.delete_ad_button);
         mDeleteUser = (Button) v.findViewById(R.id.delete_user_button);
@@ -69,6 +72,9 @@ public class AdminFragment extends Fragment {
             }
         });
 
+        /**
+         * OnClickListener á eyða takka þar sem AdminDeleteUserActivity opnast ef ýtt er á
+         */
         mDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

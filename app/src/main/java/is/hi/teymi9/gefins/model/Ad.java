@@ -9,6 +9,7 @@ import java.util.UUID;
  * Módel klasi fyrir auglýsingu (Ad)
  *
  * @author Kristín María
+ * @date March 2018
  * @version 1.0
  */
 

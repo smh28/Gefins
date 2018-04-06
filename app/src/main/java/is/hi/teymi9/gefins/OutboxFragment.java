@@ -23,6 +23,7 @@ import is.hi.teymi9.gefins.model.Message;
  *
  * @author Einar
  * @version 1.0
+ * @date
  */
 
 public class OutboxFragment extends Fragment {

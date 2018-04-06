@@ -19,6 +19,7 @@ import is.hi.teymi9.gefins.model.User;
  *
  * @author Einar
  * @version 1.0
+ * @date
  */
 
 public class RegisterFragment extends Fragment {

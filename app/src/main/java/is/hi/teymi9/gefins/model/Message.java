@@ -7,6 +7,7 @@ import java.util.UUID;
  * Módel klasi fyrir einkaskilaboð (Message)
  *
  * @author Einar
+ * @date March 2018
  * @version 1.0
  */
 

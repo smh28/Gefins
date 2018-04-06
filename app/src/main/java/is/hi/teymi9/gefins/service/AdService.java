@@ -37,7 +37,11 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * Created by Kristín María on 26.2.2018.
+ * @author Kristín María
+ * @date 26.2.2018
+ * @version 1.0
+ *
+ *
  */
 
 public class AdService {
@@ -46,10 +50,11 @@ public class AdService {
     String EMPTY_STRING = "";
     // tag til að auðkenna skilaboð í logger
     public static final String TAG = AdService.class.getSimpleName();
+    // repository fyrir auglýsingar
     AdRepository adRepository = new AdRepository();
 
     Ad currentAd = null;
-
+    // listi af auglýsingum
     private List<Ad> adList;
     // DisplayAdsActivity sem AdService hefur samskipti við
     private Activity displayAdsActivity = null;
@@ -172,18 +177,9 @@ public class AdService {
         return "";
     }
 
-/* Gamla local fallið
-    public String addAd(Ad u, boolean validate) {
-        if(validate) {
-            // ganga úr skugga um að user info sé valid og user sé ekki þegar til
-        }
-        adRepository.addAd(u);
-        return "Skráning auglýsingar tókst!"; // eitthvað vesen að nálgast strings.xml héðan...
-    }
-*/
-
     /**
      * Nær í auglýsingar á bakenda og birtir þær í viðmóti
+     * @param a activity
      */
     public void getAds(Activity a) {
         String method = "/getAds";
@@ -266,8 +262,12 @@ public class AdService {
 
     /**
      * Nær í auglýsingar á bakenda sem tilheyra ákveðnum flokkum og birtir þær í viðmóti
+     * @param yfirflokkur String
+     * @param undirflokkur String
+     * @param a Activity
      */
     public void getAdsByType(String giveOrTake, String yfirflokkur, String undirflokkur, String litur, Activity a) {
+
         ArrayList<Comment> comments = new ArrayList<Comment>();
         Ad ad = new Ad("Gefins", EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, comments, EMPTY_STRING);
 
@@ -373,10 +373,10 @@ public class AdService {
 
     }
 
-
-
     /**
      * Nær í allar auglýsingar núverandi innskráðs notanda á bakenda og birtir þær í viðmóti
+     * @param u User
+     * @param a Activity
      */
     public void getUserAds(User u, Activity a) {
         String method = "/getUserAds";

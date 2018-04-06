@@ -43,6 +43,7 @@ import is.hi.teymi9.gefins.repository.UserRepository;
  *
  * @author Sandra
  * @version 1.0
+ * @date
  */
 
 public class UserService implements Serializable {
@@ -209,20 +210,6 @@ public class UserService implements Serializable {
         }
     }
 
-
-
-    // Gamla login fallið
-    /*public User login(String username, String password) {
-        userList = getAllUsers();
-        for(User u: userList){
-            if (username.equals(u.getUsername()) && password.equals(u.getPassword())) {
-                currentUser = u;
-                return u;
-            }
-        }
-        return null;
-    }*/
-
     /**
      * Skráir út notanda
      */
@@ -325,14 +312,6 @@ public class UserService implements Serializable {
         }
         return "";
     }
-    // gamla local fallið
-    /*public String addUser(User u, boolean validate) {
-        if(validate) {
-            // ganga úr skugga um að user info sé valid og user sé ekki þegar til
-        }
-        userRepository.addUser(u);
-        return "Nýskráning tókst!"; // eitthvað vesen að nálgast strings.xml héðan...
-    }*/
 
     /**
      * Staðfestir upplýsingar fyrir notanda, þ.e. segir til um hvort að gildin séu gild
@@ -372,10 +351,18 @@ public class UserService implements Serializable {
         return isOk;
     }
 
+    /**
+     * Skilar núverandi notanda
+     * @return User
+     */
     public User getCurrentUser() {
         return currentUser;
     }
 
+    /**
+     * Stillir núverandi notanda
+     * @param currentUser
+     */
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
@@ -456,11 +443,6 @@ public class UserService implements Serializable {
         }
         return "";
     }
-
-    // gamla updateUser fallið
-    /*public void updateUser(User u) {
-        userRepository.updateUser(u);
-    }*/
 
     /**
      * Skilar upplýsingum um hvort nettenging sé til staðar.

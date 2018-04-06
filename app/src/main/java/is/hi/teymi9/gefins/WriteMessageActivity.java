@@ -11,6 +11,7 @@ import is.hi.teymi9.gefins.service.MessageService;
  *
  * @author Einar
  * @version 1.0
+ * @date
  */
 
 public class WriteMessageActivity extends SingleFragmentActivity {

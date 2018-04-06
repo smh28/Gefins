@@ -19,7 +19,8 @@ import is.hi.teymi9.gefins.model.Comment;
  * Fragment fyrir viðmótið í AddAdActivity og virknina þar.
  *
  * @author Ólöf Fríða
- * @version
+ * @version 1.0
+ * @date
  */
 
 public class AddCommentFragment extends Fragment {
@@ -65,7 +66,7 @@ public class AddCommentFragment extends Fragment {
                 Toast.makeText(getActivity(),
                         message,
                         Toast.LENGTH_SHORT).show();
-
+                // Stilla auglýsinguna svo hægt er að skoða hana aftur
                 Intent intent = new Intent(getActivity(), DisplaySingleAdActivity.class);
                 intent.putExtra("name", mAd.getAdName());
                 intent.putExtra("giveOrTake", mAd.getGiveOrTake());
@@ -79,14 +80,23 @@ public class AddCommentFragment extends Fragment {
             }
         });
 
+        // hlustar á takka sem leyfir notanda að hætta við. Skilar notanda aftur á auglýsingu
         mCancel.setOnClickListener(new View.OnClickListener() {
             // skila auglýsingunni
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), DisplaySingleAdActivity.class);
+                intent.putExtra("name", mAd.getAdName());
+                intent.putExtra("giveOrTake", mAd.getGiveOrTake());
+                intent.putExtra("type", mAd.getAdType());
+                intent.putExtra("typeOfType", mAd.getAdTypeOfType());
+                intent.putExtra("color", mAd.getAdColor());
+                intent.putExtra("description", mAd.getAdDescription());
+                intent.putExtra("location", mAd.getAdLocation());
+                intent.putExtra("username", mAd.getAdUsername());
+                startActivity(intent);
             }
         });
-
 
         return v;
     }

@@ -11,15 +11,18 @@ import is.hi.teymi9.gefins.service.AdService;
  *
  * @author Sandra
  * @version 1.0
+ * @date
  */
 
 public class DisplayAdsActivity extends SingleFragmentActivity {
 
+    // adService breyta
     public static AdService adService = new AdService();
 
     @Override
     protected Fragment createFragment() {return new DisplayAdsFragment(); }
 
+    // skilar adService
     public static AdService getAdService() {
         return adService;
     }

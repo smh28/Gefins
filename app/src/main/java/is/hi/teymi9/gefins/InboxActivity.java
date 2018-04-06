@@ -11,6 +11,7 @@ import is.hi.teymi9.gefins.service.AdService;
  *
  * @author Einar
  * @version 1.0
+ * @date
  */
 
 public class InboxActivity extends SingleFragmentActivity {

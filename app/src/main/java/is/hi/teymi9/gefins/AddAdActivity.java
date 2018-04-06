@@ -10,11 +10,13 @@ import is.hi.teymi9.gefins.service.AdService;
  * Activity í Gefins til þess að bæta við nýrri auglýsingu
  *
  * @author Kristín María
+ * @date
  * @version 1.0
  */
 
 public class AddAdActivity extends SingleFragmentActivity {
 
+    // adService breytan
     public static AdService adService = new AdService();
 
     @Override
@@ -22,6 +24,10 @@ public class AddAdActivity extends SingleFragmentActivity {
         return new AddAdFragment();
     }
 
+    /**
+     * Skilar adService svo hægt er að nota hana
+     * @return
+     */
     public static AdService getAdService() {
         return adService;
     }

@@ -60,19 +60,10 @@ public class LoginFragment extends Fragment {
                 iName = mUserName.getText().toString();
                 iPassword = mPsw.getText().toString();
                 LoginActivity.getUserService().login(iName, iPassword);
-                /*User u = LoginActivity.getUserService().login(iName, iPassword);
-                if(u != null){
-                    Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(getActivity(),
-                            R.string.innskr_villa,
-                            Toast.LENGTH_SHORT).show();
-                }*/
             }
         });
 
+        // Takki sem leyfir notanda að búa til nýjann notanda
         mNewUser.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -80,18 +71,6 @@ public class LoginFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-/*
-        mAds.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //Intent intent = DisplayAdsActivity.newIntent(getActivity());
-                //startActivity(intent);
-                System.out.println("Ýtir á hnappinn Listi yfir auglýsingar");
-                DisplayAdsActivity.getAdService().getAds(getActivity());
-            }
-        });
-*/
 
         return v;
     }

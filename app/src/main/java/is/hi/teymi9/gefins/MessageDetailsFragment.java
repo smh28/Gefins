@@ -18,12 +18,14 @@ import is.hi.teymi9.gefins.service.UserService;
  *
  * @author Einar
  * @version 1.0
+ * @date
  */
 
 public class MessageDetailsFragment extends Fragment {
 
     // Tilbaka takki
     private Button mBack;
+    // reply takki
     private Button mReply;
 
     @Override

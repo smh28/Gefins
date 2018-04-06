@@ -12,17 +12,20 @@ import is.hi.teymi9.gefins.service.CommentService;
  * Activity í Gefins til þess að bæta við nýju commenti á auglýsingu
  *
  * @author Ólöf Fríða
+ * @version 1.0
+ * @date March 2018
  */
 
 public class addCommentActivity extends SingleFragmentActivity {
 
+    // commentService breyta
     public static CommentService commentService = new CommentService();
 
     @Override
     protected Fragment createFragment() {
         return new AddCommentFragment();
     }
-
+    // Skilar commentService
     public static CommentService getCommentService() {
         return commentService;
     }

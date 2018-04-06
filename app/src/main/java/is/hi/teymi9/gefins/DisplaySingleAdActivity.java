@@ -9,13 +9,14 @@ import is.hi.teymi9.gefins.service.AdService;
 
 /**
  * Activity í Gefins sem sýnir upplýsingar yfir staka auglýsingu
- * author Sandra
+ * @author Sandra
  * @version 1.0
+ * @date
  */
 
 
 public class DisplaySingleAdActivity extends SingleFragmentActivity {
-
+    // adService breyta
     public static AdService adService = DisplayAdsActivity.getAdService();
 
     @Override

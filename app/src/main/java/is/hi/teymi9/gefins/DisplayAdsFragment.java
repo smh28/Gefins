@@ -22,6 +22,7 @@ import is.hi.teymi9.gefins.service.UserService;
  *
  * @author Sandra
  * @version 1.0
+ * @date
  */
 
 public class DisplayAdsFragment extends Fragment {
@@ -34,6 +35,7 @@ public class DisplayAdsFragment extends Fragment {
     public static UserService userService = new UserService();
     //Þjónusta fyrir auglýsingar
 
+    // skilar userService
     public static UserService getUserService() {
         return userService;
     }

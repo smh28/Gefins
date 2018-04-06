@@ -9,7 +9,8 @@ import is.hi.teymi9.gefins.service.AdService;
 
 /**
  * Activity í Gefins sem sýnir upplýsingar yfir ákveðin skilaboð
- * author Einar
+ * @author Einar
+ * @date
  * @version 1.0
  */
 
