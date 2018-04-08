@@ -126,8 +126,13 @@ public class DisplayAdsFragment extends Fragment {
                 User currentUser = LoginActivity.getUserService().getCurrentUser();
                 System.out.println("DisplayAdsFragment í back hnappi: currentUser er " + currentUser);
                 if(currentUser != null) {
-                    Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                    startActivity(intent);
+                    if(currentUser.getUsername().equals("olla")){
+                        Intent intent = new Intent(getActivity(), AdminActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                        startActivity(intent);
+                    }
                 }
                 else{
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
