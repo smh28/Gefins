@@ -69,7 +69,7 @@ public class AddCommentFragment extends Fragment {
                 // Stilla auglýsinguna svo hægt er að skoða hana aftur
                 Intent intent = new Intent(getActivity(), DisplaySingleAdActivity.class);
                 intent.putExtra("name", mAd.getAdName());
-                intent.putExtra("giveOrTake", mAd.getGiveOrTake());
+                intent.putExtra("giveOrTake", mAd.getGiveorTake());
                 intent.putExtra("type", mAd.getAdType());
                 intent.putExtra("typeOfType", mAd.getAdTypeOfType());
                 intent.putExtra("color", mAd.getAdColor());
@@ -87,7 +87,7 @@ public class AddCommentFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DisplaySingleAdActivity.class);
                 intent.putExtra("name", mAd.getAdName());
-                intent.putExtra("giveOrTake", mAd.getGiveOrTake());
+                intent.putExtra("giveOrTake", mAd.getGiveorTake());
                 intent.putExtra("type", mAd.getAdType());
                 intent.putExtra("typeOfType", mAd.getAdTypeOfType());
                 intent.putExtra("color", mAd.getAdColor());
