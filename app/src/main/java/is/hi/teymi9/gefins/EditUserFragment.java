@@ -24,11 +24,6 @@ public class EditUserFragment extends Fragment {
 
     // Textasvið fyrir notandanafn
     private EditText mUsername;
-    // Textasvið fyrir lykilorð
-    private EditText mPassword;
-    // Textasvið fyrir endurtekið lykilorð
-    private EditText mPasswordRepeat;
-    // Textasvið fyrir tölvupóstfang
     private EditText mEmail;
     // Textasvið fyrir fullt nafn
     private EditText mFullName;
@@ -40,6 +35,8 @@ public class EditUserFragment extends Fragment {
     private EditText mAddress;
     // Takki fyrir staðfestingu á breyttum upplýsingum
     private Button mRegisterButton;
+    // Takk til að hætta við
+    private Button mCancelButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,8 +50,6 @@ public class EditUserFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_edit_user, container, false);
 
         mUsername = (EditText) v.findViewById(R.id.username);
-        mPassword = (EditText) v.findViewById(R.id.password);
-        mPasswordRepeat = (EditText) v.findViewById(R.id.password_repeat);
         mEmail = (EditText) v.findViewById(R.id.email_address);
         mFullName = (EditText) v.findViewById(R.id.full_name);
         mPhoneNumber = (EditText) v.findViewById(R.id.phonenumber);
@@ -65,31 +60,38 @@ public class EditUserFragment extends Fragment {
         mEmail.setText(LoginActivity.getUserService().getCurrentUser().getEmail());
         mFullName.setText(LoginActivity.getUserService().getCurrentUser().getFullName());
         mPhoneNumber.setText(LoginActivity.getUserService().getCurrentUser().getPhonenr());
-        mZipcode.setText(""+LoginActivity.getUserService().getCurrentUser().getZip());
+        mZipcode.setText("" + LoginActivity.getUserService().getCurrentUser().getZip());
         mAddress.setText(LoginActivity.getUserService().getCurrentUser().getAddress());
 
         // Við viljum mögulega bæta við TextChangedListener á þetta til þess að geta komið með
         // live feedback um hvort inntak sé gilt.
 
         mRegisterButton = (Button) v.findViewById(R.id.register);
-        mRegisterButton.setOnClickListener(new View.OnClickListener(){
+        mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        LoginActivity.getUserService().getCurrentUser().setUsername( mUsername.getText().toString());
-        // Það er best að hafa breytingar á lykilorði í sér ferli því það þarf að vita hvort að verið
-        // sé að vinna með plain text password eða hash-ið
-        //LoginActivity.getUserService().getCurrentUser().setPassword( mPassword.getText().toString());
-        LoginActivity.getUserService().getCurrentUser().setEmail( mEmail.getText().toString());
-        LoginActivity.getUserService().getCurrentUser().setFullName( mFullName.getText().toString());
-        LoginActivity.getUserService().getCurrentUser().setPhonenr( mPhoneNumber.getText().toString());
-        LoginActivity.getUserService().getCurrentUser().setZip( Integer.parseInt(mZipcode.getText().toString()));
-        LoginActivity.getUserService().getCurrentUser().setAddress( mAddress.getText().toString());
-        LoginActivity.getUserService().updateUser(LoginActivity.getUserService().getCurrentUser());
-        //Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-        //startActivity(intent);
-        LoginActivity.getUserService().updateUser(LoginActivity.getUserService().getCurrentUser());
-    }
-});
+                LoginActivity.getUserService().getCurrentUser().setUsername(mUsername.getText().toString());
+                LoginActivity.getUserService().getCurrentUser().setEmail(mEmail.getText().toString());
+                LoginActivity.getUserService().getCurrentUser().setFullName(mFullName.getText().toString());
+                LoginActivity.getUserService().getCurrentUser().setPhonenr(mPhoneNumber.getText().toString());
+                LoginActivity.getUserService().getCurrentUser().setZip(Integer.parseInt(mZipcode.getText().toString()));
+                LoginActivity.getUserService().getCurrentUser().setAddress(mAddress.getText().toString());
+                LoginActivity.getUserService().updateUser(LoginActivity.getUserService().getCurrentUser());
+                //Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                //startActivity(intent);
+                LoginActivity.getUserService().updateUser(LoginActivity.getUserService().getCurrentUser());
+            }
+        });
+
+        mCancelButton = (Button) v.findViewById(R.id.cancel);
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+
 
         return v;
     }

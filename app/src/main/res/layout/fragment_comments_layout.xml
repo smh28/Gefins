@@ -30,5 +30,4 @@ skipta niður á text view til að fá betra útlit -->
         android:layout_height="wrap_content"
         android:text="Eyða" />
 
-
 </LinearLayout>

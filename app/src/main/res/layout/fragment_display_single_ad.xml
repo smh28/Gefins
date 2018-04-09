@@ -1,119 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
 
-<!--  android list style version of the list  -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="top"
-    android:orientation="vertical">
-
-<!-- Erum bara að nota efsta text view fyrir allan textann eins og er,
-skipta niður á text view til að fá betra útlit -->
-    <TextView
-        android:id="@+id/adName"
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="30sp"
-        android:textAlignment="center"  />
+        android:gravity="top"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/adGiveOrTake"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="20sp"
-        android:gravity="left"  />
+        <!-- Erum bara að nota efsta text view fyrir allan textann eins og er,
+        skipta niður á text view til að fá betra útlit -->
+        <TextView
+            android:id="@+id/adName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/adType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="15sp"
-        android:gravity="left"  />
+        <TextView
+            android:id="@+id/adGiveOrTake"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="12dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/adTypeOfType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="15sp"
-        android:gravity="left"  />
+        <TextView
+            android:id="@+id/adType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="12dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/adColor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="15sp"
-        android:gravity="left"  />
+        <TextView
+            android:id="@+id/adTypeOfType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="12dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/adDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="15sp"
-        android:gravity="left"  />
+        <TextView
+            android:id="@+id/adColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="12dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/adLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="15sp"
-        android:gravity="left"  />
+        <TextView
+            android:id="@+id/adDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="12dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/adUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="15sp"
-        android:gravity="left"  />
+        <TextView
+            android:id="@+id/adLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="12dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="15sp" />
 
-    <Button
-        android:id="@+id/comments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sjá athugasemdir"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="301dp" />
+        <TextView
+            android:id="@+id/adUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="12dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="15sp" />
 
-    <Button
-        android:id="@+id/update_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/uppfaera_auglysingu"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="301dp" />
+        <Button
+            android:id="@+id/comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sjá athugasemdir"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="301dp" />
 
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/eyda_auglysingu"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="301dp" />
+        <Button
+            android:id="@+id/update_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uppfaera_auglysingu"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="301dp" />
 
-    <Button
-        android:id="@+id/singleAdTilbaka"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tilbaka"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="301dp" />
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/eyda_auglysingu"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="301dp" />
 
+        <Button
+            android:id="@+id/singleAdTilbaka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tilbaka"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="301dp" />
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

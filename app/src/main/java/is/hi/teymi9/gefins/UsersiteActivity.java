@@ -28,6 +28,15 @@ public class UsersiteActivity extends SingleFragmentActivity {
         return new UsersiteFragment();
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    public void addUserNameToTitle(String name){
+        setTitle(getTitle() + " - " + name);
+    }
+
     /**
      * "Custom" fall til að búa til nýtt Intent sem tekur við "Extras" ef einhver eru
      * og bætir þeim við
@@ -61,6 +70,14 @@ public class UsersiteActivity extends SingleFragmentActivity {
      */
     public void displayInbox() {
         Intent intent = InboxActivity.newIntent(this);
+        startActivity(intent);
+    }
+
+    /**
+     * býr til og ræsir activity til að sýna lista af skilaboðum
+     */
+    public void displayOutbox() {
+        Intent intent = OutboxActivity.newIntent(this);
         startActivity(intent);
     }
 

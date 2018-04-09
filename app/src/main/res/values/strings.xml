@@ -2,8 +2,8 @@
     <!--login site-->
     <string name="app_name">Gefins</string>
     <string name="skr_inn">Skráðu þig inn!</string>
-    <string name="notandanafn">Notandanafn:</string>
-    <string name="lykilord">Lykilorð:</string>
+    <string name="notandanafn">Notandanafn</string>
+    <string name="lykilord">Lykilorð</string>
     <string name="skra">Skrá inn</string>
     <string name="nyr_notandi">Nýr notandi</string>
     <string name="nyskraning">Skráðu þig sem nýjan notanda!</string>
@@ -13,22 +13,22 @@
     <!--user site-->
     <string name="user_site">Síðan þín</string>
     <string name="usersite_text2">Skoðaðu auglýsingar:</string>
-    <string name="search_button">Skoða allar auglýsingar</string>
-    <string name="searchType_button">Leita eftir augl.flokkum</string>
+    <string name="search_button">Allar auglýsingar</string>
+    <string name="searchType_button">Leit</string>
     <string name="newAd_button">Gefa eða óska eftir hlut</string>
     <string name="clickSearch">Skoðaðu allar auglýsingar</string>
     <string name="usersite_text1">--------</string>
     <string name="logout_button">Útskrá</string>
     <string name="tolvupostur">Tölvupóstur</string>
-    <string name="lykilord_aftur">Endurtakið lykilorð:</string>
-    <string name="fullt_nafn">Fullt nafn:</string>
-    <string name="simanumer">Símanúmer:</string>
-    <string name="postnumer">Póstnúmer:</string>
-    <string name="heimilisfang">Heimilisfang:</string>
-    <string name="nyskra">Nýskrá:</string>
-    <string name="edit_user_button">Breyta notandaupplýsingum</string>
+    <string name="lykilord_aftur">Endurtakið lykilorð</string>
+    <string name="fullt_nafn">Fullt nafn</string>
+    <string name="simanumer">Símanúmer</string>
+    <string name="postnumer">Póstnúmer</string>
+    <string name="heimilisfang">Heimilisfang</string>
+    <string name="nyskra">Nýskrá</string>
+    <string name="edit_user_button">Stillingar</string>
     <string name="uppfaera">Uppfæra</string>
-    <string name="skraauglysingu">Skrá nýja auglýsingu</string>
+    <string name="skraauglysingu">Ný auglýsing</string>
     <!--add ad-->
     <string name="nafnaaugl">Nafn á auglýsingu:</string>
     <string name="nafnaaugl2">EKKI Nafn á auglýsingu:</string>
@@ -128,7 +128,7 @@
     <string name="senda">Senda skilaboð</string>
     <string name="senda_skilaboð">Senda ný skilaboð</string>
     <string name="innholf">Innhólf</string>
-    <string name="ny_skilaboð">Skrifa ný einkaskilaboð</string>
+    <string name="ny_skilaboð">Skrifa einkaskilaboð</string>
     <string name="send_message_failed">Ekki tókst að senda skilaboð.</string>
     <string name="send_message_successful">Skilaboð send!</string>
     <string name="no_messages_found">Engin skilaboð fundust!</string>
@@ -220,6 +220,26 @@
     <!--edit ad site-->
     <string name="update_ad_success">Auglýsingin þín hefur verið uppfærð</string>
     <string name="update_ad_failed">Ekki tókst að uppfæra auglýsingu. Vinsamlegast reynið aftur.</string>
-
+    <string name="login_activity_label">Gefins - Innskráning</string>
+    <string name="register_activity_label">Gefins - Nýskráning</string>
+    <string name="edit_user_activity_label">Gefins - Breyta notandaupplýsingum</string>
+    <string name="add_ad_activity_label">Gefins - Skrá nýja auglýsingu</string>
+    <string name="display_ads_activity_label">Gefins - Auglýsingar</string>
+    <string name="display_single_ad_activity_label">Gefins - Auglýsing</string>
+    <string name="edit_ad_activity_label">Gefins - Breyta auglýsingu</string>
+    <string name="search_type_activity_label">Gefins - Leit</string>
+    <string name="admin_activity_label">Gefins - Kerfisstjóri</string>
+    <string name="add_comment_activity_label">Gefins - Skrifa athugasemd</string>
+    <string name="display_comment_activity_label">Gefins - Athugasemdir</string>
+    <string name="write_message_activity_label">Gefins - Skrifa skilaboð</string>
+    <string name="inbox_activity_label">Gefins - Innhólf</string>
+    <string name="message_details_activity_label">Gefins - Skilaboð</string>
+    <string name="outbox_activity_label">Gefins - Úthólf</string>
+    <string name="admin_delete_user_activity_label">Gefins - Eyða notanda</string>
+    <string name="admin_delete_ad_activity_label">Gefins - Eyða auglýsingu</string>
+    <string name="write_comment">Skrifaðu athugasemd</string>
+    <string name="haetta_vid">Hætta við</string>
+    <string name="skrifa_athugasemd">Skrifa athugasemd</string>
+    <string name="create_user_succeeded">Nýr notandi innskráður</string>
 
 </resources>

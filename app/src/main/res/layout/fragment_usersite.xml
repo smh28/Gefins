@@ -1,105 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top"
     android:orientation="vertical">
 
-
-    <Button
-        android:id="@+id/logout_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|right"
-        android:drawablePadding="12dp"
-        android:text="@string/logout_button" />
-
-    <Button
-        android:id="@+id/edit_user_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|right"
-        android:drawablePadding="12dp"
-        android:text="@string/edit_user_button" />
-
-
-    <TextView
-        android:id="@+id/title"
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="84dp"
-        android:padding="24dp"
-        android:text="@string/user_site"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="24sp"
-        android:textAlignment="center"  />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/search_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/search_button" />
 
-    <TextView
-        android:id="@+id/question_text2_view"
+        <Button
+            android:id="@+id/searchType_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/searchType_button" />
+
+        <Button
+            android:id="@+id/add_ad_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/skraauglysingu" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:padding="14dp"
-        android:text="@string/usersite_text2"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/my_ads_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/my_ads" />
 
-    <Button
-        android:id="@+id/search_button"
+        <Button
+            android:id="@+id/inbox"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/innholf" />
+
+        <Button
+            android:id="@+id/outbox"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/outbox" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="24dp"
-        android:text="@string/search_button" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/new_message"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/ny_skilaboð" />
 
 
-    <Button
-        android:id="@+id/searchType_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="24dp"
-        android:text="@string/searchType_button" />
+        <Button
+            android:id="@+id/edit_user_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/edit_user_button" />
 
+        <Button
+            android:id="@+id/logout_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/logout_button" />
 
-    <TextView
-        android:id="@+id/question_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:padding="14dp"
-        android:text="@string/usersite_text1"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-
-    <Button
-        android:id="@+id/add_ad_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="24dp"
-        android:text="@string/skraauglysingu" />
-
-    <Button
-        android:id="@+id/my_ads_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="24dp"
-        android:text="@string/my_ads" />
-
-    <Button
-        android:id="@+id/new_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="24dp"
-        android:text="@string/ny_skilaboð" />
-
-    <Button
-        android:id="@+id/inbox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="24dp"
-        android:text="@string/innholf" />
-
+    </LinearLayout>
 </LinearLayout>
+

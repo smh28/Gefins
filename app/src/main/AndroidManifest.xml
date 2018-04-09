@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:label="@string/login_activity_label">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,37 +21,53 @@
         </activity>
         <activity android:name=".UsersiteActivity">
         </activity>
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".RegisterActivity"
+            android:label="@string/register_activity_label">
         </activity>
-        <activity android:name=".EditUserActivity">
+        <activity android:name=".EditUserActivity"
+            android:label="@string/edit_user_activity_label">
         </activity>
-        <activity android:name=".AddAdActivity">
+        <activity android:name=".AddAdActivity"
+            android:label="@string/add_ad_activity_label">>
         </activity>
-        <activity android:name=".DisplayAdsActivity">
+        <activity android:name=".DisplayAdsActivity"
+            android:label="@string/display_ads_activity_label">
         </activity>
-        <activity android:name=".DisplaySingleAdActivity">
+        <activity android:name=".DisplaySingleAdActivity"
+            android:label="@string/display_single_ad_activity_label">
         </activity>
-        <activity android:name=".EditAdActivity">
+        <activity android:name=".EditAdActivity"
+            android:label="@string/edit_ad_activity_label">
         </activity>
-        <activity android:name=".SearchTypeActivity">
+        <activity android:name=".SearchTypeActivity"
+            android:label="@string/search_type_activity_label">
         </activity>
-        <activity android:name=".AdminActivity">
+        <activity android:name=".AdminActivity"
+            android:label="@string/admin_activity_label">
         </activity>
-        <activity android:name=".addCommentActivity">
+        <activity android:name=".addCommentActivity"
+            android:label="@string/add_comment_activity_label">
         </activity>
-        <activity android:name=".DisplayCommentActivity">
+        <activity android:name=".DisplayCommentActivity"
+            android:label="@string/display_comment_activity_label">
         </activity>
-        <activity android:name=".WriteMessageActivity">
+        <activity android:name=".WriteMessageActivity"
+            android:label="@string/write_message_activity_label">
         </activity>
-        <activity android:name=".InboxActivity">
+        <activity android:name=".InboxActivity"
+            android:label="@string/inbox_activity_label">
         </activity>
-        <activity android:name=".MessageDetailsActivity">
+        <activity android:name=".MessageDetailsActivity"
+            android:label="@string/message_details_activity_label">
         </activity>
-        <activity android:name=".OutboxActivity">
+        <activity android:name=".OutboxActivity"
+            android:label="@string/outbox_activity_label">
         </activity>
-        <activity android:name=".AdminDeleteUserActivity">
+        <activity android:name=".AdminDeleteUserActivity"
+            android:label="@string/admin_delete_user_activity_label">
         </activity>
-        <activity android:name=".AdminDeleteAdActivity">
+        <activity android:name=".AdminDeleteAdActivity"
+            android:label="@string/admin_delete_ad_activity_label">
         </activity>
 
     </application>

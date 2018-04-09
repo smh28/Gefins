@@ -1,132 +1,137 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/nafnid"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/nafnaaugl" />
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/nafn2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/nafnaauglysingu" />
+        <TextView
+            android:id="@+id/nafnid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nafnaaugl" />
 
-    <TextView
-        android:id="@+id/textinn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tegund"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        <EditText
+            android:id="@+id/nafn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/nafnaauglysingu"
+            android:inputType="textPersonName" />
 
-    <Spinner
-        android:id="@+id/spinner4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="42dp" />
-
-    <TextView
-        android:id="@+id/texti2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tegundaftegund" />
-
-    <Spinner
-        android:id="@+id/spinner5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/litur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/litur" />
-
-    <Spinner
-        android:id="@+id/spinner6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <RadioGroup
-        android:id="@+id/radiogroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checkedButton="@+id/radio_give"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="390dp">
-
-        <RadioButton
-            android:id="@+id/radio_give"
+        <TextView
+            android:id="@+id/textinn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="false"
-            android:duplicateParentState="false"
-            android:text="@string/gefins"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="384dp" />
+            android:text="@string/tegund"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
 
-        <RadioButton
-            android:id="@+id/radio_take"
-            android:layout_width="113dp"
+        <Spinner
+            android:id="@+id/spinner4"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/oskaeftir"
-            tools:layout_editor_absoluteX="104dp"
-            tools:layout_editor_absoluteY="388dp" />
-    </RadioGroup>
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="42dp" />
 
-    <TextView
-        android:id="@+id/lysing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/lysing" />
+        <TextView
+            android:id="@+id/texti2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tegundaftegund" />
 
-    <EditText
-        android:id="@+id/skrifalysingu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:hint="@string/lysing2" />
+        <Spinner
+            android:id="@+id/spinner5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/stadsetning"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/stadsetning" />
+        <TextView
+            android:id="@+id/litur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/litur" />
 
-    <EditText
-        android:id="@+id/postnumer2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/postnumer2" />
+        <Spinner
+            android:id="@+id/spinner6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/tilbaka"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tilbaka"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="84dp" />
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/radio_give"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="390dp">
 
-    <Button
-        android:id="@+id/uppfaera_auglysingu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/uppfaera_auglysingu"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="147dp" />
+            <RadioButton
+                android:id="@+id/radio_give"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:duplicateParentState="false"
+                android:text="@string/gefins"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="384dp" />
 
-</LinearLayout>
+            <RadioButton
+                android:id="@+id/radio_take"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:text="@string/oskaeftir"
+                tools:layout_editor_absoluteX="104dp"
+                tools:layout_editor_absoluteY="388dp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/lysing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lysing" />
+
+        <EditText
+            android:id="@+id/skrifalysingu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/lysing2"
+            android:inputType="textMultiLine" />
+
+        <TextView
+            android:id="@+id/stadsetning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stadsetning" />
+
+        <EditText
+            android:id="@+id/postnumer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/postnumer2"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/uppfaera_auglysingu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uppfaera_auglysingu"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="147dp" />
+
+        <Button
+            android:id="@+id/tilbaka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tilbaka"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="84dp" />
+
+    </LinearLayout>
+</ScrollView>
