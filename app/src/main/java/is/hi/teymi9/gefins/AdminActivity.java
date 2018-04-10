@@ -31,6 +31,7 @@ public class AdminActivity extends SingleFragmentActivity {
     protected Fragment createFragment() {
         return new AdminFragment();
     }
+
     /**
      * "Custom" fall til að búa til nýtt Intent sem tekur við "Extras" ef einhver eru og bætir
      * þeim við
@@ -46,7 +47,7 @@ public class AdminActivity extends SingleFragmentActivity {
      * Ræsir activity til að sýna lista yfir auglýsingar
      */
     public void displayAds() {
-        Intent intent = new Intent(this, DisplayAdsActivity.class);
+        Intent intent = new Intent(this, AdminDeleteAdActivity.class);
         startActivity(intent);
     }
 
@@ -54,10 +55,9 @@ public class AdminActivity extends SingleFragmentActivity {
      * Ræsir activity til að sýna lista yfir notendur
      */
     public void displayUsers() {
-        Intent intent = new Intent(this, DisplayAdsActivity.class);
+        Intent intent = new Intent(this, AdminDeleteUserActivity.class);
         startActivity(intent);
     }
-
 
 
     /**
