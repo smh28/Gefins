@@ -3,88 +3,77 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notandanafn" />
 
         <EditText
             android:id="@+id/username"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tolvupostur" />
+            android:inputType="textPersonName"
+            android:hint="@string/notandanafn"
+            android:textColorHint="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <EditText
             android:id="@+id/email_address"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fullt_nafn" />
+            android:inputType="textEmailAddress"
+            android:hint="@string/tolvupostur"
+            android:textColorHint="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <EditText
             android:id="@+id/full_name"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/simanumer" />
+            android:inputType="textPersonName"
+            android:hint="@string/fullt_nafn"
+            android:textColorHint="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <EditText
             android:id="@+id/phonenumber"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/postnumer" />
+            android:inputType="phone"
+            android:hint="@string/simanumer"
+            android:textColorHint="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <EditText
             android:id="@+id/zipcode"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/heimilisfang" />
+            android:inputType="number"
+            android:hint="@string/postnumer"
+            android:textColorHint="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <EditText
             android:id="@+id/address"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPostalAddress" />
+            android:inputType="textPostalAddress"
+            android:hint="@string/heimilisfang"
+            android:textColorHint="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <Button
             android:id="@+id/register"
@@ -96,7 +85,8 @@
             android:id="@+id/cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/haetta_vid" />
+            android:text="@string/haetta_vid"
+            />
 
     </LinearLayout>
 </ScrollView>

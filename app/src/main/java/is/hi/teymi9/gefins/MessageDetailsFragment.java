@@ -79,7 +79,7 @@ public class MessageDetailsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // fer til bara í inbox ef in message, annars aftur í outbox
-                getActivity().finish();
+                getActivity().onBackPressed();
             }
         });
 

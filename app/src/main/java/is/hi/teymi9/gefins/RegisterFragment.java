@@ -46,6 +46,8 @@ public class RegisterFragment extends Fragment {
     private Button mRegisterButton;
     // Segir til um hvort notandaupplýsingar séu gildar eður ei
     private String validate;
+    // Takk til að hætta við
+    private Button mCancelButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -101,6 +103,14 @@ public class RegisterFragment extends Fragment {
                             Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        mCancelButton = (Button) v.findViewById(R.id.cancel);
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
             }
         });
 

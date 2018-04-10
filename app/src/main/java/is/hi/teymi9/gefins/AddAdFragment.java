@@ -167,16 +167,16 @@ public class AddAdFragment extends Fragment {
                         message,
                         Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
+                getActivity().onBackPressed();
             }
         });
 
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                //startActivity(intent);
+                getActivity().onBackPressed();
             }
         });
 

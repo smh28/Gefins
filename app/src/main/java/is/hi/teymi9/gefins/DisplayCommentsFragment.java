@@ -78,15 +78,18 @@ public class DisplayCommentsFragment extends Fragment {
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
+                startActivity(intent);*/
+                getActivity().onBackPressed();
             }
+
         });
 
         // Takki sem leyfir notanda að skrifa nýja athugasemd
         mNewComment.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                getActivity().onBackPressed();
                 Intent intent = new Intent(getActivity(), addCommentActivity.class);
                 startActivity(intent);
             }

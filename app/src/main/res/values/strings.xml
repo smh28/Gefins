@@ -122,9 +122,9 @@
     <string name="update_user_failed">Ekki tókst að uppfæra notanda. Vinsamlegast reynið aftur.</string>
     <string name="my_ads">Mínar auglýsingar</string>
     <string name="no_ads_found">Engar auglýsingar fundust</string>
-    <string name="til">Til:</string>
-    <string name="vidfangsefni">Viðfangsefni:</string>
-    <string name="skilabod">Skilaboð:</string>
+    <string name="til">Til</string>
+    <string name="vidfangsefni">Viðfangsefni</string>
+    <string name="skilabod">Skilaboð</string>
     <string name="senda">Senda skilaboð</string>
     <string name="senda_skilaboð">Senda ný skilaboð</string>
     <string name="innholf">Innhólf</string>
@@ -215,7 +215,7 @@
     <string name="adminwelcome">Velkominn kerfisstjóri</string>
     <string name="eydanotanda">Eyða notanda</string>
     <string name="eydaauglysingu">Eyða auglýsingu</string>
-    <string name="skodasidu">Skoða auglýsingar</string>
+    <string name="skodasidu">Allar auglýsingar</string>
     <string name="eyda">Eyða</string>
     <!--edit ad site-->
     <string name="update_ad_success">Auglýsingin þín hefur verið uppfærð</string>

@@ -115,7 +115,7 @@ public class DisplayAdsFragment extends Fragment {
                 intent.putExtra("location", adLocation[position]);
                 intent.putExtra("username", adUsername[position]);
                 startActivity(intent);
-
+                getActivity().onBackPressed();
             }
         });
 
@@ -123,7 +123,7 @@ public class DisplayAdsFragment extends Fragment {
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                User currentUser = LoginActivity.getUserService().getCurrentUser();
+                /*User currentUser = LoginActivity.getUserService().getCurrentUser();
                 System.out.println("DisplayAdsFragment í back hnappi: currentUser er " + currentUser);
                 if(currentUser != null) {
                     if(currentUser.getUsername().equals("olla")){
@@ -137,7 +137,10 @@ public class DisplayAdsFragment extends Fragment {
                 else{
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
-                }
+                }*/
+
+                // Er þetta ekki miklu einfaldara og öruggara?
+                getActivity().onBackPressed();
             }
         });
 

@@ -9,28 +9,28 @@
     android:gravity="top"
     android:orientation="vertical">
 
-<!-- Erum bara að nota efsta text view fyrir allan textann eins og er,
-skipta niður á text view til að fá betra útlit -->
+    <!-- Erum bara að nota efsta text view fyrir allan textann eins og er,
+    skipta niður á text view til að fá betra útlit -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/newComment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/skrifa_athugasemd"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="301dp" />
+        <Button
+            android:id="@+id/singleAdTilbaka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tilbaka" />
 
-    <Button
-        android:id="@+id/singleAdTilbaka"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tilbaka"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="301dp" />
+        <Button
+            android:id="@+id/newComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skrifa_athugasemd" />
+    </LinearLayout>
 
     <ListView
         android:id="@+id/commentList"
         android:layout_width="match_parent"
-        android:layout_height="408dp" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

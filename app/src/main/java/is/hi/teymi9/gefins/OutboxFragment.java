@@ -71,7 +71,7 @@ public class OutboxFragment extends Fragment {
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                getActivity().finish();
+                getActivity().onBackPressed();
             }
         });
 

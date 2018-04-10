@@ -13,40 +13,42 @@
 
         <EditText
             android:id="@+id/user"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/notandanafn"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="128dp" />
+            android:textColorHint="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"/>
 
 
         <EditText
             android:id="@+id/psw"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
             android:hint="@string/lykilord"
-            tools:layout_editor_absoluteX="85dp"
-            tools:layout_editor_absoluteY="232dp" />
+            android:textColorHint="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <Button
             android:id="@+id/skra_inn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/skra"
-            tools:layout_editor_absoluteX="148dp"
-            tools:layout_editor_absoluteY="301dp" />
+            android:text="@string/skra" />
 
         <Button
             android:id="@+id/nyr_notandi"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nyr_notandi"
-            tools:layout_editor_absoluteX="134dp"
-            tools:layout_editor_absoluteY="363dp" />
+            android:text="@string/nyr_notandi" />
 
     </LinearLayout>
 </ScrollView>

@@ -7,7 +7,7 @@
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="top"
+        android:gravity="top|center"
         android:orientation="vertical">
 
         <!-- Erum bara að nota efsta text view fyrir allan textann eins og er,
@@ -32,7 +32,7 @@
 
         <TextView
             android:id="@+id/adType"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="12dp"
