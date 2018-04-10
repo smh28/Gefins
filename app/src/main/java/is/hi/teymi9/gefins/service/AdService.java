@@ -79,6 +79,7 @@ public class AdService {
 
     //Sækir allar auglýsingar sem bakendi hefur sent á framenda til vistunar
     public List<Ad> getAllAds() {
+        String method = "/getAds";
         adList = adRepository.getAdList();
         return adList;
     }
@@ -89,11 +90,9 @@ public class AdService {
      * @param act
      */
     public void deleteAdByName(String adName, Activity act) {
-        System.out.println(adName);
         adList = adRepository.getAdList();
         for(Ad a: adList) {
             if(adName.equals(a.getAdName())) {
-                System.out.println(a);
                 deleteAd(a,act);
             }
         }

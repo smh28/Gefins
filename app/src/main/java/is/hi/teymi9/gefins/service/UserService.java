@@ -13,9 +13,14 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 
+import is.hi.teymi9.gefins.AdminActivity;
+import is.hi.teymi9.gefins.AdminDeleteAdActivity;
+import is.hi.teymi9.gefins.AdminDeleteUserActivity;
+import is.hi.teymi9.gefins.DisplaySingleAdActivity;
 import is.hi.teymi9.gefins.EditUserActivity;
 import is.hi.teymi9.gefins.LoginActivity;
 import is.hi.teymi9.gefins.RegisterActivity;
@@ -31,6 +36,8 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import is.hi.teymi9.gefins.R;
@@ -91,6 +98,86 @@ public class UserService implements Serializable {
          client = new OkHttpClient();
     }
 
+
+
+    /**
+     * Nær í notendur á bakenda og birtir þær í viðmóti
+     * @param a activity
+     */
+    public void getUsers(Activity a) {
+        String method = "/getUsers";
+        if(LoginActivity.getUserService().isNetworkAvailable(a)) {
+            User currentUser = LoginActivity.getUserService().getCurrentUser();
+            System.out.println("AdService í upphafi getAds: currentUser er " + currentUser);
+            //RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(u));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    //.post(body)
+                    .build();
+            //System.out.println(gson.toJson(u));
+            System.out.println("Beiðni um notendur send á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            a.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Type type = new TypeToken<List<User>>() {}.getType();
+                                    ArrayList<User> userList = gson.fromJson(jsonData, type);
+                                    if (userList.size() == 0) {
+                                        Toast.makeText(a, R.string.no_users_found, Toast.LENGTH_LONG).show();
+                                    } else {
+                                        User currentUser = LoginActivity.getUserService().getCurrentUser();
+                                        System.out.println("AdService í lok getAds: currentUser er " + currentUser);
+                                        userRepository.setUserList(userList);
+                                        ((AdminActivity) a).displayUsers();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(a, R.string.display_users_failed, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(a, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+
+    }
+
     /**
      * Nær í alla users frá Repository og skilar þeim
      * @return Listi af users
@@ -114,15 +201,99 @@ public class UserService implements Serializable {
     /**
      * Eyðir notanda með ákveðið notendanafn
      * @param username
+     * @param act
      */
-    public void deleteUserByUserName(String username) {
+    public void deleteUserByUserName(String username, Activity act) {
         userList = userRepository.getAll();
         for(User u: userList) {
             if(username.equals(u.getUsername())){
-                userRepository.deleteUser(u);
+                deleteUser(u,act);
             }
         }
     }
+
+
+    /**
+     * Eyðir user locally og sendir beiðni á bakenda um að eyða user þar líka
+     * @param user notandi sem skal eyða
+     * @param a activity sem kallar á að eyða notanda
+     */
+    public void deleteUser(User user, Activity a) {
+        String method = "/deleteUser";
+        if(LoginActivity.getUserService().isNetworkAvailable(a)) {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(user));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(user));
+            System.out.println("Beiðni um að eyða user send á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    a.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            a.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (jsonData.toString().compareTo("User deleted successfully") == 0) {
+                                        Toast.makeText(a, R.string.user_deleted_successfully, Toast.LENGTH_LONG).show();
+                                        userRepository.deleteUser(user);
+                                        getAllUsers();
+                                        ((AdminDeleteUserActivity)a).userDeletedSuccessfully();
+                                    }
+                                    else {
+                                        Toast.makeText(a, R.string.user_not_deleted, Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            a.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(a, R.string.user_not_deleted, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(a, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+
+    }
+
 
     /**
      * Skráir inn notanda

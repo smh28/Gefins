@@ -18,7 +18,7 @@ import is.hi.teymi9.gefins.model.Comment;
 
 public class AdRepository {
 
-    // Listi sem geymir alla notendur í kerfinu
+    // Listi sem geymir allar auglýsingar í kerfinu
     private ArrayList<Ad> adList = new ArrayList<Ad>();
     private ArrayList<Comment> comments = new ArrayList<>();
 

@@ -117,14 +117,16 @@
     <string name="display_site">Listi yfir auglýsingar</string>
     <string name="network_unavailable_message">Nettenging ekki til staðar</string>
     <string name="display_ads_failed">Ekki tókst að birta auglýsingarnar. Vinsamlegast reynið aftur.</string>
+    <string name="display_users_failed">Ekki tókst að birta notendurnar. Vinsamlegast reynið aftur.</string>
     <string name="create_user_failed">Ekki tókst að búa til nýjan notanda. Vinsamlegast reynið aftur.</string>
     <string name="login_failed">Ekki tókst að skrá inn. Vinsamlegast reynið aftur.</string>
     <string name="update_user_failed">Ekki tókst að uppfæra notanda. Vinsamlegast reynið aftur.</string>
     <string name="my_ads">Mínar auglýsingar</string>
     <string name="no_ads_found">Engar auglýsingar fundust</string>
-    <string name="til">Til</string>
-    <string name="vidfangsefni">Viðfangsefni</string>
-    <string name="skilabod">Skilaboð</string>
+    <string name="no_users_found">Engir notendur fundust</string>
+    <string name="til">Til:</string>
+    <string name="vidfangsefni">Viðfangsefni:</string>
+    <string name="skilabod">Skilaboð:</string>
     <string name="senda">Senda skilaboð</string>
     <string name="senda_skilaboð">Senda ný skilaboð</string>
     <string name="innholf">Innhólf</string>
@@ -139,7 +141,9 @@
     <string name="uppfaera_auglysingu">Uppfæra auglýsingu</string>
     <string name="eyda_auglysingu">Eyða auglýsingu</string>
     <string name="ad_deleted_successfully">Tókst að eyða auglýsingu</string>
+    <string name="user_deleted_successfully">Tókst að eyða notanda</string>
     <string name="ad_not_deleted">Ekki tókst að eyða auglýsingu</string>
+    <string name="user_not_deleted">Ekki tókst að eyða notanda</string>
     <!--search type site-->
     <string name="search_text1">Auglýsingaleit</string>
     <string name="search_text2">Leitarskilyrðin:</string>
