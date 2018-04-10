@@ -231,6 +231,7 @@ public class EditAdFragment extends Fragment {
                 EditAdActivity.getAdService().getCurrentAd().setAdLocation(mLocation.getText().toString());
 
                 EditAdActivity.getAdService().updateAd(EditAdActivity.getAdService().getCurrentAd());
+                //getActivity().onBackPressed();
 
             }
         });
@@ -238,8 +239,7 @@ public class EditAdFragment extends Fragment {
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
+                getActivity().onBackPressed();
             }
         });
 

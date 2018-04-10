@@ -20,7 +20,7 @@ public class DisplayCommentActivity extends SingleFragmentActivity {
     // commentService breyta
     public static CommentService commentService = new CommentService();
     // adService breyta
-    public static AdService adService = new AdService();
+    public static AdService adService = DisplayAdsActivity.getAdService();
 
     // skilar adService
     public static AdService getAdService() {
@@ -51,6 +51,14 @@ public class DisplayCommentActivity extends SingleFragmentActivity {
     public static Intent newIntent(Context packageContext) {
         Intent intent = new Intent(packageContext, DisplayCommentActivity.class);
         return intent;
+    }
+
+    /**
+     * Callback þegar athugasemd er bætt við.
+     */
+    public void adAddedSuccessfully() {
+        Intent intent = new Intent(this, DisplayCommentActivity.class);
+        startActivity(intent);
     }
 
 }

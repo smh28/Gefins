@@ -43,7 +43,7 @@ import okhttp3.Response;
 public class CommentService implements Serializable {
 
     // Geymsla fyrir athugasemdirnar
-    private CommentRepository commentRep = new CommentRepository();
+    public CommentRepository commentRep = new CommentRepository();
     // tag til að auðkenna skilaboð í logger
     public static final String TAG = CommentService.class.getSimpleName();
     // Tengjast vefþóni
@@ -65,6 +65,8 @@ public class CommentService implements Serializable {
         client = new OkHttpClient();
     }
 
+
+
     /**
      * finnur athugasemd með viðeigandi id
      * @param id id
@@ -81,13 +83,12 @@ public class CommentService implements Serializable {
     /**
      * Sendir athugasemd á bakenda þar sem henni er bætt við
      * @param comment Athugasemdin sem bæta skal við
-     * @return Skilaboð þess efnis hvort að tókst að bæta auglýsingu við
+     * @return Skilaboð þess efnis hvort að tókst að bæta  við athugasemd
      */
-    public String addComment(Comment comment) {
+    public String addComment(Comment comment, Activity a) {
         String method = "/createComment";
-        Activity newActivity = getAddCommentActivity();
-        System.out.println("AdService í addAd: newActivity er " + newActivity);
-        if(LoginActivity.getUserService().isNetworkAvailable(getAddCommentActivity())) {
+        System.out.println("AdService í addAd: newActivity er " + a);
+        if(LoginActivity.getUserService().isNetworkAvailable(a)) {
             RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(comment));
             Request request = new Request.Builder()
                     .url(serverUrl + method)
@@ -99,7 +100,7 @@ public class CommentService implements Serializable {
             call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    addCommentActivity.runOnUiThread(new Runnable() {
+                    a.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
 
@@ -110,7 +111,7 @@ public class CommentService implements Serializable {
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    addCommentActivity.runOnUiThread(new Runnable() {
+                    a.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             //toggleRefresh();
@@ -124,22 +125,18 @@ public class CommentService implements Serializable {
                             //We are not on main thread
                             //Need to call this method and pass a new Runnable thread
                             //to be able to update the view.
-                            addCommentActivity.runOnUiThread(new Runnable() {
+                            a.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    //if (jsonData.toString().compareTo("Create user failed. Please try again.") == 0) {
-                                    //    Toast.makeText(addAdActivity, R.string.create_user_failed, Toast.LENGTH_LONG).show();
-                                    //}
-                                    //else {
-                                    //setCurrentUser(u);
-                                    //((AddAdActivity) addAdActivity).createUserWasSucessful();
-                                    Toast.makeText(addCommentActivity, "Ný athugasemd hefur verið búin til", Toast.LENGTH_LONG).show();
-                                    //}
+                                    Toast.makeText(a, "Ný athugasemd hefur verið búin til", Toast.LENGTH_LONG).show();
+                                    commentRep.addComment(comment);
+                                    getAllComments();
+
                                 }
                             });
                         }
                         else {
-                            Toast.makeText(addCommentActivity, "Ekki tókst að búa til auglýsingu, vinsamlegast reynið aftur", Toast.LENGTH_LONG).show();
+                            Toast.makeText(a, "Ekki tókst að búa til athugasemd, vinsamlegast reynið aftur", Toast.LENGTH_LONG).show();
                         }
                     } catch (IOException e) {
                         Log.e(TAG, "Exception caught: ", e);
@@ -150,7 +147,7 @@ public class CommentService implements Serializable {
             });
         }
         else {
-            Toast.makeText(addCommentActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+            Toast.makeText(a, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
         }
         return "";
     }
@@ -163,6 +160,11 @@ public class CommentService implements Serializable {
         commentList = commentRep.getCommentList();
         return commentList;
     }
+
+
+    /**
+     * vistir athugasemd locally
+     */
 
 
     /**
@@ -219,6 +221,7 @@ public class CommentService implements Serializable {
                                     } else {
                                         commentRep.setCommentsList(commentList);
                                         ((DisplaySingleAdActivity) a).displayAdComments();
+                                        a.onBackPressed();
                                     }
                                 }
                             });
@@ -243,7 +246,7 @@ public class CommentService implements Serializable {
      * Bætir athugasemndinni við í repo
      * @param c Comment
      */
-    public void addAd(Comment c) {
+    public void addCommentLocally(Comment c) {
         commentRep.addComment(c);
     }
 

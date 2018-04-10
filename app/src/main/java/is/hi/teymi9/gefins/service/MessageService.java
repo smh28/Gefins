@@ -279,7 +279,13 @@ public class MessageService implements Serializable {
                                         Toast.makeText(a, R.string.no_messages_found, Toast.LENGTH_LONG).show();
                                     } else {
                                         messageRep.setOutboxMessageList(messageList);
-                                        ((InboxActivity) a).displayOutbox();
+                                        if(a instanceof InboxActivity) {
+                                            ((InboxActivity) a).displayOutbox();
+                                        }
+                                        else if(a instanceof UsersiteActivity) {
+                                            ((UsersiteActivity) a).displayOutbox();
+                                        }
+
                                     }
                                 }
                             });

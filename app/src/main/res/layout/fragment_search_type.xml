@@ -44,6 +44,7 @@
             android:checked="false"
             android:duplicateParentState="false"
             android:text="@string/gefins"
+            android:textColor="@color/colorPrimary"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="384dp" />
 
@@ -53,6 +54,7 @@
             android:layout_width="113dp"
             android:layout_height="wrap_content"
             android:text="@string/oskaeftir"
+            android:textColor="@color/colorPrimary"
             tools:layout_editor_absoluteX="104dp"
             tools:layout_editor_absoluteY="388dp" />
     </RadioGroup>
@@ -103,6 +105,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!-- Hnappur til að staðfesta -->
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addtype"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="147dp" />
+
     <!-- Hnappur tilbaka -->
     <Button
         android:id="@+id/tilbaka"
@@ -112,13 +123,5 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="84dp" />
 
-    <!-- Hnappur til að staðfesta -->
-    <Button
-        android:id="@+id/confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addtype"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="147dp" />
 
 </LinearLayout>

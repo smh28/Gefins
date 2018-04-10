@@ -37,6 +37,8 @@ public class UsersiteFragment extends Fragment {
     private Button mMyAds;
     // Takki fyrir innhólf
     private Button mInbox;
+    // Takki fyrir úthólf
+    private Button mOutbox;
     // Takki fyrir ný einkaskilaboð
     private Button mNewMessage;
     // Titiltextinn á síðunni
@@ -60,12 +62,14 @@ public class UsersiteFragment extends Fragment {
         mEditUser = (Button) v.findViewById(R.id.edit_user_button);
         mMyAds = (Button) v.findViewById(R.id.my_ads_button);
         mInbox = (Button) v.findViewById(R.id.inbox);
+        mOutbox = (Button) v.findViewById(R.id.outbox);
         mNewMessage = (Button) v.findViewById(R.id.new_message);
         mTitle = (TextView) v.findViewById(R.id.title);
 
         // ef ef notandi er til
         if(LoginActivity.getUserService().getCurrentUser() != null) {
-            mTitle.setText("Velkomin(n) " + LoginActivity.getUserService().getCurrentUser().getUsername());
+            //mTitle.setText("Velkomin(n) " + LoginActivity.getUserService().getCurrentUser().getUsername());
+            ((UsersiteActivity)getActivity()).addUserNameToTitle(LoginActivity.getUserService().getCurrentUser().getUsername());
         }
 
         // takki sem leyfir notanda að leita af auglýsingum
@@ -149,6 +153,17 @@ public class UsersiteFragment extends Fragment {
                         .getUserMessages(LoginActivity
                                         .getUserService()
                                         .getCurrentUser(), getActivity());
+            }
+        });
+
+        mOutbox.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                WriteMessageActivity
+                        .getMessageService()
+                        .getMySentMessages(LoginActivity
+                                .getUserService()
+                                .getCurrentUser(), getActivity());
             }
         });
 

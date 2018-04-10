@@ -23,6 +23,8 @@ public class WriteMessageFragment extends Fragment {
 
     // Takki til að senda skilaboð
     private Button mSend;
+    // Takki vil að hætta við
+    private Button mCancel;
     // Textasvið fyrir viðtakanda
     private EditText mTo;
     // Textasvið fyrir viðfangsefni
@@ -46,6 +48,7 @@ public class WriteMessageFragment extends Fragment {
         mMessage = (EditText) v.findViewById(R.id.message);
 
         mSend = (Button) v.findViewById(R.id.send);
+        mCancel = (Button) v.findViewById(R.id.cancel);
 
         Bundle bundle = getActivity().getIntent().getExtras();
 
@@ -63,6 +66,13 @@ public class WriteMessageFragment extends Fragment {
                 String message = mMessage.getText().toString();
                 Message m = new Message(from, to, subject, message);
                 WriteMessageActivity.getMessageService().sendMessage(m, getActivity());
+            }
+        });
+
+        mCancel.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
             }
         });
 
