@@ -67,8 +67,7 @@ public class AdminFragment extends Fragment {
         mDeleteAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AdminDeleteAdActivity.class);
-                startActivity(intent);
+                AdminActivity.getAdService().getAds(getActivity());
             }
         });
 
@@ -78,8 +77,7 @@ public class AdminFragment extends Fragment {
         mDeleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AdminDeleteUserActivity.class);
-                startActivity(intent);
+                AdminActivity.getUserService().getUsers(getActivity());
             }
         });
 
