@@ -104,6 +104,7 @@ public class DisplayCommentsFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
                 startActivity(intent);
+                getActivity().onBackPressed();
             }
         });
 
