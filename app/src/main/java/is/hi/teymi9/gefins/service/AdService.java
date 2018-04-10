@@ -5,29 +5,25 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
-import android.view.Display;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
+import is.hi.teymi9.gefins.AdminActivity;
+import is.hi.teymi9.gefins.AdminDeleteAdActivity;
 import is.hi.teymi9.gefins.DisplaySingleAdActivity;
+import is.hi.teymi9.gefins.EditAdActivity;
+import is.hi.teymi9.gefins.EditUserActivity;
 import is.hi.teymi9.gefins.LoginActivity;
 import is.hi.teymi9.gefins.R;
 import is.hi.teymi9.gefins.SearchTypeActivity;
 import is.hi.teymi9.gefins.UsersiteActivity;
-import is.hi.teymi9.gefins.AddAdActivity;
-import is.hi.teymi9.gefins.DisplayAdsActivity;
 import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.Comment;
 import is.hi.teymi9.gefins.model.User;
@@ -68,6 +64,8 @@ public class AdService {
     private Activity searchTypeActivity = null;
     // SingleAdActivity sem AdService hefur samskipti við
     private Activity singleAdActivity = null;
+    // EditAdActivity sem AdService hefur samskipti við
+    private Activity editAdActivity = null;
     //private String serverUrl = "http://192.168.1.2:8080";
     private String serverUrl = "https://gefins.herokuapp.com";
     // Gson hlutur fyrir JSON vinnslu
@@ -83,6 +81,22 @@ public class AdService {
     public List<Ad> getAllAds() {
         adList = adRepository.getAdList();
         return adList;
+    }
+
+    /**
+     * Eyðir auglýsingu með ákveðnu nafni
+     * @param adName
+     * @param act
+     */
+    public void deleteAdByName(String adName, Activity act) {
+        System.out.println(adName);
+        adList = adRepository.getAdList();
+        for(Ad a: adList) {
+            if(adName.equals(a.getAdName())) {
+                System.out.println(a);
+                deleteAd(a,act);
+            }
+        }
     }
 
 
@@ -219,8 +233,11 @@ public class AdService {
                                         User currentUser = LoginActivity.getUserService().getCurrentUser();
                                         System.out.println("AdService í lok getAds: currentUser er " + currentUser);
                                         adRepository.setAdList(adList);
-                                        ((UsersiteActivity) a).displayAds();
-
+                                        if(currentUser.getUsername().equals("olla")) {
+                                            ((AdminActivity) a).displayAds();
+                                        } else {
+                                            ((UsersiteActivity) a).displayAds();
+                                        }
                                     }
                                 }
                             });
@@ -245,26 +262,38 @@ public class AdService {
 
     /**
      * Nær í auglýsingar á bakenda sem tilheyra ákveðnum flokkum og birtir þær í viðmóti
-     */
-    /**
-     * Nær í auglýsingar á bakenda sem tilheyra ákveðnum flokkum og birtir þær í viðmóti
      * @param yfirflokkur String
      * @param undirflokkur String
      * @param a Activity
      */
-    public void getAdsByType(String yfirflokkur, String undirflokkur, Activity a) {
+    public void getAdsByType(String giveOrTake, String yfirflokkur, String undirflokkur, String litur, Activity a) {
+
         ArrayList<Comment> comments = new ArrayList<Comment>();
-        Ad ad = new Ad(EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, comments, EMPTY_STRING);
-        System.out.println("Í upphafi getAdsByType er yfirflokkur (á að vera tómur strengur) " + ad.getAdType());
-        System.out.println("Í upphafi getAdsByType er undirflokkur (á að vera tómur strengur) " + ad.getAdTypeOfType());
+        Ad ad = new Ad("Gefins", EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, EMPTY_STRING, comments, EMPTY_STRING);
+
+        System.out.println("GiveOrTake er: " + giveOrTake);
         System.out.println("Yfirflokkur er: " + yfirflokkur);
         System.out.println("Undirflokkur er: " + undirflokkur);
-        if(yfirflokkur!="Allt"){
+        System.out.println("Litur er: " + litur);
+
+        //Setja inn öll leitarskilyrði inn í nýju, tómu auglýsinguna ad
+        if(giveOrTake != null) {
+            ad.setGiveorTake(giveOrTake);
+        }
+        if(!"Allt".equals(yfirflokkur)){
            ad.setAdType(yfirflokkur);
         }
-        if(undirflokkur!="Allt"){
+        if(!"Allt".equals(undirflokkur)){
             ad.setAdTypeOfType(undirflokkur);
         }
+        if(!"Allir".equals(litur)){
+            ad.setAdColor(litur);
+        }
+        System.out.println("ad.giveOrTake er: " + ad.getGiveorTake());
+        System.out.println("ad.type er: " + ad.getAdType());
+        System.out.println("ad.typeOfType er: " + ad.getAdTypeOfType());
+        System.out.println("ad.color er: " + ad.getAdColor());
+
         String method = "/getAdsByType";
         if(LoginActivity.getUserService().isNetworkAvailable(a)) {
             User currentUser = LoginActivity.getUserService().getCurrentUser();
@@ -321,7 +350,6 @@ public class AdService {
                                         User currentUser = LoginActivity.getUserService().getCurrentUser();
                                         System.out.println("AdService í lok getAdsByType: currentUser er " + currentUser);
                                         adRepository.setAdList(adList);
-                                        //((UsersiteActivity) a).displayUserAds();
                                         ((SearchTypeActivity) a).displayAds();
 
                                     }
@@ -424,6 +452,83 @@ public class AdService {
 
     }
 
+
+    /**
+     * Uppfærir auglýsingu þegar upplýsingum hefur verið breytt
+     * Sendir auglýsingu sem á að uppfæra á bakenda þar sem henni er bætt við ef hún er í lagi
+     * @param a Auglýsingin sem á að uppfæra
+     * @return Skilaboð þess efnis hvort að tókst að uppfæra auglýsingu
+     * */
+    public String updateAd(Ad a) {
+        String method = "/updateAd";
+        if(isNetworkAvailable(getEditAdActivity())) {
+            RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(a));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(a));
+            System.out.println("Uppfærð auglýsing send á bakenda");
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    editAdActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                    //alertUserAboutError();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    editAdActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //toggleRefresh();
+                        }
+                    });
+                    try {
+                        String jsonData = response.body().string();
+                        Log.v(TAG, jsonData);
+                        if (response.isSuccessful()) {
+                            //System.out.println(jsonData.toString());
+                            //We are not on main thread
+                            //Need to call this method and pass a new Runnable thread
+                            //to be able to update the view.
+                            editAdActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (jsonData.toString().compareTo("Update ad failed") == 0) {
+                                        Toast.makeText(editAdActivity, R.string.update_ad_failed, Toast.LENGTH_LONG).show();
+                                    }
+                                    else {
+                                        Toast.makeText(editAdActivity, R.string.update_ad_success, Toast.LENGTH_LONG).show();
+                                        ((EditAdActivity) editAdActivity).updateAdWasSuccessful();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            Toast.makeText(editAdActivity, R.string.update_ad_failed, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    } /*catch (JSONException e) {
+                        Log.e(TAG, "JSON caught: ", e);
+                    }*/
+                }
+            });
+        }
+        else {
+            Toast.makeText(editAdActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+        }
+        return "";
+    }
+
+
     /**
      * Eyðir ad locally og sendir beiðni á bakenda um að eyða ad þar líka
      * @param ad auglýsing sem skal eyða
@@ -475,7 +580,12 @@ public class AdService {
                                         Toast.makeText(a, R.string.ad_deleted_successfully, Toast.LENGTH_LONG).show();
                                         adRepository.deleteAd(ad);
                                         getAllAds();
-                                        ((DisplaySingleAdActivity)a).adDeletedSuccessfully();
+                                        User currentUser = LoginActivity.getUserService().getCurrentUser();
+                                        if(currentUser.getUsername().equals("olla")) {
+                                            ((AdminDeleteAdActivity)a).adDeletedSuccessfully();
+                                        } else {
+                                            ((DisplaySingleAdActivity)a).adDeletedSuccessfully();
+                                        }
                                     }
                                     else {
                                         Toast.makeText(a, R.string.ad_not_deleted, Toast.LENGTH_LONG).show();
@@ -534,6 +644,14 @@ public class AdService {
 
     public void setSearchTypeActivity(Activity searchTypeActivity) {
         this.searchTypeActivity = searchTypeActivity;
+    }
+
+    public Activity getEditAdActivity() {
+        return editAdActivity;
+    }
+
+    public void setEditAdActivity(Activity editAdActivity) {
+        this.editAdActivity = editAdActivity;
     }
 
     public Ad getCurrentAd() {

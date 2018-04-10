@@ -72,12 +72,16 @@ public class UserService implements Serializable {
     private Activity searchTypeActivity = null;
     // EditUserActivity sem UserService hefur samskipti við
     private Activity editUserActivity = null;
+    // EditAdActivity sem UserService hefur samskipti við
+    private Activity editAdActivity = null;
     // DisplayAdsActivity sem UserService hefur samskipti við
     private Activity displayAdsActivity = null;
     // DisplaySingleAdActivity sem UserService hefur samskipti við
     private Activity displaySingleAdActivity = null;
     // AddAdActivity sem UserService hefur samskipti við
     private Activity addAdActivity = null;
+    // AdminDeleteUserActivity sem UserService hefur samskipti við
+    private Activity adminDeleteUserActivity = null;
     // Gson hlutur fyrir JSON vinnslu
     Gson gson = new Gson();
     // okhttp3 client fyrir samskipti við bakenda
@@ -93,7 +97,31 @@ public class UserService implements Serializable {
      */
     public List<User> getAllUsers(){
         String method = "/getUsers";
+        /*if (isNetworkAvailable(getAdminDeleteUserActivity())) {
+            RequestBody body = RequestBody.create(MediaType.parse(
+                    "application/json; charset=utf-8"),
+                    gson.toJson(userList));
+            Request request = new Request.Builder()
+                    .url(serverUrl + method)
+                    .post(body)
+                    .build();
+            System.out.println(gson.toJson(userList));
+        }*/
+        userList = userRepository.getAll();
         return userList;
+    }
+
+    /**
+     * Eyðir notanda með ákveðið notendanafn
+     * @param username
+     */
+    public void deleteUserByUserName(String username) {
+        userList = userRepository.getAll();
+        for(User u: userList) {
+            if(username.equals(u.getUsername())){
+                userRepository.deleteUser(u);
+            }
+        }
     }
 
     /**
@@ -263,6 +291,7 @@ public class UserService implements Serializable {
                                     else {
                                         System.out.println("Login fallið: currentUser er " + u.getUsername());
                                         setCurrentUser(u);
+                                        Toast.makeText(registerActivity, R.string.create_user_succeeded, Toast.LENGTH_LONG).show();
                                         ((RegisterActivity) registerActivity).createUserWasSucessful();
                                     }
                                 }
@@ -485,4 +514,19 @@ public class UserService implements Serializable {
     public void setEditUserActivity(Activity editUserActivity) {
         this.editUserActivity = editUserActivity;
     }
+
+    public Activity getAdminDeleteUserActivity() {return adminDeleteUserActivity; }
+
+    public void setAdminDeleteUserActivity(Activity adminDeleteUserActivity) {
+        this.adminDeleteUserActivity = adminDeleteUserActivity;
+    }
+
+    public Activity getEditAdActivity() {
+        return editAdActivity;
+    }
+
+    public void setEditAdActivity(Activity editAdActivity) {
+        this.editAdActivity = editAdActivity;
+    }
+
 }

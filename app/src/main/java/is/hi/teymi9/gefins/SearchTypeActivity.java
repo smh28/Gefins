@@ -18,7 +18,9 @@ import is.hi.teymi9.gefins.service.AdService;
 public class SearchTypeActivity extends SingleFragmentActivity {
 
     // adService breyta
-    public static AdService adService = new AdService();
+    //public static AdService adService = new AdService();
+    public static AdService adService = DisplayAdsActivity.getAdService();
+
 
     @Override
     protected Fragment createFragment() {

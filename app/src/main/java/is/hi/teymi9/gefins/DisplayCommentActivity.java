@@ -20,7 +20,7 @@ public class DisplayCommentActivity extends SingleFragmentActivity {
     // commentService breyta
     public static CommentService commentService = new CommentService();
     // adService breyta
-    public static AdService adService = new AdService();
+    public static AdService adService = DisplayAdsActivity.getAdService();
 
     // skilar adService
     public static AdService getAdService() {

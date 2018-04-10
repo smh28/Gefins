@@ -53,4 +53,12 @@ public class UserRepository extends User implements Serializable {
         // save updated user to DB
     }
 
+    /**
+     * Eyðir notanda
+     * @param u Notandi sem skal eyða
+     */
+    public void deleteUser(User u) {
+        userList.remove(u);
+    }
+
 }

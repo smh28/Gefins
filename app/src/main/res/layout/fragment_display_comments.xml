@@ -12,17 +12,11 @@
 <!-- Erum bara að nota efsta text view fyrir allan textann eins og er,
 skipta niður á text view til að fá betra útlit -->
 
-
-    <ListView
-        android:id="@+id/commentList"
-        android:layout_width="match_parent"
-        android:layout_height="408dp" />
-
     <Button
         android:id="@+id/newComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Skrifa athugasemd"
+        android:text="@string/skrifa_athugasemd"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="301dp" />
 
@@ -34,5 +28,9 @@ skipta niður á text view til að fá betra útlit -->
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="301dp" />
 
+    <ListView
+        android:id="@+id/commentList"
+        android:layout_width="match_parent"
+        android:layout_height="408dp" />
 
 </LinearLayout>

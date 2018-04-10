@@ -60,8 +60,6 @@ public class SearchTypeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_search_type, container, false);
 
-
-
         //Yfirflokkkur
         mSpinner = (Spinner) v.findViewById(R.id.spinner4);
         //Undirflokkur
@@ -78,7 +76,7 @@ public class SearchTypeFragment extends Fragment {
 
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.hlutir_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.searchHlutir_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -99,6 +97,9 @@ public class SearchTypeFragment extends Fragment {
                     mSpinner2.setAdapter(adapter2);
                 } else if(spinnerValue.equalsIgnoreCase("Matur")) {
                     ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.searchMatur_array, android.R.layout.simple_spinner_item);
+                    mSpinner2.setAdapter(adapter2);
+                } else if(spinnerValue.equalsIgnoreCase("Allt")) {
+                    ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.searchAllt_array, android.R.layout.simple_spinner_item);
                     mSpinner2.setAdapter(adapter2);
                 } else {
                     ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(), R.array.searchAnnad_array, android.R.layout.simple_spinner_item);
@@ -142,6 +143,10 @@ public class SearchTypeFragment extends Fragment {
         });
 
 
+        /**
+         * Listener sem tekur inn valdar breytur fyrir leitarvalið þegar staðfestingarhnappurinn
+         * er valinn og kallar á aðferðina getAdsByType til að birta valdar auglýsingar
+         */
         mConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,10 +156,14 @@ public class SearchTypeFragment extends Fragment {
                 System.out.println("Í SearchType Spinner3 = litur: " + mSpinner3.getSelectedItem().toString());
                 System.out.println("Í SearchType mGiveOrTake = gefins eða óska eftir: " + mGiveOrTake);
 
+
                 //Kallar á aðferðina getAdsByType í AdService sem sér um að sækja og birta réttar auglýsingar
+
                 SearchTypeActivity.getAdService().getAdsByType(
+                        mGiveOrTake,
                         mSpinner.getSelectedItem().toString(),
                         mSpinner2.getSelectedItem().toString(),
+                        mSpinner3.getSelectedItem().toString(),
                         getActivity()
                 );
 

@@ -57,8 +57,8 @@ public class OutboxFragment extends Fragment {
         mOutboxRecyclerView = (RecyclerView)v.findViewById(R.id.inbox_recycler_view);
         mOutboxRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mTitle = (TextView) v.findViewById(R.id.inbox_text);
-        mTitle.setText(R.string.outbox);
+        //mTitle = (TextView) v.findViewById(R.id.inbox_text);
+        //mTitle.setText(R.string.outbox);,
 
         updateUI();
 
@@ -71,8 +71,7 @@ public class OutboxFragment extends Fragment {
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
+                getActivity().finish();
             }
         });
 

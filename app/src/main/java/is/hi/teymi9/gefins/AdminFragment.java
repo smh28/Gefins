@@ -1,5 +1,7 @@
 package is.hi.teymi9.gefins;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,20 +17,28 @@ import java.util.List;
 import is.hi.teymi9.gefins.model.User;
 
 /**
- * Fragment fyrir viðmótið í AdminActiv og virknina þar.
+ * Fragment fyrir viðmótið í AdminActivity og virknina þar.
  *
- * @author Ólöf Fríða
+ * @author Ólöf Fríða og Kristín María
  * @version 1.0
  * @date March 2018
  */
 
 public class AdminFragment extends Fragment {
+
     // Listi af notendum
-    List<User> users;
+    //List<User> users;
+
     // Takki fyrir útskráningu
     private Button mLogout;
+    // Takk til að skoða allar auglýsingar
+    private Button mSeeAllAds;
+    // Takki til að eyða auglýsingu
+    private Button mDeleteAd;
+    // Takki til að eyða notanda
+    private Button mDeleteUser;
     // Listi fyrir notendur
-    private ListView mUserList;
+    //private ListView mUserList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,35 +52,57 @@ public class AdminFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_adminsite, container, false);
 
         mLogout = (Button) v.findViewById(R.id.logout_button);
-        mUserList = (ListView) v.findViewById(R.id.userList);
-        users = AdminActivity.getUserService().getAllUsers();
-        int count = users.size();
-        // Ef listin af notendum er ekki tómur þá birtum við hann
-        if(!users.isEmpty()){
 
-            String[] userName = new String[count];
-            int i = 0;
-            for(User u: users){
-                userName[i] = u.getUsername();
-                i++;
+        mSeeAllAds = (Button) v.findViewById(R.id.see_all_ads_button);
+        mDeleteAd = (Button) v.findViewById(R.id.delete_ad_button);
+        mDeleteUser = (Button) v.findViewById(R.id.delete_user_button);
+
+        mSeeAllAds.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                DisplayAdsActivity.getAdService().getAds(getActivity());
             }
+        });
 
-            ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
-                    getActivity(),
-                    android.R.layout.simple_list_item_1,
-                    userName
-            );
+        mDeleteAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AdminDeleteAdActivity.class);
+                startActivity(intent);
+            }
+        });
 
-            mUserList.setAdapter(listViewAdapter);
-        }
+        /**
+         * OnClickListener á eyða takka þar sem AdminDeleteUserActivity opnast ef ýtt er á
+         */
+        mDeleteUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AdminDeleteUserActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        // Takki sem skráir notandan út
+        /**
+         * OnClickListener á útskráningar takka þar sem dialog opnast og spyr hvort notandi sé
+         * viss um að vilja skrá sig út áður en útskráning á sér stað
+         */
         mLogout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                LoginActivity.getUserService().logout();
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
+                new AlertDialog.Builder(getContext())
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Útskráning")
+                        .setMessage("Ertu viss um að þú viljir skrá þig út?")
+                        .setPositiveButton("Já", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                LoginActivity.getUserService().logout();
+                                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("Nei", null)
+                        .show();
             }
         });
 

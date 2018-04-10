@@ -10,13 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.List;
 
 import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.User;
-import is.hi.teymi9.gefins.service.AdService;
 import is.hi.teymi9.gefins.service.UserService;
 
 /**
@@ -79,7 +77,7 @@ public class DisplayAdsFragment extends Fragment {
         for(Ad a: allAds) {
             //Fylla inn í strengjafylkin
             adName[i] = a.getAdName();
-            adGiveOrTake[i] = a.getGiveOrTake();
+            adGiveOrTake[i] = a.getGiveorTake();
             adType[i] = a.getAdType();
             adTypeOfType[i] = a.getAdTypeOfType();
             adColor[i] = a.getAdColor();
@@ -128,8 +126,13 @@ public class DisplayAdsFragment extends Fragment {
                 User currentUser = LoginActivity.getUserService().getCurrentUser();
                 System.out.println("DisplayAdsFragment í back hnappi: currentUser er " + currentUser);
                 if(currentUser != null) {
-                    Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                    startActivity(intent);
+                    if(currentUser.getUsername().equals("olla")){
+                        Intent intent = new Intent(getActivity(), AdminActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                        startActivity(intent);
+                    }
                 }
                 else{
                     Intent intent = new Intent(getActivity(), LoginActivity.class);

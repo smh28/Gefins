@@ -1,6 +1,8 @@
 package is.hi.teymi9.gefins;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.User;
 import is.hi.teymi9.gefins.service.UserService;
 
@@ -27,8 +31,11 @@ public class DisplaySingleAdFragment extends Fragment {
     private Button mBack;
     // Takki sem leyfir notanda að skoða ummæli
     private Button mComment;
+    // Takki til að uppfæra auglýsingu
+    private Button mUpdateAd;
     // Takki til að eyða auglýsingu
     private Button mDeleteAd;
+
 
     //Þjónusta fyrir notanda
     public static UserService userService = new UserService();
@@ -65,6 +72,7 @@ public class DisplaySingleAdFragment extends Fragment {
         mBack = (Button) v.findViewById(R.id.singleAdTilbaka);
         mComment = (Button) v.findViewById(R.id.comments);
         mDeleteAd = (Button) v.findViewById(R.id.delete_button);
+        mUpdateAd = (Button) v.findViewById(R.id.update_button);
 
         // ná í núverandi notanda
         currentUser = LoginActivity.getUserService().getCurrentUser();
@@ -98,10 +106,14 @@ public class DisplaySingleAdFragment extends Fragment {
                 // aftengi eyða takka ef notandi er ekki höfundurinn
                 mDeleteAd.setEnabled(false);
                 mDeleteAd.setVisibility(View.GONE);
+                mUpdateAd.setEnabled(false);
+                mUpdateAd.setVisibility(View.GONE);
             }
             else {
                 mDeleteAd.setEnabled(true);
                 mDeleteAd.setVisibility(View.VISIBLE);
+                mUpdateAd.setEnabled(true);
+                mUpdateAd.setVisibility(View.VISIBLE);
             }
         }
         // Nær í núverandi notanda
@@ -138,11 +150,33 @@ public class DisplaySingleAdFragment extends Fragment {
             }
         });
 
+        mUpdateAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = EditAdActivity.newIntent(getActivity());
+                startActivity(intent);
+
+            }
+        });
+
         // Takki sem eyðir auglýsingu
         mDeleteAd.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                DisplayAdsActivity.adService.deleteAd(DisplayAdsActivity.adService.getCurrentAd(), getActivity());
+                new AlertDialog.Builder(getActivity())
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Eyða auglýsingu")
+                        .setMessage("Ertu viss um að þú viljir eyða auglýsingunni?")
+                        .setPositiveButton("Já", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                DisplayAdsActivity.adService.deleteAd(DisplayAdsActivity.adService.getCurrentAd(), getActivity());
+                            }
+                        })
+                        .setNegativeButton("Nei", null)
+                        .show();
             }
         });
 

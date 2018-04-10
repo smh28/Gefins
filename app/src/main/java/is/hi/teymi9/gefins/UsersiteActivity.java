@@ -16,7 +16,7 @@ import is.hi.teymi9.gefins.service.UserService;
 /**
  * Activity í Gefins sem sýnir upphafssíðu notanda
  *
- * @author Sanda
+ * @author Sandra
  * @version 1.0
  * @date
  */
@@ -26,6 +26,15 @@ public class UsersiteActivity extends SingleFragmentActivity {
     @Override
     protected Fragment createFragment() {
         return new UsersiteFragment();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    public void addUserNameToTitle(String name){
+        setTitle(getTitle() + " - " + name);
     }
 
     /**
@@ -64,7 +73,19 @@ public class UsersiteActivity extends SingleFragmentActivity {
         startActivity(intent);
     }
 
+    /**
+     * býr til og ræsir activity til að sýna lista af skilaboðum
+     */
+    public void displayOutbox() {
+        Intent intent = OutboxActivity.newIntent(this);
+        startActivity(intent);
+    }
 
+
+    /**
+     * Býr til Dialog ef ýtt er á back takka frá notendasíðu(og skráir notanda þá út) og spyr
+     * hvort notandi sé viss um að hann vilji skrá sig út
+     */
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
