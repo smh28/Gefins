@@ -43,7 +43,7 @@ import okhttp3.Response;
 public class CommentService implements Serializable {
 
     // Geymsla fyrir athugasemdirnar
-    private CommentRepository commentRep = new CommentRepository();
+    public CommentRepository commentRep = new CommentRepository();
     // tag til að auðkenna skilaboð í logger
     public static final String TAG = CommentService.class.getSimpleName();
     // Tengjast vefþóni
@@ -65,6 +65,8 @@ public class CommentService implements Serializable {
         client = new OkHttpClient();
     }
 
+
+
     /**
      * finnur athugasemd með viðeigandi id
      * @param id id
@@ -81,7 +83,7 @@ public class CommentService implements Serializable {
     /**
      * Sendir athugasemd á bakenda þar sem henni er bætt við
      * @param comment Athugasemdin sem bæta skal við
-     * @return Skilaboð þess efnis hvort að tókst að bæta auglýsingu við
+     * @return Skilaboð þess efnis hvort að tókst að bæta  við athugasemd
      */
     public String addComment(Comment comment) {
         String method = "/createComment";
@@ -127,19 +129,15 @@ public class CommentService implements Serializable {
                             addCommentActivity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    //if (jsonData.toString().compareTo("Create user failed. Please try again.") == 0) {
-                                    //    Toast.makeText(addAdActivity, R.string.create_user_failed, Toast.LENGTH_LONG).show();
-                                    //}
-                                    //else {
-                                    //setCurrentUser(u);
-                                    //((AddAdActivity) addAdActivity).createUserWasSucessful();
                                     Toast.makeText(addCommentActivity, "Ný athugasemd hefur verið búin til", Toast.LENGTH_LONG).show();
-                                    //}
+                                    commentRep.addComment(comment);
+                                    getAllComments();
+
                                 }
                             });
                         }
                         else {
-                            Toast.makeText(addCommentActivity, "Ekki tókst að búa til auglýsingu, vinsamlegast reynið aftur", Toast.LENGTH_LONG).show();
+                            Toast.makeText(addCommentActivity, "Ekki tókst að búa til athugasemd, vinsamlegast reynið aftur", Toast.LENGTH_LONG).show();
                         }
                     } catch (IOException e) {
                         Log.e(TAG, "Exception caught: ", e);
@@ -163,6 +161,11 @@ public class CommentService implements Serializable {
         commentList = commentRep.getCommentList();
         return commentList;
     }
+
+
+    /**
+     * vistir athugasemd locally
+     */
 
 
     /**
@@ -243,7 +246,7 @@ public class CommentService implements Serializable {
      * Bætir athugasemndinni við í repo
      * @param c Comment
      */
-    public void addAd(Comment c) {
+    public void addCommentLocally(Comment c) {
         commentRep.addComment(c);
     }
 

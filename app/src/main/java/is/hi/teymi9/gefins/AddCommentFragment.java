@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.model.Comment;
 
@@ -56,26 +58,11 @@ public class AddCommentFragment extends Fragment {
         mUsername = LoginActivity.getUserService().getCurrentUser().getUsername();
         mAd = DisplaySingleAdActivity.adService.getCurrentAd();
 
-        // Villumeðhöndlun á comment ( má ekki vera tómt )
-
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Comment newComment = new Comment(mUsername, mComment.getText().toString(),mAd);
-                String message = addCommentActivity.getCommentService().addComment(newComment);
-                Toast.makeText(getActivity(),
-                        message,
-                        Toast.LENGTH_SHORT).show();
-                // Stilla auglýsinguna svo hægt er að skoða hana aftur
-                Intent intent = new Intent(getActivity(), DisplaySingleAdActivity.class);
-                intent.putExtra("name", mAd.getAdName());
-                intent.putExtra("giveOrTake", mAd.getGiveOrTake());
-                intent.putExtra("type", mAd.getAdType());
-                intent.putExtra("typeOfType", mAd.getAdTypeOfType());
-                intent.putExtra("color", mAd.getAdColor());
-                intent.putExtra("description", mAd.getAdDescription());
-                intent.putExtra("location", mAd.getAdLocation());
-                intent.putExtra("username", mAd.getAdUsername());
+                Intent intent = new Intent(getActivity(), DisplayCommentActivity.class);
                 startActivity(intent);
             }
         });
