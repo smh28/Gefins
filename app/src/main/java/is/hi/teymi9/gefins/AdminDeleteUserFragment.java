@@ -25,7 +25,6 @@ import is.hi.teymi9.gefins.model.User;
 
 public class AdminDeleteUserFragment extends Fragment {
 
-    private ListView mUserList;
     private List<User> allUsers;
     //Tilbaka takki
     private Button mBack;
@@ -42,10 +41,9 @@ public class AdminDeleteUserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_admin_delete_user, container, false);
+        ListView listView = (ListView) v.findViewById(R.id.userList);
         mBack = (Button) v.findViewById(R.id.back_button2);
-        mDelete = (Button) v.findViewById(R.id.delete_ad_button3);
-        mUserList = (ListView) v.findViewById(R.id.userList);
-
+        mDelete = (Button) v.findViewById(R.id.delete_user_button);
 
         allUsers = AdminActivity.getUserService().getAllUsers();
         int countUsers = allUsers.size();
@@ -78,7 +76,7 @@ public class AdminDeleteUserFragment extends Fragment {
                 username
         );
 
-        mUserList.setAdapter(listViewAdapter);
+        listView.setAdapter(listViewAdapter);
 
 
         //Sendir admin tilbaka á admin síðu
@@ -95,16 +93,16 @@ public class AdminDeleteUserFragment extends Fragment {
         mDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SparseBooleanArray checked = mUserList.getCheckedItemPositions();
+                SparseBooleanArray checked = listView.getCheckedItemPositions();
                 int size = checked.size(); // number of name-value pairs in the array
                 for (int i = 0; i < size; i++) {
                     int key = checked.keyAt(i);
                     boolean value = checked.get(key);
                     if (value)
                         System.out.println(key);
-                    String tag = mUserList.getItemAtPosition(key).toString();
+                    String tag = listView.getItemAtPosition(key).toString();
                     System.out.println(tag);
-                    AdminActivity.getAdService().deleteAdByName(tag, getActivity());
+                    AdminActivity.getUserService().deleteUserByUserName(tag, getActivity());
                 }
             }
         });

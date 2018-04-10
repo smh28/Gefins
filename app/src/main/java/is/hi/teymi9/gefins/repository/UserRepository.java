@@ -61,4 +61,16 @@ public class UserRepository extends User implements Serializable {
         userList.remove(u);
     }
 
+
+    /**
+     * Stillir listann af notendum
+     * @param userList
+     */
+    public void setUserList(ArrayList<User> userList) {
+        System.out.println("UserRepository setUserList, userList inniheldur: ");
+        for(User u: userList) {
+            System.out.println(u.getUsername());
+        }
+        this.userList = userList;
+    }
 }

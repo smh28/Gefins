@@ -28,4 +28,13 @@ public class AdminDeleteUserActivity extends SingleFragmentActivity {
         return intent;
     }
 
+
+    /**
+     * Callback þegar notanda er eytt. Fer aftur í lista af notendum.
+     */
+    public void userDeletedSuccessfully() {
+        Intent intent = new Intent(this, AdminDeleteUserActivity.class);
+        startActivity(intent);
+    }
+
 }

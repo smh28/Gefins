@@ -51,6 +51,16 @@ public class AdminActivity extends SingleFragmentActivity {
     }
 
     /**
+     * Ræsir activity til að sýna lista yfir notendur
+     */
+    public void displayUsers() {
+        Intent intent = new Intent(this, DisplayAdsActivity.class);
+        startActivity(intent);
+    }
+
+
+
+    /**
      * Ræsir activity til að sýna lista yfir auglýsingar
      */
     /*
