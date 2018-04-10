@@ -67,7 +67,7 @@ public class AdminFragment extends Fragment {
         mDeleteAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AdminActivity.getAdService().getAds(getActivity());
+                AdminActivity.getAdService().getAdsForAdmin(getActivity());
             }
         });
 
