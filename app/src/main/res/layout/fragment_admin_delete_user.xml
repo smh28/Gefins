@@ -1,47 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fillViewport="true">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/deleteusertext"
-            android:layout_width="match_parent"
-            android:layout_height="132dp"
-            android:padding="34dp"
-            android:text="@string/eydanotanda"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="30sp" />
-
-        <ListView
-            android:id="@+id/userList"
-            android:layout_width="match_parent"
-            android:layout_height="383dp"
-            tools:layout_editor_absoluteY="128dp" />
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/back_button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tilbaka"
-            tools:layout_editor_absoluteX="148dp"
-            tools:layout_editor_absoluteY="301dp" />
+            android:text="@string/tilbaka" />
 
         <Button
             android:id="@+id/delete_ad_button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/eyda"
-            tools:layout_editor_absoluteX="148dp"
-            tools:layout_editor_absoluteY="301dp" />
-
+            android:text="@string/eyda" />
     </LinearLayout>
-</ScrollView>
+
+
+    <ListView
+        android:id="@+id/userList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

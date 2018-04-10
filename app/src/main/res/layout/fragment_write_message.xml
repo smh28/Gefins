@@ -7,45 +7,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/til" />
 
         <EditText
             android:id="@+id/to"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/vidfangsefni" />
+            android:ems="10"
+            android:hint="@string/til"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <EditText
             android:id="@+id/subject"
+            android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/skilabod" />
+            android:ems="10"
+            android:hint="@string/vidfangsefni"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <EditText
             android:id="@+id/message"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:inputType="textMultiLine"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="5"
+            android:scrollHorizontally="false"
             android:ems="10"
-            android:gravity="start|top"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:hint="@string/skilabod"
+            android:backgroundTint="@color/colorPrimary"/>
 
         <Button
             android:id="@+id/send"

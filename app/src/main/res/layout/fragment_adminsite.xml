@@ -1,65 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fillViewport="true">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:orientation="vertical">
-
-
-        <Button
-            android:id="@+id/logout_button"
-            android:layout_width="122dp"
-            android:layout_height="34dp"
-            android:layout_gravity="top|right"
-            android:drawablePadding="24dp"
-            android:text="@string/logout_button" />
-
-
-        <TextView
-            android:id="@+id/texti1"
-            android:layout_width="match_parent"
-            android:layout_height="132dp"
-            android:padding="34dp"
-            android:text="@string/adminwelcome"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="30sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/see_all_ads_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/skodasidu" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/skodasidu"
+            android:textColor="@color/colorPrimary" />
 
         <Button
             android:id="@+id/delete_ad_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/eydaauglysingu" />
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/eydaauglysingu"
+            android:textColor="@color/colorPrimary" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/delete_user_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/eydanotanda" />
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/eydanotanda"
+            android:textColor="@color/colorPrimary" />
 
-
+        <Button
+            android:id="@+id/logout_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:layout_weight="1"
+            android:drawablePadding="24dp"
+            android:text="@string/logout_button"
+            android:textColor="@color/colorPrimary" />
     </LinearLayout>
-</ScrollView>
+
+</LinearLayout>

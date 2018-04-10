@@ -33,5 +33,6 @@ public class AdminDeleteAdActivity extends SingleFragmentActivity {
     public void adDeletedSuccessfully() {
         Intent intent = new Intent(this, AdminDeleteAdActivity.class);
         startActivity(intent);
+        onBackPressed();
     }
 }

@@ -36,6 +36,7 @@ public class EditUserActivity extends SingleFragmentActivity {
      * Ræsir UsersiteActivity þegar að uppfærsla notendaupplýsinga hefur tekist
      */
     public void updateUserWasSuccessful(){
+        onBackPressed();
         Intent intent = new Intent(this, UsersiteActivity.class);
         startActivity(intent);
     }

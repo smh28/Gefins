@@ -51,6 +51,7 @@ public class DisplaySingleAdActivity extends SingleFragmentActivity {
     public void adDeletedSuccessfully() {
         Intent intent = new Intent(this, DisplayAdsActivity.class);
         startActivity(intent);
+        onBackPressed();
     }
 
 }

@@ -38,7 +38,7 @@ public class DisplaySingleAdFragment extends Fragment {
 
 
     //Þjónusta fyrir notanda
-    public static UserService userService = new UserService();
+    public static UserService userService = LoginActivity.getUserService();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -147,16 +147,16 @@ public class DisplaySingleAdFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }
+                getActivity().onBackPressed();
             }
         });
 
         mUpdateAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = EditAdActivity.newIntent(getActivity());
                 startActivity(intent);
-
+                getActivity().onBackPressed();
             }
         });
 
