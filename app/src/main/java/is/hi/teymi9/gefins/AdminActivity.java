@@ -46,8 +46,16 @@ public class AdminActivity extends SingleFragmentActivity {
     /**
      * Ræsir activity til að sýna lista yfir auglýsingar
      */
-    public void displayAds() {
+    public void displayAdsForAdmin() {
         Intent intent = new Intent(this, AdminDeleteAdActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Ræsir activity til að sýna lista yfir auglýsingar
+     */
+    public void displayAds() {
+        Intent intent = new Intent(this, DisplayAdsActivity.class);
         startActivity(intent);
     }
 
