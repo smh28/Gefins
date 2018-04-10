@@ -53,4 +53,12 @@ public class DisplayCommentActivity extends SingleFragmentActivity {
         return intent;
     }
 
+    /**
+     * Callback þegar athugasemd er bætt við.
+     */
+    public void adAddedSuccessfully() {
+        Intent intent = new Intent(this, DisplayCommentActivity.class);
+        startActivity(intent);
+    }
+
 }

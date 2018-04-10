@@ -85,11 +85,10 @@ public class CommentService implements Serializable {
      * @param comment Athugasemdin sem bæta skal við
      * @return Skilaboð þess efnis hvort að tókst að bæta  við athugasemd
      */
-    public String addComment(Comment comment) {
+    public String addComment(Comment comment, Activity a) {
         String method = "/createComment";
-        Activity newActivity = getAddCommentActivity();
-        System.out.println("AdService í addAd: newActivity er " + newActivity);
-        if(LoginActivity.getUserService().isNetworkAvailable(getAddCommentActivity())) {
+        System.out.println("AdService í addAd: newActivity er " + a);
+        if(LoginActivity.getUserService().isNetworkAvailable(a)) {
             RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(comment));
             Request request = new Request.Builder()
                     .url(serverUrl + method)
@@ -101,7 +100,7 @@ public class CommentService implements Serializable {
             call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    addCommentActivity.runOnUiThread(new Runnable() {
+                    a.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
 
@@ -112,7 +111,7 @@ public class CommentService implements Serializable {
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    addCommentActivity.runOnUiThread(new Runnable() {
+                    a.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             //toggleRefresh();
@@ -126,10 +125,10 @@ public class CommentService implements Serializable {
                             //We are not on main thread
                             //Need to call this method and pass a new Runnable thread
                             //to be able to update the view.
-                            addCommentActivity.runOnUiThread(new Runnable() {
+                            a.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(addCommentActivity, "Ný athugasemd hefur verið búin til", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(a, "Ný athugasemd hefur verið búin til", Toast.LENGTH_LONG).show();
                                     commentRep.addComment(comment);
                                     getAllComments();
 
@@ -137,7 +136,7 @@ public class CommentService implements Serializable {
                             });
                         }
                         else {
-                            Toast.makeText(addCommentActivity, "Ekki tókst að búa til athugasemd, vinsamlegast reynið aftur", Toast.LENGTH_LONG).show();
+                            Toast.makeText(a, "Ekki tókst að búa til athugasemd, vinsamlegast reynið aftur", Toast.LENGTH_LONG).show();
                         }
                     } catch (IOException e) {
                         Log.e(TAG, "Exception caught: ", e);
@@ -148,7 +147,7 @@ public class CommentService implements Serializable {
             });
         }
         else {
-            Toast.makeText(addCommentActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+            Toast.makeText(a, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
         }
         return "";
     }

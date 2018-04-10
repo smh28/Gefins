@@ -7,27 +7,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:padding="10px">
 
-<!-- Erum bara að nota efsta text view fyrir allan textann eins og er,
+    <!-- Erum bara að nota efsta text view fyrir allan textann eins og er,
 skipta niður á text view til að fá betra útlit -->
 
 
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="71dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/comment" />
 
-    <TextView
-        android:id="@+id/comment"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="62dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/deleteComment"
-        android:layout_width="111dp"
-        android:layout_height="wrap_content"
-        android:text="Eyða" />
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:text="Username"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/comment"
+                android:layout_width="224dp"
+                android:layout_height="62dp"
+                android:layout_weight="1"
+                android:paddingTop="20px"
+                android:text="hér er comment" />
+
+            <Button
+                android:id="@+id/deleteComment"
+                android:layout_width="111dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Eyða" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

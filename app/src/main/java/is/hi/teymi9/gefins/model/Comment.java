@@ -63,4 +63,12 @@ public class Comment {
     public void setId(UUID id) {
         this.id = id;
     }
+
+    public void setAd(Ad ad) {
+        this.ad = ad;
+    }
+
+    public Ad getAd() {
+        return ad;
+    }
 }

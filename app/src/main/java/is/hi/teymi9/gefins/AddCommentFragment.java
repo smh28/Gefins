@@ -62,7 +62,7 @@ public class AddCommentFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Comment newComment = new Comment(mUsername, mComment.getText().toString(),mAd);
-                String message = addCommentActivity.getCommentService().addComment(newComment);
+                String message = addCommentActivity.getCommentService().addComment(newComment, getActivity());
                 Toast.makeText(getActivity(),
                         message,
                         Toast.LENGTH_SHORT).show();
