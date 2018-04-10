@@ -83,10 +83,11 @@ public class AdminDeleteUserFragment extends Fragment {
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                User currentUser = LoginActivity.getUserService().getCurrentUser();
-                System.out.println("DisplayAdsFragment í back hnappi: currentUser er " + currentUser);
-                Intent intent = new Intent(getActivity(), AdminActivity.class);
-                startActivity(intent);
+                //User currentUser = LoginActivity.getUserService().getCurrentUser();
+                //System.out.println("DisplayAdsFragment í back hnappi: currentUser er " + currentUser);
+                //Intent intent = new Intent(getActivity(), AdminActivity.class);
+                //startActivity(intent);
+                getActivity().onBackPressed();
             }
         });
 

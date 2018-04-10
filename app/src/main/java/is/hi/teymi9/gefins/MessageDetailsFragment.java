@@ -79,18 +79,7 @@ public class MessageDetailsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // fer til bara í inbox ef in message, annars aftur í outbox
-                boolean inMessage = true;
-                if(bundle != null) {
-                    inMessage = bundle.getBoolean("inMessage");
-                }
-                if(inMessage) {
-                    Intent intent = new Intent(getActivity(), InboxActivity.class);
-                    startActivity(intent);
-                }
-                else {
-                    Intent intent = new Intent(getActivity(), OutboxActivity.class);
-                    startActivity(intent);
-                }
+                getActivity().onBackPressed();
             }
         });
 

@@ -67,8 +67,9 @@ public class InboxFragment extends Fragment {
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), UsersiteActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getActivity(), UsersiteActivity.class);
+                //startActivity(intent);
+                getActivity().onBackPressed();
             }
         });
 
@@ -128,6 +129,7 @@ public class InboxFragment extends Fragment {
                 // ef skilaboð eru ekki þegar lesin þá merkja þau sem lesin
                 // og senda skilaboð um það á bakenda
                 mMessage.setRead(true);
+                updateUI();
                 WriteMessageActivity.getMessageService().sendMessage(mMessage, getActivity());
             }
             Intent intent = MessageDetailsActivity.newIntent(getActivity(), mMessage, true);

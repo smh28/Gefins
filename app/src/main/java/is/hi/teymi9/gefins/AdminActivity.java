@@ -19,11 +19,11 @@ import is.hi.teymi9.gefins.service.UserService;
 
 public class AdminActivity extends SingleFragmentActivity {
 
-    public static UserService userService = new UserService();
+    public static UserService userService = LoginActivity.getUserService();
 
     public static UserService getUserService() { return userService; }
 
-    public static AdService adService = new AdService();
+    public static AdService adService = DisplayAdsActivity.getAdService();
 
     public static AdService getAdService() { return adService; }
 

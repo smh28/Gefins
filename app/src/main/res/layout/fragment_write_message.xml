@@ -1,50 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/til"/>
-
-    <EditText
-        android:id="@+id/to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"/>
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vidfangsefni"/>
-
-    <EditText
-        android:id="@+id/subject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"/>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/skilabod"/>
-
-    <EditText
-        android:id="@+id/message"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scrollbars="vertical"
-        android:gravity="left|top"
-        android:ems="10"/>
-
-    <Button
-        android:id="@+id/send"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/senda"/>
+        android:gravity="center"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/to"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/til"
+            android:backgroundTint="@color/colorPrimary"/>
+
+        <EditText
+            android:id="@+id/subject"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/vidfangsefni"
+            android:backgroundTint="@color/colorPrimary"/>
+
+        <EditText
+            android:id="@+id/message"
+            android:inputType="textMultiLine"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="5"
+            android:scrollHorizontally="false"
+            android:ems="10"
+            android:scrollbars="vertical"
+            android:hint="@string/skilabod"
+            android:backgroundTint="@color/colorPrimary"/>
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/senda" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/haetta_vid" />
+
+    </LinearLayout>
+</ScrollView>

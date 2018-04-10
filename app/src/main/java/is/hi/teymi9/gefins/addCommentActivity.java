@@ -39,4 +39,12 @@ public class addCommentActivity extends SingleFragmentActivity {
         Intent intent = new Intent(packageContext, addCommentActivity.class);
         return intent;
     }
+
+    /**
+     * Callback þegar bætt er við athugasemd. Fer aftur í lista af athugasemdum.
+     */
+    public void commentAddedSuccessfully() {
+        Intent intent = new Intent(this, DisplayCommentActivity.class);
+        startActivity(intent);
+    }
 }

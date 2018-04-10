@@ -462,6 +462,7 @@ public class UserService implements Serializable {
                                     else {
                                         System.out.println("Login fallið: currentUser er " + u.getUsername());
                                         setCurrentUser(u);
+                                        Toast.makeText(registerActivity, R.string.create_user_succeeded, Toast.LENGTH_LONG).show();
                                         ((RegisterActivity) registerActivity).createUserWasSucessful();
                                     }
                                 }

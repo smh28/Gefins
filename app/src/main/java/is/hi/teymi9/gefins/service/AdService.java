@@ -505,6 +505,7 @@ public class AdService {
                                     }
                                     else {
                                         Toast.makeText(editAdActivity, R.string.update_ad_success, Toast.LENGTH_LONG).show();
+                                        currentAd = a;
                                         ((EditAdActivity) editAdActivity).updateAdWasSuccessful();
                                     }
                                 }

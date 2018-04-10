@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import is.hi.teymi9.gefins.model.Ad;
 import is.hi.teymi9.gefins.service.AdService;
 
 /**
@@ -44,8 +45,18 @@ public class EditAdActivity extends SingleFragmentActivity {
      * Ræsir DisplayAdsActivity þegar að uppfærsla auglýsingar hefur tekist
      */
     public void updateAdWasSuccessful(){
-        Intent intent = new Intent(this, DisplayAdsActivity.class);
+        Intent intent = new Intent(this, DisplaySingleAdActivity.class);
+        Ad a = adService.getCurrentAd();
+        intent.putExtra("name", a.getAdName());
+        intent.putExtra("giveOrTake", a.getGiveorTake());
+        intent.putExtra("type", a.getAdType());
+        intent.putExtra("typeOfType", a.getAdTypeOfType());
+        intent.putExtra("color", a.getAdColor());
+        intent.putExtra("description", a.getAdDescription());
+        intent.putExtra("location", a.getAdLocation());
+        intent.putExtra("username", a.getAdUsername());
         startActivity(intent);
+        onBackPressed();
     }
 
 }
