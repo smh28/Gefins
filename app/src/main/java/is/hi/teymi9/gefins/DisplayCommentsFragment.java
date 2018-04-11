@@ -111,6 +111,8 @@ public class DisplayCommentsFragment extends Fragment {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mNewComment.setEnabled(true);
+                mNewComment.setVisibility(View.VISIBLE);
                 mCommentTV.setEnabled(false);
                 mCommentTV.setVisibility(View.GONE);
                 mCommentText.setEnabled(false);
