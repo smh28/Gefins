@@ -44,6 +44,7 @@ public class LoginActivity extends SingleFragmentActivity {
     public void adminLogin() {
         Intent intent = new Intent(this, AdminActivity.class);
         startActivity(intent);
+        onBackPressed();
     }
 }
 

@@ -69,6 +69,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = RegisterActivity.newIntent(getActivity());
                 startActivity(intent);
+                getActivity().onBackPressed();
             }
         });
 

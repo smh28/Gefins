@@ -92,7 +92,9 @@ public class AdminActivity extends SingleFragmentActivity {
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                        Intent intent = new Intent(AdminActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        onBackPressed();
                     }
 
                 })
