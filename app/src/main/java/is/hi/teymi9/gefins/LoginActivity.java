@@ -36,6 +36,7 @@ public class LoginActivity extends SingleFragmentActivity {
     public void loginWasSucessful() {
         Intent intent = new Intent(this, UsersiteActivity.class);
         startActivity(intent);
+        onBackPressed();
     }
 
     /**

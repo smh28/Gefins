@@ -94,7 +94,7 @@ public class AdminActivity extends SingleFragmentActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(AdminActivity.this, LoginActivity.class);
                         startActivity(intent);
-                        onBackPressed();
+                        finish();
                     }
 
                 })
