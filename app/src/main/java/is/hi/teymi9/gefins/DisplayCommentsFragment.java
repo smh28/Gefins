@@ -49,6 +49,8 @@ public class DisplayCommentsFragment extends Fragment {
     private Ad mAd;
     // Strengur sem inniheldur notendanafn
     private String mUsername;
+    // Strengur sem er annaðhvort tómur eða hefur textann sem notandinn skrifaði í comment
+    private String mCommentString;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -116,9 +118,13 @@ public class DisplayCommentsFragment extends Fragment {
                 mSubmit.setEnabled(false);
                 mSubmit.setVisibility(View.GONE);
 
-                Comment newComment = new Comment(mUsername, mCommentText.getText().toString(),mAd);
+                if(mCommentText.getText().toString().isEmpty()){
+                    mCommentString = " ";
+                } else {
+                    mCommentString = mCommentText.getText().toString();
+                }
 
-                System.out.println("Athugasemdin er " + newComment.getComment() + " Userinn er " + newComment.getUsername() + "Auglýsingin er " + newComment.getAd());
+                Comment newComment = new Comment(mUsername, mCommentText.getText().toString(),mAd);
 
                 String message = DisplayCommentActivity.commentService.addComment(newComment,getActivity());
                 Toast.makeText(getActivity(),

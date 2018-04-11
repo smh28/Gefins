@@ -13,31 +13,33 @@
 
         <EditText
             android:id="@+id/user"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/notandanafn"
-            android:textColorHint="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
 
         <EditText
             android:id="@+id/psw"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
             android:hint="@string/lykilord"
-            android:textColorHint="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <Button
             android:id="@+id/skra_inn"
             style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary2"
+            android:ems="10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/skra" />
@@ -45,7 +47,9 @@
         <Button
             android:id="@+id/nyr_notandi"
             style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
+            android:background="@drawable/button_border"
+            android:ems="10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nyr_notandi" />
