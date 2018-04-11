@@ -25,10 +25,10 @@ public class AdRepository {
     //Skilar lista af auglýsingum
     public List<Ad> getAdList() {
         // ef listi er tómur þá skila "dummy" auglýsingu
-        if(adList.isEmpty()) {
-            Ad ad3 = new Ad("gefins", "Leðurjakki", "Fatnaður", "Yfirhöfn", "Svartur", "Stuttur leðurjakki í stærð 38", "sandra", comments, "123");
-            adList.add(ad3);
-        }
+        //if(adList.isEmpty()) {
+        //    Ad ad3 = new Ad("gefins", "Leðurjakki", "Fatnaður", "Yfirhöfn", "Svartur", "Stuttur leðurjakki í stærð 38", "sandra", comments, "123");
+        //    adList.add(ad3);
+        //}
         return adList;
     }
 

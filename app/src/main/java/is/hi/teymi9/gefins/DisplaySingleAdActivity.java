@@ -49,8 +49,6 @@ public class DisplaySingleAdActivity extends SingleFragmentActivity {
      * Callback þegar auglýsingu er eytt. Fer aftur í lista af auglýsingum.
      */
     public void adDeletedSuccessfully() {
-        Intent intent = new Intent(this, DisplayAdsActivity.class);
-        startActivity(intent);
         onBackPressed();
     }
 
