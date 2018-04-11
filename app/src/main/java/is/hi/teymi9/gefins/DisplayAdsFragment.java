@@ -144,6 +144,7 @@ public class DisplayAdsFragment extends Fragment {
             }
         });
 
+
         return v;
     }
 }

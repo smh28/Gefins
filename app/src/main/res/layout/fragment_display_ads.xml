@@ -14,11 +14,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tilbaka"
+        android:textColor="@color/colorText"
+        android:padding="10dp"
+        android:background="@drawable/button_border"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="301dp" />
 
     <ListView
         android:id="@+id/listOfAds"
+        android:textColor="@color/colorText"
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
     </ListView>
