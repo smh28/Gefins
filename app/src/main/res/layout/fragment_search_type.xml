@@ -12,6 +12,7 @@
         android:layout_height="88dp"
         android:padding="14dp"
         android:text="@string/search_text1"
+        android:textColor="@color/colorText"
         android:textSize="30sp"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
@@ -110,6 +111,11 @@
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary2"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/addtype"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="147dp" />
@@ -119,6 +125,11 @@
         android:id="@+id/tilbaka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorText"
+        android:background="@drawable/button_border"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/tilbaka"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="84dp" />
