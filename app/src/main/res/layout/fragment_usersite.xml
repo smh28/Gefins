@@ -15,14 +15,14 @@
         <Button
             android:id="@+id/search_button"
             style="?android:attr/buttonBarButtonStyle"
-            android:textColor="@color/colorText"
-            android:background="@drawable/button_border"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="start|top"
             android:layout_weight="1"
+            android:background="@drawable/button_border"
             android:drawablePadding="24dp"
-            android:text="@string/search_button" />
+            android:text="@string/search_button"
+            android:textColor="@color/colorText" />
 
         <Button
             android:id="@+id/searchType_button"
