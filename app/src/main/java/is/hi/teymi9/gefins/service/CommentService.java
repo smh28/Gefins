@@ -221,7 +221,6 @@ public class CommentService implements Serializable {
                                     } else {
                                         commentRep.setCommentsList(commentList);
                                         ((DisplaySingleAdActivity) a).displayAdComments();
-                                        a.onBackPressed();
                                     }
                                 }
                             });

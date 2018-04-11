@@ -102,8 +102,6 @@ public class DisplayCommentsFragment extends Fragment {
         mBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), DisplayAdsActivity.class);
-                startActivity(intent);
                 getActivity().onBackPressed();
             }
         });

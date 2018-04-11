@@ -35,10 +35,15 @@ public class EditUserActivity extends SingleFragmentActivity {
     /**
      * Ræsir UsersiteActivity þegar að uppfærsla notendaupplýsinga hefur tekist
      */
-    public void updateUserWasSuccessful(){
+    public void updateUserWasSuccessful() {
         onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
         Intent intent = new Intent(this, UsersiteActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }

@@ -239,6 +239,17 @@ public class EditAdFragment extends Fragment {
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DisplaySingleAdActivity.class);
+                Ad a = DisplayAdsActivity.getAdService().getCurrentAd();
+                intent.putExtra("name", a.getAdName());
+                intent.putExtra("giveOrTake", a.getGiveorTake());
+                intent.putExtra("type", a.getAdType());
+                intent.putExtra("typeOfType", a.getAdTypeOfType());
+                intent.putExtra("color", a.getAdColor());
+                intent.putExtra("description", a.getAdDescription());
+                intent.putExtra("location", a.getAdLocation());
+                intent.putExtra("username", a.getAdUsername());
+                startActivity(intent);
                 getActivity().onBackPressed();
             }
         });

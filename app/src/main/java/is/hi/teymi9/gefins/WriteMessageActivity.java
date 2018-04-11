@@ -59,6 +59,7 @@ public class WriteMessageActivity extends SingleFragmentActivity {
     public void sendMessageSuccessful() {
         Intent intent = UsersiteActivity.newIntent(this);
         startActivity(intent);
+        onBackPressed();
     }
 
 

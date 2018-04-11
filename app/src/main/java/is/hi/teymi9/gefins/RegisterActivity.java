@@ -41,4 +41,12 @@ public class RegisterActivity extends SingleFragmentActivity {
         startActivity(intent);
         onBackPressed();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

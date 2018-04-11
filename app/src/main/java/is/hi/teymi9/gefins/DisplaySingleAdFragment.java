@@ -147,7 +147,7 @@ public class DisplaySingleAdFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }
-                getActivity().onBackPressed();
+                getActivity().finish();
             }
         });
 
@@ -156,7 +156,7 @@ public class DisplaySingleAdFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = EditAdActivity.newIntent(getActivity());
                 startActivity(intent);
-                getActivity().onBackPressed();
+                getActivity().finish();
             }
         });
 

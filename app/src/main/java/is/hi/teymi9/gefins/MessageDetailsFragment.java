@@ -90,6 +90,7 @@ public class MessageDetailsFragment extends Fragment {
                 if(bundle != null) {
                     Intent intent = WriteMessageActivity.newIntent(getActivity(), bundle.getString("sender"));
                     startActivity(intent);
+                    getActivity().onBackPressed();
                 }
             }
         });

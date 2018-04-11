@@ -54,4 +54,11 @@ public class DisplaySingleAdActivity extends SingleFragmentActivity {
         onBackPressed();
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, DisplayAdsActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
