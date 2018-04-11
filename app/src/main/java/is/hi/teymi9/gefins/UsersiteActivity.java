@@ -98,7 +98,7 @@ public class UsersiteActivity extends SingleFragmentActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(UsersiteActivity.this, LoginActivity.class);
                         startActivity(intent);
-                        onBackPressed();
+                        finish();
                     }
 
                 })

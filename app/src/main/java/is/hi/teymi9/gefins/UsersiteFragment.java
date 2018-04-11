@@ -92,19 +92,20 @@ public class UsersiteFragment extends Fragment {
         mLogout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(getContext())
+                LoginActivity.getUserService().logout();
+                getActivity().onBackPressed();
+                /*new AlertDialog.Builder(getContext())
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setTitle("Útskráning")
                         .setMessage("Ertu viss um að þú viljir skrá þig út?")
                         .setPositiveButton("Já", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 LoginActivity.getUserService().logout();
-                                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                                startActivity(intent);
+                                UsersiteFragment.this.getActivity().onBackPressed();
                             }
                         })
                         .setNegativeButton("Nei", null)
-                        .show();
+                        .show();*/
             }
         });
 
