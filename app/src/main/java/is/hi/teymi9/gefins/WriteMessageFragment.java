@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import is.hi.teymi9.gefins.model.Message;
 
@@ -65,7 +66,18 @@ public class WriteMessageFragment extends Fragment {
                 String subject = mSubject.getText().toString();
                 String message = mMessage.getText().toString();
                 Message m = new Message(from, to, subject, message);
-                WriteMessageActivity.getMessageService().sendMessage(m, getActivity());
+                if(to.length() < 4) {
+                    Toast.makeText(getActivity(), R.string.ekki_gilt_notandanafn, Toast.LENGTH_LONG).show();
+                }
+                else if(subject.length() == 0) {
+                    Toast.makeText(getActivity(), R.string.titill_tomur, Toast.LENGTH_LONG).show();
+                }
+                else if(message.length() == 0) {
+                    Toast.makeText(getActivity(), R.string.skilabod_tom, Toast.LENGTH_LONG).show();
+                }
+                else {
+                    WriteMessageActivity.getMessageService().sendMessage(m, getActivity());
+                }
             }
         });
 

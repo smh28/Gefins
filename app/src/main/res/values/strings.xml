@@ -245,5 +245,8 @@
     <string name="haetta_vid">Hætta við</string>
     <string name="skrifa_athugasemd">Skrifa athugasemd</string>
     <string name="create_user_succeeded">Nýr notandi innskráður</string>
+    <string name="ekki_gilt_notandanafn">Notandanafn ekki gilt</string>
+    <string name="titill_tomur">Vinsamlegast takið fram viðfangsefni</string>
+    <string name="skilabod_tom">Vinsamlegast skrifið skilaboð</string>
 
 </resources>
