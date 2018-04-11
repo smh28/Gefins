@@ -129,8 +129,8 @@ public class InboxFragment extends Fragment {
                 // ef skilaboð eru ekki þegar lesin þá merkja þau sem lesin
                 // og senda skilaboð um það á bakenda
                 mMessage.setRead(true);
-                updateUI();
                 WriteMessageActivity.getMessageService().sendMessage(mMessage, getActivity());
+                updateUI();
             }
             Intent intent = MessageDetailsActivity.newIntent(getActivity(), mMessage, true);
             startActivity(intent);
