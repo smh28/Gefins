@@ -12,26 +12,28 @@
 
         <EditText
             android:id="@+id/to"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/til"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <EditText
             android:id="@+id/subject"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/vidfangsefni"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <EditText
             android:id="@+id/message"
             android:inputType="textMultiLine"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="5"
@@ -39,18 +41,27 @@
             android:ems="10"
             android:scrollbars="vertical"
             android:hint="@string/skilabod"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <Button
             android:id="@+id/send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary2"
+            android:ems="10"
+            android:layout_marginBottom="10dp"
             android:text="@string/senda" />
 
         <Button
             android:id="@+id/cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:background="@drawable/button_border"
+            android:ems="10"
+            android:layout_marginBottom="10dp"
             android:text="@string/haetta_vid" />
 
     </LinearLayout>
