@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -103,7 +104,11 @@ public class AdminDeleteUserFragment extends Fragment {
                         System.out.println(key);
                     String tag = listView.getItemAtPosition(key).toString();
                     System.out.println(tag);
-                    AdminActivity.getUserService().deleteUserByUserName(tag, getActivity());
+                    if(tag.equals("olla")) {
+                        Toast.makeText(getActivity(),"Ekki er hægt að eyða kerfisstjóra", Toast.LENGTH_SHORT).show();
+                    } else {
+                        AdminActivity.getUserService().deleteUserByUserName(tag, getActivity());
+                    }
                 }
             }
         });
