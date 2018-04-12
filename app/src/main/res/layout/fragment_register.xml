@@ -11,100 +11,106 @@
 
         <EditText
             android:id="@+id/username"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/notandanafn"
-            android:textColorHint="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <EditText
             android:id="@+id/email_address"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
             android:hint="@string/tolvupostur"
-            android:textColorHint="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <EditText
             android:id="@+id/password"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
             android:hint="@string/lykilord"
-            android:textColorHint="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <EditText
             android:id="@+id/password_repeat"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
             android:hint="@string/lykilord_aftur"
-            android:textColorHint="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <EditText
             android:id="@+id/full_name"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/fullt_nafn"
-            android:textColorHint="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <EditText
             android:id="@+id/phonenumber"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="phone"
             android:hint="@string/simanumer"
-            android:textColorHint="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <EditText
             android:id="@+id/zipcode"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
             android:hint="@string/postnumer"
-            android:textColorHint="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <EditText
             android:id="@+id/address"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPostalAddress"
             android:hint="@string/heimilisfang"
-            android:textColorHint="@color/colorPrimary"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:textColorHint="@color/colorText"
+            android:backgroundTint="@color/colorText"/>
 
         <Button
             android:id="@+id/register"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary2"
+            android:ems="10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nyskra" />
 
         <Button
             android:id="@+id/cancel"
+            android:textColor="@color/colorText"
+            android:background="@drawable/button_border"
+            android:ems="10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/haetta_vid"

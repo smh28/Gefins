@@ -20,6 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
             android:hint="@string/nafnaauglysingu"
             android:inputType="textPersonName" />
 
@@ -98,6 +100,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
             android:hint="@string/lysing2"
             android:inputType="textMultiLine" />
 
@@ -112,6 +116,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
             android:hint="@string/postnumer2"
             android:inputType="textPersonName" />
 
@@ -119,6 +125,10 @@
             android:id="@+id/confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary2"
+            android:ems="10"
+            android:layout_marginBottom="10dp"
             android:text="@string/addtype"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="147dp" />
@@ -127,6 +137,10 @@
             android:id="@+id/tilbaka"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:background="@drawable/button_border"
+            android:ems="10"
+            android:layout_marginBottom="10dp"
             android:text="@string/tilbaka"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="84dp" />

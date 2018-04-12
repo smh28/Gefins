@@ -18,9 +18,10 @@
             android:layout_height="match_parent"
             android:layout_gravity="start|top"
             android:layout_weight="1"
+            android:textColor="@color/colorText"
+            android:background="@drawable/button_border"
             android:drawablePadding="24dp"
-            android:text="@string/skodasidu"
-            android:textColor="@color/colorPrimary" />
+            android:text="@string/skodasidu" />
 
         <Button
             android:id="@+id/delete_ad_button"
@@ -29,9 +30,10 @@
             android:layout_height="match_parent"
             android:layout_gravity="start|top"
             android:layout_weight="1"
+            android:textColor="@color/colorText"
+            android:background="@drawable/button_border"
             android:drawablePadding="24dp"
-            android:text="@string/eydaauglysingu"
-            android:textColor="@color/colorPrimary" />
+            android:text="@string/eydaauglysingu" />
 
     </LinearLayout>
 
@@ -50,9 +52,10 @@
             android:layout_height="match_parent"
             android:layout_gravity="start|top"
             android:layout_weight="1"
+            android:textColor="@color/colorText"
+            android:background="@drawable/button_border"
             android:drawablePadding="24dp"
-            android:text="@string/eydanotanda"
-            android:textColor="@color/colorPrimary" />
+            android:text="@string/eydanotanda" />
 
         <Button
             android:id="@+id/logout_button"
@@ -61,9 +64,12 @@
             android:layout_height="match_parent"
             android:layout_gravity="start|top"
             android:layout_weight="1"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary2"
             android:drawablePadding="24dp"
-            android:text="@string/logout_button"
-            android:textColor="@color/colorPrimary" />
+            android:text="@string/logout_button" />
     </LinearLayout>
 
 </LinearLayout>
+
+
