@@ -35,6 +35,7 @@ public class AdminDeleteUserActivity extends SingleFragmentActivity {
     public void userDeletedSuccessfully() {
         Intent intent = new Intent(this, AdminDeleteUserActivity.class);
         startActivity(intent);
+        onBackPressed();
     }
 
 }

@@ -91,11 +91,6 @@ public class RegisterFragment extends Fragment {
                             false);
 
                     String message = LoginActivity.getUserService().addUser(mNewUser);
-
-                    Toast.makeText(getActivity(),
-                            message,
-                            Toast.LENGTH_SHORT).show();
-
                 }
                 else {
                     Toast.makeText(getActivity(),

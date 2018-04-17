@@ -40,4 +40,8 @@ public class AddAdActivity extends SingleFragmentActivity {
         Intent intent = new Intent(packageContext, AddAdActivity.class);
         return intent;
     }
+
+    public void addAdSuccessful() {
+         onBackPressed();
+    }
 }
