@@ -15,6 +15,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import is.hi.teymi9.gefins.AddAdActivity;
 import is.hi.teymi9.gefins.AdminActivity;
 import is.hi.teymi9.gefins.AdminDeleteAdActivity;
 import is.hi.teymi9.gefins.DisplaySingleAdActivity;
@@ -154,7 +155,8 @@ public class AdService {
                                     //else {
                                         //setCurrentUser(u);
                                         //((AddAdActivity) addAdActivity).createUserWasSucessful();
-                                        Toast.makeText(addAdActivity, R.string.create_ad_success, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(addAdActivity, R.string.create_ad_success, Toast.LENGTH_LONG).show();
+                                    ((AddAdActivity)newActivity).addAdSuccessful();
                                     //}
                                 }
                             });

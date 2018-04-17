@@ -377,7 +377,7 @@ public class UserService implements Serializable {
             });
         }
         else {
-            Toast.makeText(registerActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
+            Toast.makeText(loginActivity, R.string.network_unavailable_message, Toast.LENGTH_LONG).show();
         }
     }
 

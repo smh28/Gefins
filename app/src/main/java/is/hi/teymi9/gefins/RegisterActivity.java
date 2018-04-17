@@ -37,8 +37,6 @@ public class RegisterActivity extends SingleFragmentActivity {
      * Ræsir UsersiteActivity þegar að notandi hefur verið innskráður
      */
     public void createUserWasSucessful() {
-        Intent intent = new Intent(this, UsersiteActivity.class);
-        startActivity(intent);
         onBackPressed();
     }
 

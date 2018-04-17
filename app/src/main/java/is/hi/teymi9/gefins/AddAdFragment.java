@@ -163,11 +163,11 @@ public class AddAdFragment extends Fragment {
 
                 String message = AddAdActivity.getAdService().addAd(mNewAd);
 
-                Toast.makeText(getActivity(),
-                        message,
-                        Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),
+                //        message,
+                //        Toast.LENGTH_SHORT).show();
 
-                getActivity().onBackPressed();
+                //getActivity().onBackPressed();
             }
         });
 
