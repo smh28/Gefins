@@ -25,7 +25,7 @@
             android:selectAllOnFocus="false"
             android:singleLine="false"
             android:textAlignment="viewStart"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorText"/>
 
         <Button
             android:id="@+id/confirm"
