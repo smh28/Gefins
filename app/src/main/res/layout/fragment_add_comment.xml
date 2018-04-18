@@ -25,12 +25,16 @@
             android:selectAllOnFocus="false"
             android:singleLine="false"
             android:textAlignment="viewStart"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorText"/>
 
         <Button
             android:id="@+id/confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary2"
+            android:ems="10"
+            android:layout_marginTop="10dp"
             android:text="@string/addtype"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="147dp" />
@@ -39,6 +43,9 @@
             android:id="@+id/tilbaka"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorText"
+            android:background="@drawable/button_border"
+            android:ems="10"
             android:text="@string/tilbaka"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="84dp" />

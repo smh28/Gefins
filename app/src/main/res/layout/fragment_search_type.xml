@@ -114,7 +114,7 @@
         android:textColor="@color/white"
         android:background="@color/colorPrimary2"
         android:ems="10"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/addtype"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="147dp" />
@@ -127,7 +127,6 @@
         android:textColor="@color/colorText"
         android:background="@drawable/button_border"
         android:ems="10"
-        android:layout_marginBottom="10dp"
         android:text="@string/tilbaka"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="84dp" />

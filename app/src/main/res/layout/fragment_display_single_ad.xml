@@ -92,7 +92,7 @@
             android:textColor="@color/white"
             android:background="@color/colorPrimary2"
             android:ems="10"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:text="Sjá athugasemdir"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="301dp" />
@@ -104,7 +104,6 @@
             android:textColor="@color/colorText"
             android:background="@drawable/button_border"
             android:ems="10"
-            android:layout_marginBottom="10dp"
             android:text="@string/uppfaera_auglysingu"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="301dp" />
@@ -116,7 +115,6 @@
             android:textColor="@color/white"
             android:background="@color/colorPrimary2"
             android:ems="10"
-            android:layout_marginBottom="10dp"
             android:text="@string/eyda_auglysingu"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="301dp" />
@@ -128,7 +126,6 @@
             android:textColor="@color/colorText"
             android:background="@drawable/button_border"
             android:ems="10"
-            android:layout_marginBottom="10dp"
             android:text="@string/tilbaka"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="301dp" />
