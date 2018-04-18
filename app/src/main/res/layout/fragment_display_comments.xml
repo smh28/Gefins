@@ -80,6 +80,7 @@ skipta niður á text view til að fá betra útlit -->
             android:textColor="@color/white"
             android:background="@color/colorPrimary2"
             android:ems="10"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/addtype"
             tools:layout_editor_absoluteX="16dp"
